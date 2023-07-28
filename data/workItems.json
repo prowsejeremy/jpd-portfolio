@@ -1,0 +1,31 @@
+[
+  {
+    "displayTitle": "BurgerFuel Bunder",
+    "year": "2022",
+    "slug": "bunder",
+    "url": "/work/bunder",
+    "roles": "Tech Lead | Front End Development",
+    "tech": "Next.js | Styled Components | Strapi | GraphQl",
+    "coverImage": {
+      "url": "/images/work/bunder-cover.jpeg",
+      "alt": "BurgerFuel Bunder App Mockup"
+    },
+    "pageSections": [
+      {
+        "type": "text",
+        "content": "Burgerfuel celebrated it’s 27th Birthday and since ‘95 they’ve been the go-to destination for date nights. To kick off the Birthday celebrations we launched Bunder, a burger dating app that let’s you swipe through the hotties on the menu to find your perfect burger match and score a BurgerFuel hook up with your next purchase."
+      },
+      {
+        "type": "video",
+        "videoUrl": "/videos/work/bunder-walkthrough.mp4"
+      },
+      {
+        "type": "image",
+        "image": {
+          "url": "/images/work/bunder-screens.jpeg",
+          "alt": "BurgerFuel Bunder App Mockup"
+        }
+      }
+    ]
+  }
+]

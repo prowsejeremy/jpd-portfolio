@@ -1,0 +1,60 @@
+[
+  {
+    "slug": "home",
+    "seo": {
+      "title": "JPD",
+      "description": "Jeremy Prowse Digital | Design & Development"
+    },
+    "displayTitle": "Jeremy Prowse Digital"
+  },
+  {
+    "slug": "work",
+    "seo": {
+      "title": "JPD - Work",
+      "description": "Look at all this work."
+    },
+    "displayTitle": "Work work work work work.",
+    "workItems": [
+      {
+        "title": "Craigs Investment Partners",
+        "year": "2023",
+        "link": {
+          "url": "https://craigs.staging.beingbui.lt",
+          "type": "external"
+        },
+        "roles": "Tech Lead | Full Stack Development",
+        "tech": "Next.js | Styled Components | Headless Wordpress | GraphQl"
+      },
+      {
+        "title": "YoungShand.",
+        "year": "2023",
+        "link": {
+          "url": "https://youngshand.staging.beingbui.lt",
+          "type": "external"
+        },
+        "roles": "Tech Oversight | Front End Development",
+        "tech": "Next.js | Styled Components | Strapi | GraphQl"
+      },
+      {
+        "title": "BurgerFuel Bunder",
+        "year": "2022",
+        "link": {
+          "url": "/work/bunder",
+          "type": "internal"
+        },
+        "roles": "Tech Lead | Front End Development",
+        "tech": "Next.js | Styled Components | Strapi | GraphQl"
+      },
+      {
+        "title": "Provincia Property",
+        "year": "2022",
+        "link": {
+          "url": "https://provincia.co.nz",
+          "type": "external"
+        },
+        "roles": "Tech Lead | Full Stack Development",
+        "tech": "Next.js | Styled Components | Headless Wordpress | GraphQl"
+      }
+    ]
+  }
+]
