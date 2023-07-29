@@ -2,8 +2,11 @@ import { keyframes, styled } from 'styled-components'
 
 const dash = keyframes`
   0% {
+    opacity: 0;
     stroke-dashoffset: 2000;
-    fill: transparent;
+  }
+  30% {
+    opacity: 1;
   }
   75% {
     stroke-dashoffset: 0;
@@ -34,7 +37,7 @@ export const _HomeLogoLockup = styled.div`
     path {
       stroke-dasharray: 2000;
       stroke-dashoffset: 2000;
-      animation: ${dash} 3s linear forwards 2s;
+      animation: ${dash} 3s linear forwards 500ms;
     }
   }
 `
