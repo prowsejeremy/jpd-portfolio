@@ -3,6 +3,7 @@ import { useGlobalState } from 'lib/Store/index'
 
 import Snek from 'snek'
 import SnekLogo from 'components/KonamiSurprise/snekLogo'
+import CloseIcon from 'components/CloseIcon'
 
 import {
   _KonamiSurprise,
@@ -13,7 +14,7 @@ import {
 
 export default function KonamiSurprise() {
   
-  const {state, dispatch} = useGlobalState()
+  const {dispatch} = useGlobalState()
 
   useEffect(() => {
     const snek = new Snek({
@@ -25,7 +26,9 @@ export default function KonamiSurprise() {
 
   return (
     <_KonamiSurprise>
-      <_CloseButton onClick={() => dispatch({type: 'setKonami', value: false})}>Close</_CloseButton>
+      <_CloseButton onClick={() => dispatch({type: 'setKonami', value: false})}>
+        <CloseIcon />
+      </_CloseButton>
       <_GameWrapper>
         <SnekLogo />
         <_GAME id="game" />

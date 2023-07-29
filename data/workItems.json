@@ -10,6 +10,10 @@
       "url": "/images/work/bunder-cover.jpeg",
       "alt": "BurgerFuel Bunder App Mockup"
     },
+    "seo": {
+      "title": "JPD - BurgerFuel Bunder",
+      "description": "Look at all this work."
+    },
     "pageSections": [
       {
         "type": "text",

@@ -1,13 +1,10 @@
 'use client'
 
+import PageHero from 'components/PageHero'
 import WorkCard from 'components/WorkCard'
 
 import {
   _WorkPageContent,
-    _WorkPageHeader,
-      _PageTitle,
-      _VideoWrapper,
-        _Video,
     _WorkItems
 } from './styles'
 
@@ -20,14 +17,7 @@ const WorkTemplate = ({page}) => {
 
   return (
     <_WorkPageContent>
-      <_WorkPageHeader>
-        <_PageTitle>{displayTitle}</_PageTitle>
-        <_VideoWrapper>
-          <_Video autoPlay muted loop controls={false}>
-            <source src='/videos/work.mp4' type='video/mp4' />
-          </_Video>
-        </_VideoWrapper>
-      </_WorkPageHeader>
+      <PageHero title={displayTitle} videoUrl='/videos/work-widescreen.mp4' />
       {workItems &&
         <_WorkItems>
           {workItems.map((item, key) => {

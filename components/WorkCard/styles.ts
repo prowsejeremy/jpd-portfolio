@@ -21,10 +21,16 @@ const animateTextCoverOut =  keyframes`
 `
 
 export const _WorkTitle = styled.h3`
-  font-size: 12rem;
+  font-size: 5rem;
   text-transform: uppercase;
   color: ${(props) => props.theme.colors.brand_3};
   line-height: 0.9;
+  margin-bottom: 2rem;
+
+  ${(props) => props.theme.mediaQueries.tablet} {
+    font-size: 17rem;
+    margin: 0;
+  }
 `
 
 export const _WorkDetailsWrapper = styled.div`
@@ -33,15 +39,18 @@ export const _WorkDetailsWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 2;
-  opacity: 0;
-  visibility: hidden;
-  padding: 3rem;
-  transition: all 200ms ease 100ms;
-  animation: ${animateTextCoverOut} 300ms ease-in-out forwards;
+
+  ${(props) => props.theme.mediaQueries.tablet} {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    opacity: 0;
+    visibility: hidden;
+    padding: 3rem;
+    transition: all 200ms ease 100ms;
+    animation: ${animateTextCoverOut} 300ms ease-in-out forwards;
+  }
 `
 
 export const _WorkDetailsInner = styled.div`
@@ -49,22 +58,34 @@ export const _WorkDetailsInner = styled.div`
   height: auto;
 
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  align-items: flex-start;
+  flex-direction: column;
 
   padding: 1.2rem 0;
   border-top: 2px solid ${(props) => props.theme.colors.brand_3};
-  border-bottom: 2px solid ${(props) => props.theme.colors.brand_3};
 
-  font-size: 2rem;
+  font-size: 1.6rem;
   text-transform: uppercase;
   color: ${(props) => props.theme.colors.brand_3};
   line-height: 0.9;
+
+  ${(props) => props.theme.mediaQueries.tablet} {
+    font-size: 4rem;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    border-bottom: 2px solid ${(props) => props.theme.colors.brand_3};
+  }
 `
 
 export const _WorkDetailsSummary = styled.div`
   h3 {
     font-weight: 300;
+    margin-bottom: 2rem;
+
+    ${(props) => props.theme.mediaQueries.tablet} {
+      margin-bottom: 0;
+    }
   }
 `
 
@@ -76,32 +97,39 @@ export const _WorkCard = styled.a`
   position: relative;
   overflow: hidden;
   margin-bottom: 2rem;
+  background: ${(props) => props.theme.colors.brand_2};
+  padding: 1.5rem;
+
+  ${(props) => props.theme.mediaQueries.tablet} {
+    padding: 0;
+    background: none;
+    &:before {
+      content: '';
+      display: block;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+      background: ${(props) => props.theme.colors.brand_2};
+      transform: translateX(-100%);
+      animation: ${animateTextCoverOut} 200ms ease-in-out forwards;
+    }
+
+    &:hover, &:focus {
+      &:before {
+        animation: ${animateTextCoverIn} 200ms ease-in-out forwards;
+      }
+      ${_WorkDetailsWrapper} {
+        opacity: 1;
+        visibility: visible;
+        animation: ${animateTextCoverIn} 300ms ease-in-out forwards;
+      }
+    }
+  }
+
   * {
     cursor: url('/images/cursor-hover.png') 15 15, default;
-  }
-
-  &:before {
-    content: '';
-    display: block;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 1;
-    background: ${(props) => props.theme.colors.brand_2};
-    transform: translateX(-100%);
-    animation: ${animateTextCoverOut} 200ms ease-in-out forwards;
-  }
-
-  &:hover, &:focus {
-    &:before {
-      animation: ${animateTextCoverIn} 200ms ease-in-out forwards;
-    }
-    ${_WorkDetailsWrapper} {
-      opacity: 1;
-      visibility: visible;
-      animation: ${animateTextCoverIn} 300ms ease-in-out forwards;
-    }
   }
 `

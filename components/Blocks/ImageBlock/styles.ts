@@ -8,7 +8,11 @@ export const _ImageBlock = styled.div`
     content: '';
     display: block;
     width: 100%;
-    padding-bottom: 56.25%;
+    padding-bottom: 75%;
+
+    ${(props) => props.theme.mediaQueries.tablet} {
+      padding-bottom: 56.25%;
+    }
   }
 `
 

@@ -1,7 +1,6 @@
 'use client'
 
-import Image from 'next/image'
-
+import PageHero from 'components/PageHero'
 import PageSections from 'components/PageSections'
 
 import {
@@ -22,10 +21,7 @@ const WorkDetailTemplate = ({page}) => {
 
   return (
     <_WorkPageContent>
-      <_PageHero>
-        <_PageTitle>{displayTitle}</_PageTitle>
-        <_HeroImage as={Image} src={coverImage.url} alt={coverImage.alt} fill={true} />
-      </_PageHero>
+      <PageHero title={displayTitle} image={coverImage} />
       <_WorkDetails>
         <PageSections sections={pageSections} />
       </_WorkDetails>

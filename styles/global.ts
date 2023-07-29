@@ -12,7 +12,7 @@ export default createGlobalStyle`
     margin: 0;
     font-family: ${defaultTheme.fonts.body};
     font-weight: 300;
-    font-size: 16px;
+    font-size: 10px;
     line-height: 1.5;
   }
 

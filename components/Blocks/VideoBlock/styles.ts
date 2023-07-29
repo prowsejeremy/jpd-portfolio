@@ -8,7 +8,11 @@ export const _VideoWrapper = styled.div`
     content: '';
     display: block;
     width: 100%;
-    padding-bottom: 56.25%;
+    padding-bottom: 75%;
+
+    ${(props) => props.theme.mediaQueries.tablet} {
+      padding-bottom: 56.25%;
+    }
   }
 `
 
@@ -19,4 +23,5 @@ export const _Video = styled.video`
   width: 100%;
   height: 100%;
   z-index: 1;
+  object-fit: cover;
 `

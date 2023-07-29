@@ -1,5 +1,5 @@
 import {notFound} from "next/navigation"
-// import { Metadata, ResolvingMetadata } from 'next'
+import { Metadata } from 'next'
 import WorkDetailTemplate from 'templates/WorkDetailTemplate'
 import PagesData from 'data/workItems.json'
 
@@ -9,26 +9,19 @@ async function getData(slug:String) {
   return pageData
 }
 
-// export async function generateMetadata(
-//   { params, searchParams }: Props,
-//   parent?: ResolvingMetadata
-// ): Promise<Metadata> {
-//   // read route params
-//   const id = params.id
+type Props = {
+  params: { slug: string }
+}
 
-//   // fetch data
-//   const product = await fetch(`https://.../${id}`).then((res) => res.json())
+export async function generateMetadata(
+  { params }: Props
+): Promise<Metadata> {
 
-//   // // optionally access and extend (rather than replace) parent metadata
-//   // const previousImages = (await parent).openGraph?.images || []
+  // fetch data
+  const data = await getData(params.slug)
 
-//   return {
-//     title: product.title,
-//     openGraph: {
-//       images: ['/some-specific-page-image.jpg', ...previousImages],
-//     },
-//   }
-// }
+  return data ? data?.seo : {}
+}
 
 export default async function WorkDetailPage({ params }:{ params:{slug:String} }) {
 

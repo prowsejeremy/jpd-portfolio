@@ -3,7 +3,7 @@ import {
     _Video,
 } from './styles'
 
-const VideoBlock = ({src}) => {
+const VideoBlock = ({src}:{src:string}) => {
   return (
     <_VideoWrapper>
       <_Video autoPlay muted loop controls={false}>

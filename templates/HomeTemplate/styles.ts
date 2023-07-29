@@ -32,7 +32,7 @@ export const _ButtonOfDespair = styled.button`
   cursor: url('/images/cursor-hover.png') 15 15, default;
   transition: all 300ms ease;
 
-  &:hover, &:focus {
+  &:hover {
     color: ${(props) => props.theme.colors.brand_2};
   }
 `

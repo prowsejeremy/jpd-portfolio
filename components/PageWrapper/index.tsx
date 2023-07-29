@@ -41,7 +41,7 @@ const PageWrapper = ({children}:{children:React.ReactNode}) => {
       <_MainContentWrapper>
         {children}
       </_MainContentWrapper>
-
+      
       <Konami action={handleKonamiCode} />
       { state.konami && <KonamiSuprise /> }
     </_PageWrapper>

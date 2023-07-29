@@ -18,8 +18,8 @@ export const _GameWrapper = styled.div`
   
   svg {
     display: block;
-    width: 14rem;
-    margin: 0 auto 2rem;
+    width: 26rem;
+    margin: 0 auto 3rem;
   }
 `
 
@@ -31,9 +31,16 @@ export const _CloseButton = styled.button`
   position: absolute;
   top: 2rem;
   right: 2rem;
-  width: 4rem;
-  height: 4rem;
+  width: 7rem;
+  height: 7rem;
+  padding: 1.5rem;
   background: ${(props) => props.theme.colors.brand_3};
   border: none;
   outline: none;
+
+  svg {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
 `
