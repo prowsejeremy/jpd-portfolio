@@ -1,21 +1,27 @@
 'use client'
 
 import {useEffect} from 'react'
+import { AnimatePresence, motion } from 'framer-motion'
 import Konami from 'react-konami-code'
 
 import Navigation from 'components/Navigation'
 import KonamiSuprise from 'components/KonamiSurprise'
 
-import { useGlobalState } from '@/lib/Store'
+import { useGlobalState } from 'lib/Store'
 
 import {
   _PageWrapper,
   _MainContentWrapper
 } from './styles'
 
+import {
+  _PageTransitionWrapper
+} from 'components/PageTransition/styles'
+
 const PageWrapper = ({children}:{children:React.ReactNode}) => {
 
   const { state, dispatch } = useGlobalState()
+  const isWindow = typeof window !== undefined
 
   useEffect(() => {
     dispatch({ type: 'isMobile', value: window.innerWidth < 768  && window.innerWidth < 1024})
@@ -29,11 +35,15 @@ const PageWrapper = ({children}:{children:React.ReactNode}) => {
     }
 
     window.addEventListener('resize', responsiveWindowResize)
-  }, [typeof window !== undefined])
+  }, [isWindow, dispatch])
 
   const handleKonamiCode = () => {
     dispatch({ type: 'setKonami', value: true })
   }
+
+  // const swipeUpEnterKeyframes = {x: ['0vw', '100vw']}
+  // const swipeUpExitKeyframes = {x: ['-100vw', '0vw']}
+  // const swipeUpTimings = {times: [0, 1]}
 
   return (
     <_PageWrapper>
@@ -43,7 +53,38 @@ const PageWrapper = ({children}:{children:React.ReactNode}) => {
       </_MainContentWrapper>
       
       <Konami action={handleKonamiCode} />
-      { state.konami && <KonamiSuprise /> }
+      
+      <AnimatePresence>
+        { state.konami &&
+          <>
+            <_PageTransitionWrapper
+              initial={{x: '-100vw'}}
+              animate={{x: ['-100vw', '0vw', '0vw', '100vw']}}
+              exit={{x: ['-100vw', '0vw', '0vw', '100vw']}}
+
+              transition={{
+                duration: 0.7,
+                times: [0, 0.25, 0.75, 1],
+                ease: [0.85, 0, 0.32, 1]
+              }}
+            />
+            <motion.div
+              initial={{opacity: 0}}
+              animate={{opacity: [0, 1]}}
+              exit={{opacity: [1, 0]}}
+
+              transition={{
+                duration: 0.1,
+                delay: 0.35,
+                times: [0, 1],
+                ease: [0.85, 0, 0.32, 1]
+              }}
+            >
+              <KonamiSuprise />
+            </motion.div>
+          </>
+        }
+      </AnimatePresence>
     </_PageWrapper>
   )
 }

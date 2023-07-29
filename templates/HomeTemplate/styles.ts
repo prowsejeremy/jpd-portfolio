@@ -1,4 +1,19 @@
-import { styled } from 'styled-components'
+import { keyframes, styled } from 'styled-components'
+
+const dash = keyframes`
+  0% {
+    stroke-dashoffset: 2000;
+    fill: transparent;
+  }
+  75% {
+    stroke-dashoffset: 0;
+    fill: transparent;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    fill: #ffffff;
+  }
+`
 
 export const _HomePageContent = styled.div`
   display: flex;
@@ -16,6 +31,11 @@ export const _HomeLogoLockup = styled.div`
     display: block;
     width: 100%;
     height: auto;
+    path {
+      stroke-dasharray: 2000;
+      stroke-dashoffset: 2000;
+      animation: ${dash} 3s linear forwards 2s;
+    }
   }
 `
 
@@ -26,7 +46,8 @@ export const _ButtonOfDespair = styled.button`
   margin: auto;
   width: auto;
   display: block;
-  font-size: 2rem;
+  font-size: 3rem;
+  text-transform: uppercase;
   font-family: ${(props) => props.theme.fonts.heading};
   color: ${(props) => props.theme.colors.white};
   cursor: url('/images/cursor-hover.png') 15 15, default;
@@ -42,4 +63,25 @@ export const _PageTitle = styled.h1`
   width: auto;
   display: block;
   color: ${(props) => props.theme.colors.white};
+`
+
+export const _UpUpDownDownLeftRightLeftRightBA = styled.div`
+  position: absolute;
+  bottom: 3rem;
+  right: 3rem;
+  width: 20rem;
+  height: auto;
+  svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    path {
+      fill: ${(props) => props.theme.colors.brand_2};
+      transition: 300ms all ease 300ms;
+      &:hover {
+        fill: ${(props) => props.theme.colors.brand_3};
+        transition: 300ms all ease;
+      }
+    }
+  }
 `

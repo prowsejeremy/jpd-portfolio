@@ -1,10 +1,6 @@
 import TextBlock from 'components/Blocks/TextBlock'
-import ImageBlock from 'components/Blocks/ImageBlock'
+import ImageBlock, { ImageType } from 'components/Blocks/ImageBlock'
 import VideoBlock from 'components/Blocks/VideoBlock'
-
-// "type": "text",
-// "type": "video",
-// "type": "image",
 
 import {
   _Sections,
@@ -12,9 +8,16 @@ import {
 } from './styles'
 
 
-const PageSections = ({sections}) => {
+type sectionTypes = {
+  type:string,
+  content:string,
+  image:ImageType,
+  videoUrl:string,
+}
 
-  const fetchSection = (section) => {
+const PageSections = ({sections}:{sections:sectionTypes[]}) => {
+
+  const fetchSection = (section:sectionTypes) => {
     switch(section.type) {
       case 'text':
         return <TextBlock content={section.content} />
@@ -28,6 +31,7 @@ const PageSections = ({sections}) => {
   return (
     <_Sections>
       { sections.map((section, key) => {
+        console.log('section', section)
         return (
           <_Section key={key}>
             { fetchSection(section) }

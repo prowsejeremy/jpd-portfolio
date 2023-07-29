@@ -13,7 +13,7 @@ export const _PageHero = styled.div`
 
   ${(props) => props.theme.mediaQueries.tablet} {
     height: 90vh;
-    min-height: 50rem;
+    min-height: 70rem;
   }
 `
 

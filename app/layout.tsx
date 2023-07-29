@@ -1,4 +1,4 @@
-import { Teko, Montserrat } from 'next/font/google'
+import { Teko, Inter } from 'next/font/google'
 
 import StyledComponentsRegistry from 'lib/registry'
 
@@ -10,7 +10,7 @@ const headingFont = Teko({
   variable: '--font-heading'
 })
 
-const bodyFont = Montserrat({
+const bodyFont = Inter({
   subsets: ['latin'],
   weight: ['300', '500'],
   variable: '--font-body'

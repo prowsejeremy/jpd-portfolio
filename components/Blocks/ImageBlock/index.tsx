@@ -5,7 +5,12 @@ import {
     _Image,
 } from './styles'
 
-const ImageBlock = ({image}) => {
+export type ImageType = {
+  url:string,
+  alt:string
+}
+
+const ImageBlock = ({image}:{image:ImageType}) => {
   return (
     <_ImageBlock>
       <_Image as={Image} src={image.url} alt={image.alt} fill={true} />

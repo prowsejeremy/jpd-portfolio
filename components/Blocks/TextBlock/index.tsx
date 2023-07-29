@@ -3,7 +3,7 @@ import {
     _TextContent,
 } from './styles'
 
-const TextBlock = ({content}) => {
+const TextBlock = ({content}:{content:string}) => {
   return (
     <_TextBlock>
       <_TextContent>

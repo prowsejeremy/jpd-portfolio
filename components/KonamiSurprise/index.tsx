@@ -17,11 +17,16 @@ export default function KonamiSurprise() {
   const {dispatch} = useGlobalState()
 
   useEffect(() => {
+    const gameWrapper = document.getElementById('game')
     const snek = new Snek({
       gameFont: '__Teko_dde2ca',
-      gameElement: document.querySelector('#game'),
+      gameElement: gameWrapper,
     })
     snek.init()
+
+    // Set focus on game element to play immediately
+    // @ts-ignore
+    gameWrapper?.firstChild?.focus()
   }, [])
 
   return (
