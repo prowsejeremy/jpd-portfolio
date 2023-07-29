@@ -16,14 +16,24 @@
     "displayTitle": "Work work work work work.",
     "workItems": [
       {
-        "title": "Provincia Property",
-        "year": "2022",
+        "title": "Craigs Investment Partners",
+        "year": "2023",
         "link": {
-          "url": "https://provincia.co.nz",
+          "url": "https://craigs.staging.beingbui.lt",
           "type": "external"
         },
         "roles": "Tech Lead | Full Stack Development",
         "tech": "Next.js | Styled Components | Headless Wordpress | GraphQl"
+      },
+      {
+        "title": "YoungShand.",
+        "year": "2023",
+        "link": {
+          "url": "https://youngshand.staging.beingbui.lt",
+          "type": "external"
+        },
+        "roles": "Tech Oversight | Front End Development",
+        "tech": "Next.js | Styled Components | Strapi | GraphQl"
       },
       {
         "title": "BurgerFuel Bunder",
@@ -36,43 +46,13 @@
         "tech": "Next.js | Styled Components | Strapi | GraphQl"
       },
       {
-        "title": "Blind Low Vision NZ",
+        "title": "Provincia Property",
         "year": "2022",
         "link": {
-          "url": "https://blindlowvision.org.nz",
+          "url": "https://provincia.co.nz",
           "type": "external"
         },
         "roles": "Tech Lead | Full Stack Development",
-        "tech": "Next.js | Styled Components | Headless Wordpress | GraphQl"
-      },
-      {
-        "title": "Oceania HealthCare",
-        "year": "2020",
-        "link": {
-          "url": "https://oceaniahealthcare.co.nz",
-          "type": "external"
-        },
-        "roles": "Tech Lead | Full Stack Development",
-        "tech": "Next.js | Styled Components | Headless Wordpress | GraphQl"
-      },
-      {
-        "title": "Hills Church",
-        "year": "2019",
-        "link": {
-          "url": "https://hillschurh.nz",
-          "type": "external"
-        },
-        "roles": "Tech Lead | Full Stack Development",
-        "tech": "Wordpress | SASS"
-      },
-      {
-        "title": "YoungShand.",
-        "year": "2018",
-        "link": {
-          "url": "https://youngshand.com",
-          "type": "external"
-        },
-        "roles": "Tech Oversight | Front End Development",
         "tech": "Next.js | Styled Components | Headless Wordpress | GraphQl"
       }
     ]

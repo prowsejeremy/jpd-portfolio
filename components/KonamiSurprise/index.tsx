@@ -36,7 +36,7 @@ export default function KonamiSurprise() {
       </_CloseButton>
       <_GameWrapper>
         <SnekLogo />
-        <_GAME id="game" />
+        <_GAME id='game' />
       </_GameWrapper>
     </_KonamiSurprise>
   )

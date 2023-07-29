@@ -1,3 +1,4 @@
+import { RelativeSize } from 'styles/mixins'
 import { keyframes, styled } from 'styled-components'
 
 const animateTextCoverIn =  keyframes`
@@ -28,8 +29,13 @@ export const _WorkTitle = styled.h3`
   margin-bottom: 2rem;
 
   ${(props) => props.theme.mediaQueries.tablet} {
-    font-size: 17rem;
+    font-size: 16rem;
     margin: 0;
+  }
+
+  ${(props) => props.theme.mediaQueries.tabletLandscape} {
+    font-size: ${RelativeSize(135)};
+    padding: ${RelativeSize(20)} ${RelativeSize(20)} ${RelativeSize(15)};
   }
 `
 
@@ -50,6 +56,10 @@ export const _WorkDetailsWrapper = styled.div`
     padding: 3rem;
     transition: all 200ms ease 100ms;
     animation: ${animateTextCoverOut} 300ms ease-in-out forwards;
+  }
+
+  ${(props) => props.theme.mediaQueries.tabletLandscape} {
+    padding: ${RelativeSize(30)};
   }
 `
 
@@ -75,6 +85,11 @@ export const _WorkDetailsInner = styled.div`
     justify-content: space-between;
     flex-direction: row;
     border-bottom: 2px solid ${(props) => props.theme.colors.brand_3};
+  }
+
+  ${(props) => props.theme.mediaQueries.tabletLandscape} {
+    padding: ${RelativeSize(15)} 0;
+    font-size: ${RelativeSize(30)};
   }
 `
 
@@ -102,6 +117,7 @@ export const _WorkCard = styled.a`
 
   ${(props) => props.theme.mediaQueries.tablet} {
     padding: 0;
+    margin: 0;
     background: none;
     &:before {
       content: '';
@@ -116,6 +132,9 @@ export const _WorkCard = styled.a`
       transform: translateX(-100%);
       animation: ${animateTextCoverOut} 200ms ease-in-out forwards;
     }
+  }
+
+  ${(props) => props.theme.mediaQueries.tabletLandscape} {
 
     &:hover, &:focus {
       &:before {

@@ -1,3 +1,4 @@
+import { RelativeSize } from 'styles/mixins'
 import { keyframes, styled } from 'styled-components'
 
 const dash = keyframes`
@@ -9,12 +10,14 @@ const dash = keyframes`
     opacity: 1;
   }
   75% {
+    stroke: #FFFFFF;
     stroke-dashoffset: 0;
     fill: transparent;
   }
   100% {
+    stroke: transparent;
     stroke-dashoffset: 0;
-    fill: #ffffff;
+    fill: #FFFFFF;
   }
 `
 
@@ -54,10 +57,10 @@ export const _ButtonOfDespair = styled.button`
   font-family: ${(props) => props.theme.fonts.heading};
   color: ${(props) => props.theme.colors.white};
   cursor: url('/images/cursor-hover.png') 15 15, default;
-  transition: all 300ms ease;
+  transition: all 500ms ease;
 
   &:hover {
-    color: ${(props) => props.theme.colors.brand_2};
+    color: ${(props) => props.theme.colors.brand_3};
   }
 `
 
@@ -74,6 +77,13 @@ export const _UpUpDownDownLeftRightLeftRightBA = styled.div`
   right: 3rem;
   width: 20rem;
   height: auto;
+
+  ${(props) => props.theme.mediaQueries.tabletLandscape} {
+    bottom: ${RelativeSize(30)};
+    right: ${RelativeSize(20)};
+    width: ${RelativeSize(200)};
+  }
+
   svg {
     display: block;
     width: 100%;

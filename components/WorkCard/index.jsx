@@ -45,7 +45,7 @@ const WorkCard = ({card}) => {
         {CardInner}   
       </CustomLink>
     ) : (
-      <_WorkCard href={link.url} target="_blank">
+      <_WorkCard href={link.url} target='_blank'>
         {CardInner}   
       </_WorkCard>
     )

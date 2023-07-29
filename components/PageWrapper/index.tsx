@@ -5,6 +5,7 @@ import { AnimatePresence, motion } from 'framer-motion'
 import Konami from 'react-konami-code'
 
 import Navigation from 'components/Navigation'
+import Footer from 'components/Footer'
 import KonamiSuprise from 'components/KonamiSurprise'
 
 import { useGlobalState } from 'lib/Store'
@@ -41,16 +42,14 @@ const PageWrapper = ({children}:{children:React.ReactNode}) => {
     dispatch({ type: 'setKonami', value: true })
   }
 
-  // const swipeUpEnterKeyframes = {x: ['0vw', '100vw']}
-  // const swipeUpExitKeyframes = {x: ['-100vw', '0vw']}
-  // const swipeUpTimings = {times: [0, 1]}
-
   return (
     <_PageWrapper>
       <Navigation />
       <_MainContentWrapper>
         {children}
       </_MainContentWrapper>
+
+      <Footer />
       
       <Konami action={handleKonamiCode} />
       

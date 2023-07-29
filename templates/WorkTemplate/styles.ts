@@ -1,3 +1,4 @@
+import { RelativeSize } from 'styles/mixins'
 import { styled } from 'styled-components'
 
 export const _WorkPageContent = styled.div`
@@ -16,5 +17,9 @@ export const _WorkItems = styled.div`
 
   ${(props) => props.theme.mediaQueries.tablet} {
     padding: 5rem 2rem;
+  }
+
+  ${(props) => props.theme.mediaQueries.tabletLandscape} {
+    padding: ${RelativeSize(50)} ${RelativeSize(20)};
   }
 `

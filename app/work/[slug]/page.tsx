@@ -1,4 +1,4 @@
-import {notFound} from "next/navigation"
+import {notFound} from 'next/navigation'
 import { Metadata } from 'next'
 import WorkDetailTemplate from 'templates/WorkDetailTemplate'
 import PagesData from 'data/workItems.json'

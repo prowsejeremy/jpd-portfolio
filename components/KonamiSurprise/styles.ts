@@ -1,3 +1,4 @@
+import { RelativeSize } from 'styles/mixins'
 import { styled } from 'styled-components'
 
 export const _KonamiSurprise = styled.div`
@@ -37,10 +38,24 @@ export const _CloseButton = styled.button`
   background: ${(props) => props.theme.colors.brand_3};
   border: none;
   outline: none;
+  transition: all 500ms ease;
+
+  ${(props) => props.theme.mediaQueries.tabletLandscape} {
+    font-size: ${RelativeSize(20)};
+    top: ${RelativeSize(20)};
+    right: ${RelativeSize(20)};
+    width: ${RelativeSize(50)};
+    height: ${RelativeSize(50)};
+    padding: ${RelativeSize(14)};
+  }
 
   svg {
     width: 100%;
     height: auto;
     display: block;
+  }
+
+  &:hover {
+    background: ${(props) => props.theme.colors.brand_1};
   }
 `

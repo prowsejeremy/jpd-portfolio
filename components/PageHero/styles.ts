@@ -1,3 +1,4 @@
+import { RelativeSize } from 'styles/mixins'
 import { _VideoWrapper } from 'components/Blocks/VideoBlock/styles'
 import styled from 'styled-components'
 
@@ -14,6 +15,10 @@ export const _PageHero = styled.div`
   ${(props) => props.theme.mediaQueries.tablet} {
     height: 90vh;
     min-height: 70rem;
+  }
+
+  ${(props) => props.theme.mediaQueries.tabletLandscape} {
+    padding: ${RelativeSize(100)} ${RelativeSize(30)} ${RelativeSize(30)};
   }
 `
 
@@ -51,7 +56,7 @@ export const _PageTitle = styled.h1`
   line-height: 0.7;
   color: ${(props) => props.theme.colors.white};
 
-  ${(props) => props.theme.mediaQueries.tablet} {
-    font-size: 20rem;
+  ${(props) => props.theme.mediaQueries.tabletLandscape} {
+    font-size: ${RelativeSize(180)};
   }
 `
