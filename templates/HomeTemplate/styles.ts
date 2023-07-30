@@ -48,6 +48,10 @@ export const _HomeLogoLockup = styled.div`
   padding: 2rem;
   max-width: 90rem;
 
+  ${(props) => props.theme.mediaQueries.tabletLandscape} {
+    max-width: ${RelativeSize(650)};
+  }
+
   svg {
     display: block;
     width: 100%;

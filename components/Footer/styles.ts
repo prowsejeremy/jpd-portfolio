@@ -7,7 +7,7 @@ export const _FooterWrapper = styled.footer`
   background: ${(props) => props.theme.colors.brand_2};
 
   ${(props) => props.theme.mediaQueries.tabletLandscape} {
-    font-size: ${RelativeSize(20)};
+    padding: ${RelativeSize(20)};
   }
 `
 
@@ -19,7 +19,7 @@ export const _FooterItems = styled.div`
 export const _FooterLink = styled.a`
   text-transform: uppercase;
   font-weight: 500;
-  font-size: 3rem;
+  font-size: 2rem;
   font-family: ${(props) => props.theme.fonts.heading};
   color: ${(props) => props.theme.colors.white};
   transition: all 500ms ease;
@@ -27,5 +27,9 @@ export const _FooterLink = styled.a`
 
   &:hover, &:focus {
     color: ${(props) => props.theme.colors.brand_3};
+  }
+
+  ${(props) => props.theme.mediaQueries.tabletLandscape} {
+    font-size: ${RelativeSize(20)};
   }
 `
