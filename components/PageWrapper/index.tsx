@@ -22,21 +22,20 @@ import {
 const PageWrapper = ({children}:{children:React.ReactNode}) => {
 
   const { state, dispatch } = useGlobalState()
-  const isWindow = typeof window !== undefined
 
   useEffect(() => {
-    dispatch({ type: 'isMobile', value: window.innerWidth < 768  && window.innerWidth < 1024})
+    dispatch({ type: 'isMobile', value: window.innerWidth < 1024 })
     dispatch({ type: 'isTablet', value: window.innerWidth > 768 && window.innerWidth < 1024 })
     dispatch({ type: 'isDesktop', value: window.innerWidth > 1024 })
 
     const responsiveWindowResize = () => {
-      dispatch({ type: 'isMobile', value: window.innerWidth < 768  && window.innerWidth < 1024})
+      dispatch({ type: 'isMobile', value: window.innerWidth < 1024})
       dispatch({ type: 'isTablet', value: window.innerWidth > 768 && window.innerWidth < 1024 })
       dispatch({ type: 'isDesktop', value: window.innerWidth > 1024 })
     }
 
     window.addEventListener('resize', responsiveWindowResize)
-  }, [isWindow, dispatch])
+  }, [typeof window !== undefined, dispatch])
 
   const handleKonamiCode = () => {
     dispatch({ type: 'setKonami', value: true })

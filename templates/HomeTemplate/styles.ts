@@ -1,5 +1,5 @@
 import { RelativeSize } from 'styles/mixins'
-import { keyframes, styled } from 'styled-components'
+import { keyframes, styled, css } from 'styled-components'
 
 const dash = keyframes`
   0% {
@@ -21,6 +21,19 @@ const dash = keyframes`
   }
 `
 
+const fadeDownIn = keyframes`
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+`
+
+const changeColor = keyframes`
+  to {
+    fill: #2bf599;
+  }
+`
+
 export const _HomePageContent = styled.div`
   display: flex;
   flex-direction: row;
@@ -31,7 +44,9 @@ export const _HomePageContent = styled.div`
 `
 
 export const _HomeLogoLockup = styled.div`
-  width: 70%;
+  width: 100%;
+  padding: 2rem;
+  max-width: 90rem;
 
   svg {
     display: block;
@@ -52,15 +67,28 @@ export const _ButtonOfDespair = styled.button`
   margin: auto;
   width: auto;
   display: block;
-  font-size: 3rem;
+  font-size: 2rem;
   text-transform: uppercase;
   font-family: ${(props) => props.theme.fonts.heading};
   color: ${(props) => props.theme.colors.white};
   cursor: url('/images/cursor-hover.png') 15 15, default;
   transition: all 500ms ease;
+  
+  opacity: 0;
+  transform: translateY(-2rem);
+
+  animation: ${fadeDownIn} 300ms linear forwards 2s;
 
   &:hover {
     color: ${(props) => props.theme.colors.brand_3};
+  }
+
+  ${(props) => props.theme.mediaQueries.tablet} {
+    font-size: 3rem;
+  }
+
+  ${(props) => props.theme.mediaQueries.tabletLandscape} {
+    font-size: ${RelativeSize(28)};
   }
 `
 
@@ -91,10 +119,32 @@ export const _UpUpDownDownLeftRightLeftRightBA = styled.div`
     path {
       fill: ${(props) => props.theme.colors.brand_2};
       transition: 300ms all ease 300ms;
+
       &:hover {
         fill: ${(props) => props.theme.colors.brand_3};
         transition: 300ms all ease;
       }
     }
   }
+
+  ${(props) => {
+    if (props.animate) {
+      let cssStyle = ''
+      
+      for (let index = 0; index < 9; index++) {
+        cssStyle += `
+          &:nth-child(${index}n) {
+            animation-delay: ${index * 500}ms;
+          }
+        `
+      }
+
+      return css`
+        svg path {
+          animation: ${changeColor} 300ms linear forwards;
+          ${cssStyle}
+        }
+      `
+    }
+  }}
 `

@@ -16,7 +16,7 @@ export const reducer = (state: initialGlobalStateType, action: GlobalActions) =>
     case 'isMobile':
       return { ...state, isMobile: action.value }
     case 'isTablet':
-      return { ...state, isMobile: action.value }
+      return { ...state, isTablet: action.value }
     case 'isDesktop':
       return { ...state, isDesktop: action.value }
     case 'setTheme':

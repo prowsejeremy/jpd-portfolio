@@ -5,7 +5,7 @@ import styled from 'styled-components'
 export const _PageHero = styled.div`
   position: relative;
   overflow: hidden;
-  padding: 10rem 3rem 3rem;
+  padding: 10rem 2rem 5rem;
   width: 100%;
   min-height: 35rem;
   height: 80vh;
@@ -57,6 +57,6 @@ export const _PageTitle = styled.h1`
   color: ${(props) => props.theme.colors.white};
 
   ${(props) => props.theme.mediaQueries.tabletLandscape} {
-    font-size: ${RelativeSize(180)};
+    font-size: ${RelativeSize(170)};
   }
 `

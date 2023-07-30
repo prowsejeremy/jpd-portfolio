@@ -32,8 +32,8 @@ export const _CloseButton = styled.button`
   position: absolute;
   top: 2rem;
   right: 2rem;
-  width: 7rem;
-  height: 7rem;
+  width: 5.5rem;
+  height: 5.5rem;
   padding: 1.5rem;
   background: ${(props) => props.theme.colors.brand_3};
   border: none;

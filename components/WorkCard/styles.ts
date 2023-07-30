@@ -51,15 +51,15 @@ export const _WorkDetailsWrapper = styled.div`
     top: 0;
     left: 0;
     z-index: 2;
-    opacity: 0;
-    visibility: hidden;
     padding: 3rem;
-    transition: all 200ms ease 100ms;
-    animation: ${animateTextCoverOut} 300ms ease-in-out forwards;
+    /* opacity: 0;
+    visibility: hidden;
+    transition: all 500ms ease; */
   }
 
   ${(props) => props.theme.mediaQueries.tabletLandscape} {
     padding: ${RelativeSize(30)};
+    animation: ${animateTextCoverOut} 400ms ease-in-out forwards;
   }
 `
 
@@ -71,7 +71,7 @@ export const _WorkDetailsInner = styled.div`
   align-items: flex-start;
   flex-direction: column;
 
-  padding: 1.2rem 0;
+  padding-top: 3rem;
   border-top: 2px solid ${(props) => props.theme.colors.brand_3};
 
   font-size: 1.6rem;
@@ -130,7 +130,7 @@ export const _WorkCard = styled.a`
       z-index: 1;
       background: ${(props) => props.theme.colors.brand_2};
       transform: translateX(-100%);
-      animation: ${animateTextCoverOut} 200ms ease-in-out forwards;
+      animation: ${animateTextCoverOut} 600ms ease-in-out forwards;
     }
   }
 
@@ -138,12 +138,12 @@ export const _WorkCard = styled.a`
 
     &:hover, &:focus {
       &:before {
-        animation: ${animateTextCoverIn} 200ms ease-in-out forwards;
+        animation: ${animateTextCoverIn} 400ms ease-in-out forwards;
       }
       ${_WorkDetailsWrapper} {
-        opacity: 1;
-        visibility: visible;
-        animation: ${animateTextCoverIn} 300ms ease-in-out forwards;
+        /* opacity: 1;
+        visibility: visible; */
+        animation: ${animateTextCoverIn} 600ms ease-in-out forwards;
       }
     }
   }

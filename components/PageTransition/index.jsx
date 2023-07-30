@@ -1,6 +1,6 @@
 import { usePathname } from 'next/navigation'
 import { useEffect } from 'react'
-import { useGlobalState } from '@/lib/Store'
+import { useGlobalState } from 'lib/Store'
 
 import {
   _PageTransitionWrapper

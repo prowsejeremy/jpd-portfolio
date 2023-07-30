@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react'
 import Logo from 'components/Logo'
 import KonamiIcons from 'components/KonamiIcons'
+import { useGlobalState } from 'lib/Store'
 
 import {
   _HomePageContent,
@@ -23,11 +24,27 @@ const calcYearsBetweenDates = (dateString) => {
 
 const HomeTemplate = () => {
 
+  const {dispatch} = useGlobalState()
   const [index, setIndex] = useState(0);
   const [sanityData, setSanityData] = useState(false)
+  const [timeID, setTimeoutID] = useState(false)
 
   const handleTimeClick = () => {
     setIndex(index <= 1 ? index+1 : 0)
+  }
+
+  const handleKonamiTouchStart = () => {
+    const timeout = setTimeout(() => {
+      timeID && clearTimeout(timeID)
+      setTimeoutID(false)
+      dispatch({type: 'setKonami', value: true})
+    }, 5000)
+    setTimeoutID(timeout)
+  }
+
+  const handleKonamiTouchEnd = () => {
+    timeID && clearTimeout(timeID)
+    setTimeoutID(false)
   }
 
   useEffect(() => {
@@ -49,7 +66,7 @@ const HomeTemplate = () => {
         <Logo />
         { sanityData && <_ButtonOfDespair onClick={handleTimeClick}>{sanityData[index]}</_ButtonOfDespair>}
       </_HomeLogoLockup>
-      <_UpUpDownDownLeftRightLeftRightBA>
+      <_UpUpDownDownLeftRightLeftRightBA animate={timeID} onTouchStart={handleKonamiTouchStart} onTouchEnd={handleKonamiTouchEnd}>
         <KonamiIcons />
       </_UpUpDownDownLeftRightLeftRightBA>
     </_HomePageContent>
