@@ -25,6 +25,7 @@ export const _GameWrapper = styled.div`
 
     ${(props) => props.theme.mediaQueries.desktopSm} {
       width: ${RelativeSize(160)};
+      margin-bottom: ${RelativeSize(30)};
     }
   }
 `
