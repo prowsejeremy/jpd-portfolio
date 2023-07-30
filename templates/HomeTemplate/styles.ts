@@ -137,7 +137,7 @@ export const _UpUpDownDownLeftRightLeftRightBA = styled.div<{animate: boolean}>`
     if (props.animate) {
       let cssStyle = ''
       
-      for (let index = 0; index < 9; index++) {
+      for (let index = 0; index < 11; index++) {
         cssStyle += `
           &:nth-child(${index}n) {
             animation-delay: ${index * 400}ms;
