@@ -6,7 +6,7 @@ import AppWrapper from 'components/AppWrapper'
 
 const headingFont = Teko({
   subsets: ['latin'],
-  weight: ['300', '500'],
+  weight: ['300', '600'],
   variable: '--font-heading'
 })
 

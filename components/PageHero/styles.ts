@@ -5,20 +5,15 @@ import styled from 'styled-components'
 export const _PageHero = styled.div`
   position: relative;
   overflow: hidden;
-  padding: 10rem 2rem 5rem;
+  padding: 15rem 2rem 5rem;
   width: 100%;
   min-height: 35rem;
-  height: 80vh;
   display: flex;
   align-items: flex-end;
 
-  ${(props) => props.theme.mediaQueries.tablet} {
-    height: 90vh;
-    min-height: 70rem;
-  }
-
-  ${(props) => props.theme.mediaQueries.tabletLandscape} {
-    padding: ${RelativeSize(100)} ${RelativeSize(30)} ${RelativeSize(30)};
+  ${(props) => props.theme.mediaQueries.desktopSm} {
+    min-height: 80rem;
+    padding: ${RelativeSize(200)} ${RelativeSize(30)} ${RelativeSize(30)};
   }
 `
 
@@ -49,14 +44,18 @@ export const _HeroImage = styled.img`
 `
 
 export const _PageTitle = styled.h1`
-  font-size: 7.5rem;
+  font-size: 6rem;
   text-transform: uppercase;
   position: relative;
   z-index: 2;
   line-height: 0.7;
   color: ${(props) => props.theme.colors.white};
 
-  ${(props) => props.theme.mediaQueries.tabletLandscape} {
+  ${(props) => props.theme.mediaQueries.tablet} {
+    font-size: 16rem;
+  }
+  
+  ${(props) => props.theme.mediaQueries.desktopSm} {
     font-size: ${RelativeSize(170)};
   }
 `

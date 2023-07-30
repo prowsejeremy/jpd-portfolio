@@ -48,7 +48,7 @@ export const _HomeLogoLockup = styled.div`
   padding: 2rem;
   max-width: 90rem;
 
-  ${(props) => props.theme.mediaQueries.tabletLandscape} {
+  ${(props) => props.theme.mediaQueries.desktopSm} {
     max-width: ${RelativeSize(650)};
   }
 
@@ -71,6 +71,7 @@ export const _ButtonOfDespair = styled.button`
   margin: auto;
   width: auto;
   display: block;
+  padding: 1.5rem;
   font-size: 2rem;
   text-transform: uppercase;
   font-family: ${(props) => props.theme.fonts.heading};
@@ -91,8 +92,9 @@ export const _ButtonOfDespair = styled.button`
     font-size: 3rem;
   }
 
-  ${(props) => props.theme.mediaQueries.tabletLandscape} {
+  ${(props) => props.theme.mediaQueries.desktopSm} {
     font-size: ${RelativeSize(28)};
+    padding: ${RelativeSize(15)};
   }
 `
 
@@ -107,13 +109,13 @@ export const _UpUpDownDownLeftRightLeftRightBA = styled.div<{animate: boolean}>`
   position: absolute;
   bottom: 0;
   right: 0;
-  padding: 3rem;
+  padding: 2rem;
   width: 25rem;
   height: auto;
 
-  ${(props) => props.theme.mediaQueries.tabletLandscape} {
+  ${(props) => props.theme.mediaQueries.desktopSm} {
     padding: ${RelativeSize(30)};
-    width: ${RelativeSize(200)};
+    width: ${RelativeSize(250)};
   }
 
   svg {

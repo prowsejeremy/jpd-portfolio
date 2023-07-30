@@ -1,7 +1,7 @@
 const BR_SMALL = 576;
 const BR_TABLET = 768;
 const BR_TABLETLANDSCAPE = 1024;
-const BR_DESKTOPSM = 1280;
+const BR_DESKTOPSM = 1025;
 const BR_DESKTOP = 1440;
 const BR_MAX = 1920;
 

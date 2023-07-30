@@ -18,8 +18,9 @@ export default function KonamiSurprise() {
 
   useEffect(() => {
     const gameWrapper = document.getElementById('game')
+    const headingFont = getComputedStyle(document.body).getPropertyValue('--font-heading')
     const snek = new Snek({
-      gameFont: '__Teko_dde2ca',
+      gameFont: headingFont,
       gameElement: gameWrapper,
     })
     snek.init()
