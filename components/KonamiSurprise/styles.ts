@@ -23,7 +23,7 @@ export const _GameWrapper = styled.div`
     margin: 0 auto 3rem;
 
     ${(props) => props.theme.mediaQueries.tabletLandscape} {
-      width: ${RelativeSize(25)};
+      width: ${RelativeSize(150)};
     }
 
   }
