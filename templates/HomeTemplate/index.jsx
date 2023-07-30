@@ -38,7 +38,7 @@ const HomeTemplate = () => {
       timeID && clearTimeout(timeID)
       setTimeoutID(false)
       dispatch({type: 'setKonami', value: true})
-    }, 5000)
+    }, 4000)
     setTimeoutID(timeout)
   }
 

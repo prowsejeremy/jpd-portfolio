@@ -8,6 +8,10 @@ export const _NavBar = styled.nav`
   top: 0;
   left: 0;
   z-index: 90;
+
+  ${(props) => props.theme.mediaQueries.tabletLandscape} {
+    padding: ${RelativeSize(20)};
+  }
 `
 
 export const _NavItems = styled.div`

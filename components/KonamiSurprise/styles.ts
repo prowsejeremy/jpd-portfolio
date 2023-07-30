@@ -19,8 +19,13 @@ export const _GameWrapper = styled.div`
   
   svg {
     display: block;
-    width: 26rem;
+    width: 20rem;
     margin: 0 auto 3rem;
+
+    ${(props) => props.theme.mediaQueries.tabletLandscape} {
+      width: ${RelativeSize(25)};
+    }
+
   }
 `
 

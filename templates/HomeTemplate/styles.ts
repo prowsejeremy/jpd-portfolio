@@ -101,14 +101,14 @@ export const _PageTitle = styled.h1`
 
 export const _UpUpDownDownLeftRightLeftRightBA = styled.div<{animate: boolean}>`
   position: absolute;
-  bottom: 3rem;
-  right: 3rem;
-  width: 20rem;
+  bottom: 0;
+  right: 0;
+  padding: 3rem;
+  width: 25rem;
   height: auto;
 
   ${(props) => props.theme.mediaQueries.tabletLandscape} {
-    bottom: ${RelativeSize(30)};
-    right: ${RelativeSize(20)};
+    padding: ${RelativeSize(30)};
     width: ${RelativeSize(200)};
   }
 
@@ -134,7 +134,7 @@ export const _UpUpDownDownLeftRightLeftRightBA = styled.div<{animate: boolean}>`
       for (let index = 0; index < 9; index++) {
         cssStyle += `
           &:nth-child(${index}n) {
-            animation-delay: ${index * 500}ms;
+            animation-delay: ${index * 400}ms;
           }
         `
       }
