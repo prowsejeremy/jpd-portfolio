@@ -99,7 +99,7 @@ export const _PageTitle = styled.h1`
   color: ${(props) => props.theme.colors.white};
 `
 
-export const _UpUpDownDownLeftRightLeftRightBA = styled.div`
+export const _UpUpDownDownLeftRightLeftRightBA = styled.div<{animate: boolean}>`
   position: absolute;
   bottom: 3rem;
   right: 3rem;
