@@ -24,6 +24,7 @@ export const _HeroBackgroundMedia = styled.div`
   width: 100%;
   height: 100%;
   z-index: 1;
+  background: ${(props) => props.theme.colors.brand_2};
 
   ${_VideoWrapper} {
     position: absolute;

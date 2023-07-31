@@ -13,7 +13,7 @@ export default function PageHero({title, videoUrl, image}:{title:string, videoUr
     <_PageHero>
       <_PageTitle>{title}</_PageTitle>
       <_HeroBackgroundMedia>
-        {image?.url && <_HeroImage as={Image} src={image.url} alt={image.alt} fill={true} /> }
+        {image?.url && <_HeroImage as={Image} src={image.url} alt={image.alt} fill={true} priority /> }
         { videoUrl && <VideoBlock src={videoUrl} /> }
       </_HeroBackgroundMedia>
     </_PageHero>

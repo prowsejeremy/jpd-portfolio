@@ -38,7 +38,7 @@ const HomeTemplate = () => {
       timeID && clearTimeout(timeID)
       setTimeoutID(false)
       dispatch({type: 'setKonami', value: true})
-    }, 4000)
+    }, 3000)
     setTimeoutID(timeout)
   }
 
@@ -66,7 +66,7 @@ const HomeTemplate = () => {
         <Logo />
         { sanityData && <_ButtonOfDespair onClick={handleTimeClick}>{sanityData[index]}</_ButtonOfDespair>}
       </_HomeLogoLockup>
-      <_UpUpDownDownLeftRightLeftRightBA animate={timeID} onTouchStart={handleKonamiTouchStart} onTouchEnd={handleKonamiTouchEnd}>
+      <_UpUpDownDownLeftRightLeftRightBA animate={timeID ? 1 : 0} onPointerDown={handleKonamiTouchStart} onPointerUp={handleKonamiTouchEnd} onPointerLeave={handleKonamiTouchEnd}>
         <KonamiIcons />
       </_UpUpDownDownLeftRightLeftRightBA>
     </_HomePageContent>

@@ -46,7 +46,7 @@ export const _HomePageContent = styled.div`
 export const _HomeLogoLockup = styled.div`
   width: 100%;
   padding: 2rem;
-  max-width: 90rem;
+  max-width: 70rem;
 
   ${(props) => props.theme.mediaQueries.desktopSm} {
     max-width: ${RelativeSize(650)};
@@ -140,7 +140,7 @@ export const _UpUpDownDownLeftRightLeftRightBA = styled.div<{animate: boolean}>`
       for (let index = 0; index < 11; index++) {
         cssStyle += `
           &:nth-child(${index}n) {
-            animation-delay: ${index * 400}ms;
+            animation-delay: ${index * 250}ms;
           }
         `
       }
