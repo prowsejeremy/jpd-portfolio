@@ -76,7 +76,6 @@ export const _ButtonOfDespair = styled.button`
   text-transform: uppercase;
   font-family: ${(props) => props.theme.fonts.heading};
   color: ${(props) => props.theme.colors.white};
-  cursor: url('/images/cursor-hover.png') 15 15, default;
   transition: all 500ms ease;
   
   opacity: 0;
@@ -105,13 +104,17 @@ export const _PageTitle = styled.h1`
   color: ${(props) => props.theme.colors.white};
 `
 
-export const _UpUpDownDownLeftRightLeftRightBA = styled.div<{animate: boolean}>`
+export const _UpUpDownDownLeftRightLeftRightBA = styled.button<{animate: boolean}>`
   position: absolute;
   bottom: 0;
   right: 0;
   padding: 2rem;
   width: 25rem;
   height: auto;
+  display: block;
+  background: none;
+  border: none;
+  outline: none;
 
   ${(props) => props.theme.mediaQueries.desktopSm} {
     padding: ${RelativeSize(30)};

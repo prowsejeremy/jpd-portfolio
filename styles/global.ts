@@ -25,6 +25,9 @@ export default createGlobalStyle`
     outline: none;
     color: inherit;
     text-decoration: none;
+  }
+
+  a, button {
     cursor: url('/images/cursor-hover.png') 15 15, default;
   }
 
@@ -32,9 +35,7 @@ export default createGlobalStyle`
     box-sizing: border-box;
   }
 
-  *,
-  *:before,
-  *:after {
+  * {
     cursor: url('/images/cursor.png') 15 15, default;
   }
 `

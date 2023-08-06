@@ -4,6 +4,7 @@ import {useEffect} from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import Konami from 'react-konami-code'
 
+import CustomCursor from 'components/CustomCursor'
 import Navigation from 'components/Navigation'
 import Footer from 'components/Footer'
 import KonamiSuprise from 'components/KonamiSurprise'
@@ -43,6 +44,7 @@ const PageWrapper = ({children}:{children:React.ReactNode}) => {
 
   return (
     <_PageWrapper>
+      { state.isDesktop && <CustomCursor disableDefaultCursor={state.isDesktop} /> }
       <Navigation />
       <_MainContentWrapper>
         {children}

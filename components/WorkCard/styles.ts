@@ -142,8 +142,4 @@ export const _WorkCard = styled.a`
       }
     }
   }
-
-  * {
-    cursor: url('/images/cursor-hover.png') 15 15, default;
-  }
 `

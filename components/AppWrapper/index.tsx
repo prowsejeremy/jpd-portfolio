@@ -24,12 +24,12 @@ const AppWrapper = ({children}:{children:React.ReactNode}) => {
   return (
     <ThemeProvider theme={defaultTheme}>
       <GlobalStateProvider>
-          <GlobalStyle />
-          <PageTransition>
-            <PageWrapper>
-              {children}
-            </PageWrapper>
-          </PageTransition>
+        <GlobalStyle />
+        <PageTransition>
+          <PageWrapper>
+            {children}
+          </PageWrapper>
+        </PageTransition>
       </GlobalStateProvider>
     </ThemeProvider>
   )

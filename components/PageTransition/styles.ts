@@ -10,5 +10,5 @@ export const _PageTransitionWrapper = styled(motion.div)`
   display: flex;
   align-items: center;
   background: ${(props) => props.theme.colors.brand_3};
-  z-index: 120;
+  z-index: 150;
 `
