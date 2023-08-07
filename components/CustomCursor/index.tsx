@@ -43,18 +43,20 @@ const CustomCursor = (
   const innerRef = useRef<HTMLElement>(null)
 
   const moveCursor = (x:number, y:number) => {
-    const outerXPos = x - (outerBoundingBox.width/2)
-    const outerYPos = y - (outerBoundingBox.height/2)
+    // const outerXPos = x - (outerBoundingBox.width/2)
+    // const outerYPos = y - (outerBoundingBox.height/2)
     
-    const innerXPos = x - (innerBoundingBox.width/2)
-    const innerYPos = y - (innerBoundingBox.height/2)
+    // const innerXPos = x - (innerBoundingBox.width/2)
+    // const innerYPos = y - (innerBoundingBox.height/2)
 
     if (outerRef.current !== null && innerRef.current !== null) {
-      outerRef.current.style.left = `${outerXPos}px`
-      outerRef.current.style.top = `${outerYPos}px`
+      // outerRef.current.style.left = `${outerXPos}px`
+      // outerRef.current.style.top = `${outerYPos}px`
+      outerRef.current.style.transform = `translate3D(calc(${x}px - 50%), calc(${y}px - 50%), 0)`
 
-      innerRef.current.style.left = `${innerXPos}px`
-      innerRef.current.style.top = `${innerYPos}px`
+      // innerRef.current.style.left = `${innerXPos}px`
+      // innerRef.current.style.top = `${innerYPos}px`
+      innerRef.current.style.transform = `translate3D(calc(${x}px - 50%), calc(${y}px - 50%), 0)`
     }
   }
 
