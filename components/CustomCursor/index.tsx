@@ -14,20 +14,6 @@ const interactiveElements = [
   'checkbox'
 ]
 
-type boundingBox = {
-  bottom: number,
-  height:number,
-  left:number,
-  right:number,
-  top:number,
-  width:number,
-  x:number,
-  y:number
-}
-
-let outerBoundingBox:boundingBox
-let innerBoundingBox:boundingBox
-
 const CustomCursor = (
   {
     cursorColor='#ffffff',
@@ -93,16 +79,6 @@ const CustomCursor = (
   }
 
   useEffect(() => {
-    if (outerRef.current !== null && innerRef.current !== null) {
-      outerBoundingBox = outerRef.current.getBoundingClientRect()
-      innerBoundingBox = innerRef.current.getBoundingClientRect()
-
-      moveCursor(document.body.clientWidth/2, document.body.clientHeight/2)
-    }
-  }, [innerRef, outerRef])
-
-
-  useEffect(() => {
     document.addEventListener('mousemove', handleMouseMove)
     document.addEventListener('mouseover', handleMouseOver)
     document.addEventListener('mouseout', handleMouseOut)
@@ -110,7 +86,10 @@ const CustomCursor = (
     document.addEventListener('mouseup', handleMouseUp)
 
     disableDefaultCursor ? document.body.classList.add('--remove-cursor') : document.body.classList.remove('--remove-cursor')
-    document.documentElement.style.setProperty('--cursorColor', cursorColor);
+    document.documentElement.style.setProperty('--cursorColor', cursorColor)
+
+    // move cursor to center initially
+    moveCursor(document.body.clientWidth/2, document.body.clientHeight/2)
 
     // destroy
     return () => {
