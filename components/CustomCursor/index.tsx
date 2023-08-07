@@ -88,6 +88,8 @@ const CustomCursor = (
   const handleMouseOut = (): void => {
     outerRef.current?.classList.remove('--hover')
     innerRef.current?.classList.remove('--hover')
+    outerRef.current?.classList.remove('--click')
+    innerRef.current?.classList.remove('--click')
   }
 
   useEffect(() => {
