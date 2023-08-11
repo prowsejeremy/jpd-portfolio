@@ -6,6 +6,7 @@ const decodeString = (str:string) => {
   return Buffer.from(str, 'base64').toString('ascii')
 }
 
+
 // Encrypt the provided access key
 export const EncryptKey = (key:string, salt:string) => {
   if (!key || !salt) return false;
@@ -17,6 +18,7 @@ export const EncryptKey = (key:string, salt:string) => {
   // Build encrypted token with current timestamp and salt key attached.
   return encodeString(`${seasonedToken}${salt}${seasonedTs}`)
 }
+
 
 // Decrypt and check validity of the provided access key
 export const DecryptAndValidate = (key:string) => {

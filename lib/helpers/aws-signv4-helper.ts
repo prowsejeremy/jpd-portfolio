@@ -15,14 +15,14 @@ const {
   IAM_SECRET_ACCESS_KEY
 } = process.env;
 
-const apiUrl = new URL(API_URL!)
+const apiUrl = new URL(API_URL)
 
 const signer = new SignatureV4({
   service: 'appsync',
   region: 'ap-southeast-2',
   credentials: {
-    accessKeyId: IAM_ACCESS_KEY_ID!,
-    secretAccessKey: IAM_SECRET_ACCESS_KEY!
+    accessKeyId: IAM_ACCESS_KEY_ID,
+    secretAccessKey: IAM_SECRET_ACCESS_KEY
   },
   sha256: Sha256,
 })
@@ -47,7 +47,7 @@ export const signedFetch = async (graphqlObject:{query:String, variables?:{}}) =
 
   const { headers, body, method } = await signedRequest
 
-  const awsSignedRequest = await fetch(API_URL!, {
+  const awsSignedRequest = await fetch(API_URL, {
     headers,
     body,
     method

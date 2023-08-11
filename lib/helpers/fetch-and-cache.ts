@@ -3,7 +3,7 @@ import { EncryptKey } from "lib/helpers/crypt"
 const dataCache = new Map()
 const ttl = 120000
 
-const fetchAndSet = async (url:string, ts:number) => {
+const fetchAndCache = async (url:string, ts:number) => {
 
   const ACT = EncryptKey(process.env.NEXT_PUBLIC_API_TOKEN, process.env.NEXT_PUBLIC_API_SECRET)
 
@@ -37,7 +37,7 @@ export const getData = async (url: string) => {
   let currentData = await dataCache.get(url)
 
   if (!currentData || ts - currentData.ts > ttl) {
-    currentData = await fetchAndSet(url, ts)
+    currentData = await fetchAndCache(url, ts)
   }
 
   if (currentData.status == 401) {

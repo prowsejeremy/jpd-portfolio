@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { getData } from 'lib/helpers/dataFetcherCacher'
+import { getData } from 'lib/helpers/fetch-and-cache'
 
 import {
   _LeaderboardWrapper,
@@ -69,7 +69,7 @@ export default function SnekLeaderboard() {
         return (
           <>
             <_Title>Whoa there!</_Title>
-            <_Message>Something went a little sideways, please try again later!</_Message>
+            <_Message>Something went a little sideways, please try again later.</_Message>
           </>
         )
     }

@@ -110,7 +110,7 @@ export default function SnekSubmitScoreForm({
         return (
           <_MessageWrapper>
             <_Title>Whoa there!</_Title>
-            <_Message>Something went a little sideways, please try again later!</_Message>
+            <_Message>Something went a little sideways, please try again later.</_Message>
           </_MessageWrapper>
         )
     }

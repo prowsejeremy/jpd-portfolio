@@ -131,7 +131,7 @@ export const _WorkCard = styled.a`
       animation: ${animateTextCoverOut} 400ms ease-in-out forwards;
     }
 
-    &:hover, &:focus {
+    &:hover {
       &:before {
         animation: ${animateTextCoverIn} 300ms ease-in-out forwards;
       }
