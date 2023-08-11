@@ -70,25 +70,27 @@ export default function KonamiSurprise() {
     <_KonamiSurprise>
       <AnimatePresence>
     
-        <_CloseButton onClick={() => dispatch({type: 'setKonami', value: false})}>
+        <_CloseButton key={`CloseButton`} onClick={() => dispatch({type: 'setKonami', value: false})}>
           <CloseIcon />
         </_CloseButton>
 
-        <_GameWrapper>
+        <_GameWrapper key={`GameWrapper`}>
           <SnekLogo />
 
           <_GameInner>
-            { showSubmitForm && <SnekSubmitScoreForm key='SnekSubmitScoreForm' score={gameScore} resetAction={() => snekInstance.reset()} /> }
-            { showGameOver && <SnekGameOver key='SnekGameOver' score={gameScore} showForm={() => {setShowGameOver(false); setShowSubmitForm(true)}} resetAction={() => snekInstance.reset()} /> }
+            <AnimatePresence>
+              { showSubmitForm && <SnekSubmitScoreForm key={`SnekSubmitScoreForm`} score={gameScore} resetAction={() => snekInstance.reset()} /> }
+              { showGameOver && <SnekGameOver key={`SnekGameOver`} score={gameScore} showForm={() => {setShowGameOver(false); setShowSubmitForm(true)}} resetAction={() => snekInstance.reset()} /> }
+            </AnimatePresence>
             <_GAME id='game' />
           </_GameInner>
         </_GameWrapper>
 
-        <_LeaderboardButton onClick={() => setShowLeaderboard(!showLeaderboard)}>
+        <_LeaderboardButton key={`LeaderboardButton`} onClick={() => setShowLeaderboard(!showLeaderboard)}>
           { showLeaderboard ? <CloseIcon /> : <LeaderboardIcon /> }
         </_LeaderboardButton>
 
-        {showLeaderboard && <SnekLeaderboard key='SnekLeaderboard' />}
+        {showLeaderboard && <SnekLeaderboard key={`SnekLeaderboard`} />}
 
       </AnimatePresence>
     </_KonamiSurprise>

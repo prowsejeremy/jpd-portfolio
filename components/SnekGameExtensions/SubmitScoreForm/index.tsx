@@ -9,12 +9,18 @@ import {
   _ScoreForm,
   _PlayerName,
   _InitialInput,
-  _ScuccessMessage,
+  _MessageWrapper,
   _Title,
   _Message
 } from './styles'
 
 const nameRegex = /^([a-zA-Z0-9_-]){3}$/
+
+enum SFENUM {
+  PENDING,
+  SENT,
+  ERROR
+}
 
 export default function SnekSubmitScoreForm({
   score,
@@ -24,8 +30,7 @@ export default function SnekSubmitScoreForm({
   resetAction:Function
 }) {
 
-  const [scorePosted, setScorePosted] = useState(false)
-  const [errorMsg, setErrorMsg] = useState(false)
+  const [scoreFormState, setScoreFormState] = useState<SFENUM>(SFENUM.PENDING)
 
   const scoreFormRef = useRef<HTMLFormElement>(null)
   const initialOneRef = useRef<HTMLInputElement>(null)
@@ -35,10 +40,11 @@ export default function SnekSubmitScoreForm({
   const handleFormSubmit = async (e:FormEvent) => {
     e.preventDefault()
 
+    setScoreFormState(SFENUM.PENDING)
+
     const playerName = initialOneRef.current!.value + initialTwoRef.current!.value + initialThreeRef.current!.value
   
     if (
-      scorePosted ||
       typeof playerName !== 'string' ||
       typeof score !== 'number' ||
       !playerName.match(nameRegex) ||
@@ -63,13 +69,14 @@ export default function SnekSubmitScoreForm({
     .then(async (res) => {
       const response = await res.json()
       if (response.status != 401) {
-        setScorePosted(true)
+        setScoreFormState(SFENUM.SENT)
       } else {
-        setErrorMsg(true)
+        setScoreFormState(SFENUM.ERROR)
       }
     })
     .catch((error) => {
       console.error(`Something went wrong there: ${error}`)
+      setScoreFormState(SFENUM.ERROR)
     })
   }
 
@@ -79,15 +86,10 @@ export default function SnekSubmitScoreForm({
     }
   }
 
-  return (
-    <Popup>
-      { errorMsg ? 
-        <_ScuccessMessage>
-          <_Title>Whoa there!</_Title>
-          <_Message>Something went a little sideways, please try again later!</_Message>
-        </_ScuccessMessage>
-      :
-        !scorePosted ?
+  const fetchScoreFormMarkup = () => {
+    switch(scoreFormState) {
+      case SFENUM.PENDING:
+        return (
           <_ScoreForm onSubmit={(e) => handleFormSubmit(e)} ref={scoreFormRef}>
             <_PlayerName>
               <_InitialInput type="text" ref={initialOneRef} onChange={(e) => handleInputChange(e, initialTwoRef.current!)} id="playerName1" placeholder="A" minLength={1} maxLength={1} />
@@ -96,13 +98,27 @@ export default function SnekSubmitScoreForm({
             </_PlayerName>
             <BasicButton text={`Submit Score`} type="submit" />
           </_ScoreForm>
-        :
-          <_ScuccessMessage>
+        )
+      case SFENUM.SENT:
+        return (
+          <_MessageWrapper>
             <_Title>Score Posted</_Title>
             <_Message>Check the leaderboard shortly to see how you stacked up!</_Message>
-          </_ScuccessMessage>
-        }
+          </_MessageWrapper>
+        )
+      case SFENUM.ERROR:
+        return (
+          <_MessageWrapper>
+            <_Title>Whoa there!</_Title>
+            <_Message>Something went a little sideways, please try again later!</_Message>
+          </_MessageWrapper>
+        )
+    }
+  }
 
+  return (
+    <Popup key={scoreFormState}>
+      { fetchScoreFormMarkup() }
       <BasicButton text={`Play Again`} action={resetAction} />
     </Popup>
   )

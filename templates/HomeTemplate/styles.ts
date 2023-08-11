@@ -127,33 +127,35 @@ export const _UpUpDownDownLeftRightLeftRightBA = styled.button<{animate: boolean
     height: auto;
     path {
       fill: ${(props) => props.theme.colors.brand_2};
-      transition: 300ms all ease 300ms;
-
-      &:hover {
-        fill: ${(props) => props.theme.colors.brand_3};
-        transition: 300ms all ease;
-      }
+      transition: 500ms all ease;
     }
   }
 
-  ${(props) => {
-    if (props.animate) {
-      let cssStyle = ''
-      
-      for (let index = 0; index < 11; index++) {
-        cssStyle += `
-          &:nth-child(${index}n) {
-            animation-delay: ${index * 250}ms;
+  &:hover {
+    svg path {
+      fill: ${(props) => props.theme.colors.brand_3};
+    }
+
+    ${(props) => {
+      if (props.animate) {
+        let cssStyle = ''
+        
+        for (let index = 0; index < 11; index++) {
+          cssStyle += `
+            &:nth-child(${index}n) {
+              animation-delay: ${index * 250}ms;
+            }
+          `
+        }
+
+        return css`
+          svg path {
+            fill: ${(props) => props.theme.colors.brand_2};
+            animation: ${changeColor} 300ms linear forwards;
+            ${cssStyle}
           }
         `
       }
-
-      return css`
-        svg path {
-          animation: ${changeColor} 300ms linear forwards;
-          ${cssStyle}
-        }
-      `
-    }
-  }}
+    }}
+  }
 `

@@ -28,6 +28,7 @@ const HomeTemplate = () => {
   const [index, setIndex] = useState(0);
   const [sanityData, setSanityData] = useState(false)
   const [timeID, setTimeoutID] = useState(false)
+  const [randomIdx, setRandomIdx] = useState(false)
 
   const handleTimeClick = () => {
     setIndex(index <= 1 ? index+1 : 0)
@@ -66,7 +67,11 @@ const HomeTemplate = () => {
         <Logo />
         { sanityData && <_ButtonOfDespair onClick={handleTimeClick}>{sanityData[index]}</_ButtonOfDespair>}
       </_HomeLogoLockup>
-      <_UpUpDownDownLeftRightLeftRightBA animate={timeID ? 1 : 0} onPointerDown={handleKonamiTouchStart} onPointerUp={handleKonamiTouchEnd} onPointerLeave={handleKonamiTouchEnd}>
+      <_UpUpDownDownLeftRightLeftRightBA
+        animate={timeID ? 1 : 0}
+        onPointerDown={handleKonamiTouchStart}
+        onPointerUp={handleKonamiTouchEnd}
+        onPointerLeave={handleKonamiTouchEnd}>
         <KonamiIcons />
       </_UpUpDownDownLeftRightLeftRightBA>
     </_HomePageContent>

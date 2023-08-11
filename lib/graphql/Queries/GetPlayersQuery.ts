@@ -3,6 +3,7 @@ export const GetLeaderboardQuery = {
     query getLeaderboard {
       playersOrderedByScore(
         type: "Player",
+        limit: 10,
         sortDirection: DESC
       ) {
         items {

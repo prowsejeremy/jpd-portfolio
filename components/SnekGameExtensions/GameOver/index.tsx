@@ -17,7 +17,7 @@ export default function SnekGameOver({
 }) {
 
   return (
-    <Popup>
+    <Popup key={`gameoverscreen`}>
       <_Title>Game Over</_Title>
       <_Score>Your score - {score}</_Score>
       <BasicButton text={`Play Again`} action={resetAction} />

@@ -45,7 +45,7 @@ export const _InitialInput = styled.input`
   }
 `
 
-export const _ScuccessMessage = styled.div`
+export const _MessageWrapper = styled.div`
   display:  flex;
   flex-direction: column;
 `
