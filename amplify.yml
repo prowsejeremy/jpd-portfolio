@@ -6,6 +6,8 @@ frontend:
         - npm ci
     build:
       commands:
+        - env | grep -e API_URL -e IAM_ACCESS_KEY_ID -e IAM_SECRET_ACCESS_KEY >> .env.production
+        - env | grep -e NEXT_PUBLIC_ >> .env.production
         - npm run build
   artifacts:
     baseDirectory: .next
