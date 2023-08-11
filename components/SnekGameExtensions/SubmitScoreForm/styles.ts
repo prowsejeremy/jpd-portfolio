@@ -55,8 +55,21 @@ export const _Title = styled.h2`
   font-family: ${(props) => props.theme.fonts.heading};
   font-weight: 600;
   text-transform: uppercase;
+  line-height: 1;
 
   ${(props) => props.theme.mediaQueries.desktopSm} {
     font-size: ${RelativeSize(30)};
+  }
+`
+
+export const _Message = styled.p`
+  font-size: 1.6rem;
+  font-family: ${(props) => props.theme.fonts.body};
+  margin: 1rem auto;
+  line-height: 1.3;
+
+  ${(props) => props.theme.mediaQueries.desktopSm} {
+    font-size: ${RelativeSize(14)};
+    margin: ${RelativeSize(10)} auto;
   }
 `

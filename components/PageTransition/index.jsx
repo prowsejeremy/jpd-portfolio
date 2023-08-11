@@ -23,6 +23,7 @@ const PageTransition = ({children}) => {
   return (
     <>
       <_PageTransitionWrapper
+        key={pathname}
         initial={{x: '0'}}
         animate={!state.transitionState ? {x: '100vw'} : state.transitionState === 'entering' ? swipeUpEnterKeyframes : swipeUpExitKeyframes}
         // animate={swipeUpEnterKeyframes}

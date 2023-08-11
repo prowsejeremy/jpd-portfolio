@@ -1,44 +1,32 @@
 import { NextResponse } from 'next/server'
-import fs from 'fs'
-
-type leaderboardRecordType = {
-  name:string,
-  score:number
-}
+import api from 'lib/helpers/api'
 
 export async function POST(request: Request) {
 
   const {playerName, playerScore} = await request.json()
-  
-  const rawdata = fs.readFileSync('data/leaderboard.json', 'utf8')
-  let leaderboard_data = JSON.parse(rawdata)
 
-  leaderboard_data.sort((entryA:leaderboardRecordType, entryB:leaderboardRecordType) => entryB.score - entryA.score)
-  leaderboard_data = leaderboard_data.slice(0, 9)
+  if (
+    typeof playerName != 'string' ||
+    typeof playerScore != 'number' ||
+    playerName.length !== 3 ||
+    playerScore > 999 ||
+    playerScore < 0
+  ) return NextResponse.error()
 
-  // Validate Player Data
-  if (playerName.length <= 3 && playerScore < 999) {
-    // if (playerScore > leaderboard_data[leaderboard_data.length-1].score) {
-      leaderboard_data.push({
-        name: playerName.toUpperCase(),
-        score: playerScore
-      })
-    // }
-
-    leaderboard_data.sort((entryA:leaderboardRecordType, entryB:leaderboardRecordType) => entryB.score - entryA.score)
-
-    let data = JSON.stringify(leaderboard_data)
-    fs.writeFileSync('data/leaderboard.json', data)
+  const player = {
+    name: playerName,
+    score: playerScore
   }
 
-  return NextResponse.json({ msg: 'score posted' })
+  await api.appsync.postScore(player)
+
+  return NextResponse.json({ msg: 'Score Posted!' })
 }
 
 
 export async function GET() {
-  
-  const rawdata = fs.readFileSync('data/leaderboard.json', 'utf8')
-  let leaderboard_data = JSON.parse(rawdata)
 
-  return NextResponse.json(leaderboard_data)
+  const leaderboard = await api.appsync.getLeaderboard()
+
+  return NextResponse.json(leaderboard.data.playersOrderedByScore.items)
 }

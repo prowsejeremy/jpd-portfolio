@@ -10,11 +10,13 @@ export const _LeaderboardWrapper = styled(motion.div)`
   z-index: 10;
   left: 2rem;
   padding: 2rem;
+  max-width: 30rem;
 
   ${(props) => props.theme.mediaQueries.desktopSm} {
     bottom: ${RelativeSize(80)};
     left: ${RelativeSize(20)};
     padding: ${RelativeSize(20)};
+    max-width: ${RelativeSize(300)};
   }
 `
 
@@ -26,6 +28,18 @@ export const _Title = styled.h2`
 
   ${(props) => props.theme.mediaQueries.desktopSm} {
     font-size: ${RelativeSize(30)};
+  }
+`
+
+export const _Message = styled.p`
+  font-size: 1.6rem;
+  font-family: ${(props) => props.theme.fonts.body};
+  margin: 1rem auto;
+  line-height: 1.3;
+
+  ${(props) => props.theme.mediaQueries.desktopSm} {
+    font-size: ${RelativeSize(14)};
+    margin: ${RelativeSize(10)} auto;
   }
 `
 

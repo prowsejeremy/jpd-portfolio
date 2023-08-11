@@ -8,7 +8,7 @@
 // <PageTransition key={pathname}>
 // </PageTransition>
 // </AnimatePresence>
-          
+
 import { ThemeProvider } from 'styled-components'
 
 import { GlobalStateProvider } from 'lib/Store/index'
