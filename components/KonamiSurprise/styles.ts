@@ -30,10 +30,22 @@ export const _GameWrapper = styled.div`
   }
 `
 
+export const _GameInner = styled.div`
+  width: 100%;
+  max-width: 40rem;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+
+  ${(props) => props.theme.mediaQueries.desktopSm} {
+    max-width: initial;
+    width: ${RelativeSize(300)};
+  }
+`
+
 export const _GAME = styled.div`
   border: 2px solid ${(props) => props.theme.colors.brand_3};
   width: 100%;
-  max-width: 40rem;
   margin: 0 auto;
   position: relative;
 
@@ -51,17 +63,9 @@ export const _GAME = styled.div`
     top: 0;
     left: 0;
   }
-
-  ${(props) => props.theme.mediaQueries.desktopSm} {
-    max-width: initial;
-    width: ${RelativeSize(300)};
-  }
 `
 
-export const _CloseButton = styled.button`
-  position: absolute;
-  top: 2rem;
-  right: 2rem;
+export const _IconButton = styled.button`
   width: 4rem;
   height: 4rem;
   padding: 1rem;
@@ -72,8 +76,6 @@ export const _CloseButton = styled.button`
 
   ${(props) => props.theme.mediaQueries.desktopSm} {
     font-size: ${RelativeSize(20)};
-    top: ${RelativeSize(20)};
-    right: ${RelativeSize(20)};
     width: ${RelativeSize(50)};
     height: ${RelativeSize(50)};
     padding: ${RelativeSize(12)};
@@ -87,5 +89,27 @@ export const _CloseButton = styled.button`
 
   &:hover {
     background: ${(props) => props.theme.colors.brand_1};
+  }
+`
+
+export const _LeaderboardButton = styled(_IconButton)`
+  position: absolute;
+  bottom: 2rem;
+  left: 2rem;
+  
+  ${(props) => props.theme.mediaQueries.desktopSm} {
+    bottom: ${RelativeSize(20)};
+    left: ${RelativeSize(20)};
+  }
+`
+
+export const _CloseButton = styled(_IconButton)`
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  
+  ${(props) => props.theme.mediaQueries.desktopSm} {
+    top: ${RelativeSize(20)};
+    right: ${RelativeSize(20)};
   }
 `

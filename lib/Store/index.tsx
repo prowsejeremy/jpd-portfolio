@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useReducer, useContext, createContext, useMemo } from 'react'
 import { initialGlobalStateType, initialGlobalState } from './initialState'
 import { reducer } from './reducer'

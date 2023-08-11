@@ -51,6 +51,8 @@ const PageWrapper = ({children}:{children:React.ReactNode}) => {
       </_MainContentWrapper>
 
       <Footer />
+
+      <KonamiSuprise />
       
       <Konami action={handleKonamiCode} />
       

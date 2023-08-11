@@ -1,6 +1,6 @@
 import { Teko, Inter } from 'next/font/google'
 
-import StyledComponentsRegistry from 'lib/registry'
+import StyledComponentsRegistry from 'lib/helpers/registry'
 
 import AppWrapper from 'components/AppWrapper'
 
