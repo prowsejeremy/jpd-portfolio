@@ -7,7 +7,6 @@ import {
     _Section,
 } from './styles'
 
-
 type sectionTypes = {
   type:string,
   content:string,
@@ -31,7 +30,6 @@ const PageSections = ({sections}:{sections:sectionTypes[]}) => {
   return (
     <_Sections>
       { sections.map((section, key) => {
-        console.log('section', section)
         return (
           <_Section key={key}>
             { fetchSection(section) }
