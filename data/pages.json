@@ -73,7 +73,7 @@
           "type": "external"
         },
         "roles": "Tech Lead | Full Stack Development",
-        "tech": "Next.js | Styled Components | Headless Wordpress | GraphQl"
+        "tech": "Next.js | SASS | Headless Wordpress | GraphQl"
       },
       {
         "title": "Alcohol&Me",
@@ -83,7 +83,7 @@
           "type": "external"
         },
         "roles": "Tech Lead | Full Stack Development",
-        "tech": "Next.js | Styled Components | Headless Wordpress | Rest API"
+        "tech": "Next.js | SASS | Headless Wordpress | Rest API"
       }
     ]
   }
