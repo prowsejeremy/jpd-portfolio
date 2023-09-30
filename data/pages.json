@@ -26,6 +26,16 @@
         "tech": "Next.js | Styled Components | Headless Wordpress | GraphQl"
       },
       {
+        "title": "YoungShand.",
+        "year": "2023",
+        "link": {
+          "url": "https://youngshand.com",
+          "type": "external"
+        },
+        "roles": "Tech Oversight | Front End Development",
+        "tech": "Next.js | Styled Components | Strapi | GraphQl"
+      },
+      {
         "title": "Provincia Property",
         "year": "2022",
         "link": {
@@ -63,16 +73,6 @@
           "type": "external"
         },
         "roles": "Tech Lead | Full Stack Development",
-        "tech": "Next.js | Styled Components | Headless Wordpress | GraphQl"
-      },
-      {
-        "title": "YoungShand.",
-        "year": "2018",
-        "link": {
-          "url": "https://youngshand.com",
-          "type": "external"
-        },
-        "roles": "Tech Oversight | Front End Development",
         "tech": "Next.js | Styled Components | Headless Wordpress | GraphQl"
       },
       {
