@@ -19,8 +19,8 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function Page() {
 
-  // const data = await getData('home')
+  const data = await getData('home')
 
-  // return <HomeTemplate page={data} />
-  return <HomeTemplate />
+  return <HomeTemplate page={data} />
+  // return <HomeTemplate />
 }

@@ -1,10 +1,10 @@
 import { styled } from 'styled-components'
 
 export const _PageWrapper = styled.main`
-  background: ${(props) => props.theme.colors.brand_1};
+  background: ${(props) => props.theme.colors.brand_2};
 `
 
-export const _MainContentWrapper = styled.main`
+export const _MainContentWrapper = styled.div`
   width: 100%;
   overflow: hidden;
 `

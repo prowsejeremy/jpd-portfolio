@@ -1,6 +1,6 @@
 'use client'
 
-import PageHero from 'components/PageHero'
+// import PageHero from 'components/PageHero'
 import WorkCard from 'components/WorkCard'
 
 import {
@@ -17,7 +17,7 @@ const WorkTemplate = ({page}) => {
 
   return (
     <_WorkPageContent>
-      <PageHero title={displayTitle} videoUrl='/videos/work-widescreen.mp4' />
+      {/* <PageHero title={displayTitle} videoUrl='/videos/work-widescreen.mp4' /> */}
       {workItems &&
         <_WorkItems>
           {workItems.map((item, key) => {

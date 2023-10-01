@@ -8,7 +8,8 @@ const CustomLink = (props) => {
   const {
     component,
     href,
-    children
+    children,
+    active
   } = props
 
   const {dispatch} = useGlobalState()
@@ -29,7 +30,7 @@ const CustomLink = (props) => {
   const Component = component || a
 
   return (
-    <Component onClick={(e) => handleLinkClick(e)} href={href}>
+    <Component active={active} onClick={(e) => handleLinkClick(e)} href={href}>
       {children}
     </Component>
   )

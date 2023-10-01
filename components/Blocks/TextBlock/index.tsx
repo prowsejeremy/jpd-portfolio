@@ -6,9 +6,7 @@ import {
 const TextBlock = ({content}:{content:string}) => {
   return (
     <_TextBlock>
-      <_TextContent>
-        {content}
-      </_TextContent>
+      <_TextContent dangerouslySetInnerHTML={{__html: content}} />
     </_TextBlock>
   )
 }
