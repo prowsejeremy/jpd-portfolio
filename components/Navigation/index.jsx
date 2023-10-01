@@ -1,4 +1,7 @@
 // import Link from 'next/link'
+'use client'
+ 
+import { usePathname } from 'next/navigation'
 import CustomLink from 'components/CustomLink'
 
 import {
@@ -9,11 +12,13 @@ import {
 
 export default function Navbar() {
 
+  let pathname = usePathname()
+
   return (
     <_NavBar>
       <_NavItems>
-        <CustomLink component={_NavLink} href='/'>HOME</CustomLink>
-        <CustomLink component={_NavLink} href='/work'>WORK</CustomLink>
+        <CustomLink component={_NavLink} active={pathname == '/'} href='/'>HOME</CustomLink>
+        <CustomLink component={_NavLink} active={pathname.includes('work')} href='/work'>WORK</CustomLink>
         
         {/* <_NavLink as={Link} href='/' scroll={false}>HOME</_NavLink> */}
         {/* <_NavLink as={Link} href='/work' scroll={false}>WORK</_NavLink> */}

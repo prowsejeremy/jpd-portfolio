@@ -4,11 +4,10 @@ import CustomLink from 'components/CustomLink'
 
 import {
   _WorkCard,
+    _WorkYear,
     _WorkTitle,
     _WorkDetailsWrapper,
-      _WorkDetailsInner,
-        _WorkDetailsSummary,
-          _WorkYear
+      _WorkDetailsColumn
 } from './styles'
 
 const WorkCard = ({card}) => {
@@ -23,19 +22,23 @@ const WorkCard = ({card}) => {
 
   const CardInner = (
     <>
-      <_WorkTitle>
-        {title}
-      </_WorkTitle>
+      
+      <_WorkYear>/ {year}</_WorkYear>
+      <_WorkTitle dangerouslySetInnerHTML={{ __html: title }} />
+
       <_WorkDetailsWrapper>
-        <_WorkDetailsInner>
-          <_WorkDetailsSummary>
-            <h3>ROLES - {roles}</h3>
-            <h3>TECH - {tech}</h3>
-          </_WorkDetailsSummary>
-          <_WorkYear>
-            {year}
-          </_WorkYear>
-        </_WorkDetailsInner>
+        <_WorkDetailsColumn>
+          <h3>ROLES</h3>
+          <ul>
+            {roles.map((r, k) => <li key={k}>{r}</li>)}
+          </ul>
+        </_WorkDetailsColumn>
+        <_WorkDetailsColumn>
+          <h3>TECHNOLOGY</h3>
+          <ul>
+            {tech.map((t, k) => <li key={k}>{t}</li>)}
+          </ul>
+        </_WorkDetailsColumn>
       </_WorkDetailsWrapper>
     </>
   )

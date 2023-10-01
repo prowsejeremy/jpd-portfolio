@@ -4,29 +4,30 @@ import PageHero from 'components/PageHero'
 import PageSections from 'components/PageSections'
 
 import {
-  _WorkPageContent,
+  _DynamicPageContent,
     _PageHero,
       _HeroImage,
       _PageTitle,
-    _WorkDetails
+      _DynamicPageDetails
 } from './styles'
 
-const WorkDetailTemplate = ({page}) => {
+const DynamicTemplate = ({page}) => {
 
   const {
     displayTitle,
     coverImage,
+    coverVideo,
     pageSections
   } = page
 
   return (
-    <_WorkPageContent>
-      <PageHero title={displayTitle} image={coverImage} />
-      <_WorkDetails>
+    <_DynamicPageContent>
+      <PageHero title={displayTitle} image={coverImage} videoUrl={coverVideo} />
+      <_DynamicPageDetails>
         <PageSections sections={pageSections} />
-      </_WorkDetails>
-    </_WorkPageContent>
+      </_DynamicPageDetails>
+    </_DynamicPageContent>
   )
 }
 
-export default WorkDetailTemplate
+export default DynamicTemplate

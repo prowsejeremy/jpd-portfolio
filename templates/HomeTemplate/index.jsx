@@ -7,8 +7,13 @@ import { useGlobalState } from 'lib/Store'
 
 import {
   _HomePageContent,
+    _AboutContentWrapper,
+      _AboutTitle,
+      _AboutContent,
     _HomeLogoLockup,
+      _Circle,
       _ButtonOfDespair,
+      _BODLine,
       _PageTitle,
     _UpUpDownDownLeftRightLeftRightBA
 } from './styles'
@@ -22,13 +27,16 @@ const calcYearsBetweenDates = (dateString) => {
   return timeDiff/365.25;
 }
 
-const HomeTemplate = () => {
+const HomeTemplate = ({page}) => {
+
+  const {
+    aboutContent
+  } = page
 
   const {dispatch} = useGlobalState()
   const [index, setIndex] = useState(0);
   const [sanityData, setSanityData] = useState(false)
   const [timeID, setTimeoutID] = useState(false)
-  const [randomIdx, setRandomIdx] = useState(false)
 
   const handleTimeClick = () => {
     setIndex(index <= 1 ? index+1 : 0)
@@ -55,18 +63,36 @@ const HomeTemplate = () => {
     const displayDays = displayHours / 8 // divide by hours a day worked
 
     setSanityData([
-      `Years in the industry - ${displayYears.toFixed(2)}`,
-      `Days spent indoors - ${displayDays.toFixed(2)}`,
-      `Hours of sanity lost - ${displayHours.toFixed(2)}`
+      {
+        intro: 'Years in the industry',
+        value: displayYears.toFixed(2)
+      },
+      {
+        intro: 'Days spent indoors',
+        value: displayDays.toFixed(2)
+      },
+      {
+        intro: 'Hours of sanity lost',
+        value: displayHours.toFixed(2)
+      }
     ])
   }, [])
 
   return (
     <_HomePageContent>
+
       <_HomeLogoLockup>
+        <_Circle />
         <Logo />
-        { sanityData && <_ButtonOfDespair onClick={handleTimeClick}>{sanityData[index]}</_ButtonOfDespair>}
       </_HomeLogoLockup>
+
+      { sanityData && <_ButtonOfDespair onClick={handleTimeClick}>{sanityData[index].intro}<_BODLine />{sanityData[index].value}</_ButtonOfDespair>}
+
+      <_AboutContentWrapper>
+        <_AboutTitle>{aboutContent.title}</_AboutTitle>
+        <_AboutContent dangerouslySetInnerHTML={{ __html: aboutContent.content }} />
+      </_AboutContentWrapper>
+
       <_UpUpDownDownLeftRightLeftRightBA
         animate={timeID ? 1 : 0}
         onPointerDown={handleKonamiTouchStart}
@@ -74,6 +100,7 @@ const HomeTemplate = () => {
         onPointerLeave={handleKonamiTouchEnd}>
         <KonamiIcons />
       </_UpUpDownDownLeftRightLeftRightBA>
+      
     </_HomePageContent>
   )
 }
