@@ -1,6 +1,10 @@
 import { RelativeSize } from 'styles/mixins'
 import { styled } from 'styled-components'
 
+interface NavLinkProps {
+  active: boolean;
+}
+
 export const _NavBar = styled.nav`
   padding: 2rem;
   position: fixed;
@@ -18,7 +22,7 @@ export const _NavItems = styled.div`
   flex-direction: column;
 `
 
-export const _NavLink = styled.a`
+export const _NavLink = styled.a<NavLinkProps>`
   text-transform: uppercase;
   font-weight: 300;
   font-size: 2rem;
