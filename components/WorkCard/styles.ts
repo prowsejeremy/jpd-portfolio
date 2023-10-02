@@ -5,7 +5,7 @@ export const _WorkTitle = styled.h3`
   font-size: 5.5rem;
   text-transform: uppercase;
   color: ${(props) => props.theme.colors.brand_1};
-  line-height: 0.9;
+  line-height: 0.8;
 
   ${(props) => props.theme.mediaQueries.desktopSm} {
     font-size: ${RelativeSize(80)};
@@ -31,17 +31,14 @@ export const _WorkDetailsWrapper = styled.div`
 
 export const _WorkDetailsColumn = styled.div`
   color: ${(props) => props.theme.colors.white};
+  margin-top: 1.5rem;
 
-  &:first-child {
-    margin: 0 0 2rem;
-
-    ${(props) => props.theme.mediaQueries.desktopSm} {
-      margin: 0 ${RelativeSize(30)} 0 0;
-    }
+  ${(props) => props.theme.mediaQueries.desktopSm} {
+    margin: 0 ${RelativeSize(30)} 0 0;
   }
 
   h3 {
-    font-size: 3rem;
+    font-size: 2.8rem;
 
     ${(props) => props.theme.mediaQueries.desktopSm} {
       font-size: ${RelativeSize(20)};
@@ -56,12 +53,12 @@ export const _WorkDetailsColumn = styled.div`
     
     li {
       font-size: 1.6rem;
-      margin-top: 0.8rem;
+      margin-top: 0.5rem;
       list-style-type: "–  ";
 
       ${(props) => props.theme.mediaQueries.desktopSm} {
         font-size: ${RelativeSize(12)};
-        margin-top: ${RelativeSize(8)};
+        margin-top: ${RelativeSize(5)};
       }
     }
   }
@@ -69,15 +66,16 @@ export const _WorkDetailsColumn = styled.div`
 
 export const _WorkYear = styled.p`
   font-size: 1.4rem;
+  text-align: right;
   color: ${(props) => props.theme.colors.white};
   position: absolute;
   top: 0;
   left: 0;
-  transform: rotate(-90deg) translate(35%, -90%);
+  transform: rotate(-90deg) translate(60%, -60%);
   transform-origin: bottom right;
   
   ${(props) => props.theme.mediaQueries.desktopSm} {
-    font-size: ${RelativeSize(16)};
+    font-size: ${RelativeSize(20)};
   }
 `
 
@@ -86,14 +84,14 @@ export const _WorkCard = styled.a`
   width: auto;
   position: relative;
   overflow: hidden;
-  padding-left: 3.5rem;
+  padding-left: 2.8rem;
 
   &:not(:last-child) {
     margin-bottom: 5rem;
   }
 
   ${(props) => props.theme.mediaQueries.desktopSm} {
-    padding-left: ${RelativeSize(50)};
+    padding-left: ${RelativeSize(35)};
 
     &:not(:last-child) {
       margin-bottom: ${RelativeSize(60)};

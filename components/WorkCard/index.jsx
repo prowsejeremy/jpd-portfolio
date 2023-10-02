@@ -23,7 +23,7 @@ const WorkCard = ({card}) => {
   const CardInner = (
     <>
       
-      <_WorkYear>/ {year}</_WorkYear>
+      <_WorkYear>{year}</_WorkYear>
       <_WorkTitle dangerouslySetInnerHTML={{ __html: title }} />
 
       <_WorkDetailsWrapper>

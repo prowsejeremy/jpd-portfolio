@@ -24,7 +24,7 @@ export const _FooterItems = styled.div`
 export const _FooterLink = styled.a`
   text-transform: uppercase;
   font-weight: 300;
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   font-family: ${(props) => props.theme.fonts.body};
   color: ${(props) => props.theme.colors.white};
   transition: all 500ms ease;

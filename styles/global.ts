@@ -41,10 +41,7 @@ export default createGlobalStyle`
   }
 
   * {
-    box-sizing: border-box;
-  }
-
-  * {
     cursor: url('/images/cursor.png') 15 15, default;
+    box-sizing: border-box;
   }
 `

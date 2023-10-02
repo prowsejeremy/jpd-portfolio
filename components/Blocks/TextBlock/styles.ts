@@ -6,7 +6,7 @@ export const _TextBlock = styled.div`
   width: 100%;
   height: auto;
   padding: 8rem 2rem;
-  background: ${(props) => props.theme.colors.white};
+  background: ${(props) => props.theme.colors.brand_2};
 
   ${(props) => props.theme.mediaQueries.tablet} {
     padding: 15rem 2rem;
@@ -19,10 +19,10 @@ export const _TextBlock = styled.div`
 
 export const _TextContent = styled.div`
   font-size: 1.6rem;
-  color: ${(props) => props.theme.colors.brand_2};
+  color: ${(props) => props.theme.colors.white};
 
   padding-left: 2rem;
-  border-left: 1px solid ${(props) => props.theme.colors.brand_2};
+  border-left: 1px solid ${(props) => props.theme.colors.white};
   line-height: 1.6;
 
   ${(props) => props.theme.mediaQueries.desktopSm} {

@@ -1,47 +1,6 @@
 import { RelativeSize } from 'styles/mixins'
 import { keyframes, styled, css } from 'styled-components'
 
-const dash = keyframes`
-  0% {
-    opacity: 0;
-    stroke-dashoffset: 2000;
-  }
-  30% {
-    opacity: 1;
-  }
-  75% {
-    stroke: #FFFFFF;
-    stroke-dashoffset: 0;
-    fill: transparent;
-  }
-  100% {
-    stroke: transparent;
-    stroke-dashoffset: 0;
-    fill: #FFFFFF;
-  }
-`
-
-const animateCircleIn = keyframes`
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-`
-
-const animateAboutIn = keyframes`
-  to {
-    opacity: 1;
-    transform: translate(0, -50%);
-  }
-`
-
-const animateBODIn = keyframes`
-  to {
-    opacity: 1;
-    transform: rotate(-90deg) translate(50%, -50%);
-  }
-`
-
 const changeColor = keyframes`
   to {
     fill: #2bf599;
@@ -74,11 +33,8 @@ export const _AboutContentWrapper = styled.div`
     padding: 0;
     position: absolute;
     top: 40%;
+    transform: translateY(-50%);
     left: ${RelativeSize(50)};
-  
-    opacity: 0;
-    transform: translate(-3rem, -50%);
-    animation: ${animateAboutIn} 300ms linear forwards 900ms;
   }
 `
 
@@ -121,12 +77,7 @@ export const _HomeLogoLockup = styled.div`
     position: absolute;
     bottom: -10%;
     right: -25%;
-
-    path {
-      stroke-dasharray: 2000;
-      stroke-dashoffset: 2000;
-      animation: ${dash} 2s linear forwards 1s;
-    }
+    fill: ${(props) => props.theme.colors.white};
   }
 
   ${(props) => props.theme.mediaQueries.desktopSm} {
@@ -142,10 +93,6 @@ export const _Circle = styled.div`
 
   ${(props) => props.theme.mediaQueries.desktopSm} {
     width: ${RelativeSize(250)};
-
-    opacity: 0;
-    transform: scale(0);
-    animation: ${animateCircleIn} 300ms linear forwards 500ms;
   }
 
   &:before {
@@ -200,10 +147,7 @@ export const _ButtonOfDespair = styled.button`
     position: absolute;
     right: 0;
     top: 50%;
-    transform: rotate(-90deg) translate(50%, 0);
-
-    opacity: 0;
-    animation: ${animateBODIn} 300ms linear forwards 800ms;
+    transform: rotate(-90deg) translate(50%, -50%);
   }
 `
 
@@ -229,7 +173,7 @@ export const _UpUpDownDownLeftRightLeftRightBA = styled.button<{animate: boolean
     bottom: 0;
     left: 0;
     padding: ${RelativeSize(20)};
-    width: ${RelativeSize(200)};
+    width: ${RelativeSize(180)};
   }
 
   svg {
@@ -237,36 +181,37 @@ export const _UpUpDownDownLeftRightLeftRightBA = styled.button<{animate: boolean
     width: 100%;
     height: auto;
     path {
-      fill: ${(props) => props.theme.colors.white};
+      fill: transparent;
+      stroke-width: 3px;
+      stroke: ${(props) => props.theme.colors.white};
       transition: 500ms all ease;
     }
   }
 
   &:hover {
     svg path {
-      fill: ${(props) => props.theme.colors.brand_3};
+      stroke: ${(props) => props.theme.colors.brand_3};
     }
+  }
 
-    ${(props) => {
-      if (props.animate) {
-        let cssStyle = ''
-        
-        for (let index = 0; index < 11; index++) {
-          cssStyle += `
-            &:nth-child(${index}n) {
-              animation-delay: ${index * 250}ms;
-            }
-          `
-        }
-
-        return css`
-          svg path {
-            fill: ${(props) => props.theme.colors.brand_1};
-            animation: ${changeColor} 300ms linear forwards;
-            ${cssStyle}
+  ${(props) => {
+    if (props.animate) {
+      let cssStyle = ''
+      
+      for (let index = 0; index < 11; index++) {
+        cssStyle += `
+          &:nth-child(${index}n) {
+            animation-delay: ${index * 250}ms;
           }
         `
       }
-    }}
-  }
+
+      return css`
+        svg path {
+          animation: ${changeColor} 300ms linear forwards;
+          ${cssStyle}
+        }
+      `
+    }
+  }}
 `
