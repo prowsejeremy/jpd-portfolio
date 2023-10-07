@@ -1,6 +1,7 @@
-import { Metadata, ResolvingMetadata } from 'next'
-import HomeTemplate from 'templates/HomeTemplate'
+import { Metadata } from 'next'
+// import HomeTemplate from 'templates/HomeTemplate'
 import PagesData from 'data/pages.json'
+import PageTemplate from 'templates'
 
 async function getData(slug:String) {
 
@@ -21,6 +22,6 @@ export default async function Page() {
 
   const data = await getData('home')
 
-  return <HomeTemplate page={data} />
-  // return <HomeTemplate />
+  // return <HomeTemplate page={data} />
+  return <PageTemplate page={data} />
 }

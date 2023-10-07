@@ -4,7 +4,7 @@ import { styled } from 'styled-components'
 export const _WorkTitle = styled.h3`
   font-size: 5.5rem;
   text-transform: uppercase;
-  color: ${(props) => props.theme.colors.brand_1};
+  color: ${(props) => props.theme.colors.brand_2};
   line-height: 0.8;
 
   ${(props) => props.theme.mediaQueries.desktopSm} {

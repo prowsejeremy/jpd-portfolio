@@ -18,7 +18,7 @@ import {
     _UpUpDownDownLeftRightLeftRightBA
 } from './styles'
 
-const calcYearsBetweenDates = (dateString) => {
+const calcYearsBetweenDates = (dateString:string) => {
   const start = new Date(dateString);
   const now = new Date();
   
@@ -27,7 +27,7 @@ const calcYearsBetweenDates = (dateString) => {
   return timeDiff/365.25;
 }
 
-const HomeTemplate = ({page}) => {
+const HomeTemplate = ({page}:{page:any}) => {
 
   const {
     aboutContent
@@ -35,8 +35,8 @@ const HomeTemplate = ({page}) => {
 
   const {dispatch} = useGlobalState()
   const [index, setIndex] = useState(0);
-  const [sanityData, setSanityData] = useState(false)
-  const [timeID, setTimeoutID] = useState(false)
+  const [sanityData, setSanityData] = useState<{intro:string; value:string}[] | null>(null)
+  const [timeID, setTimeoutID] = useState<NodeJS.Timeout | null>(null)
 
   const handleTimeClick = () => {
     setIndex(index <= 1 ? index+1 : 0)
@@ -45,7 +45,7 @@ const HomeTemplate = ({page}) => {
   const handleKonamiTouchStart = () => {
     const timeout = setTimeout(() => {
       timeID && clearTimeout(timeID)
-      setTimeoutID(false)
+      setTimeoutID(null)
       dispatch({type: 'setKonami', value: true})
     }, 3000)
     setTimeoutID(timeout)
@@ -53,7 +53,7 @@ const HomeTemplate = ({page}) => {
 
   const handleKonamiTouchEnd = () => {
     timeID && clearTimeout(timeID)
-    setTimeoutID(false)
+    setTimeoutID(null)
   }
 
   useEffect(() => {
@@ -94,7 +94,7 @@ const HomeTemplate = ({page}) => {
       </_AboutContentWrapper>
 
       <_UpUpDownDownLeftRightLeftRightBA
-        animate={timeID ? 1 : 0}
+        animate={timeID ? true : false}
         onPointerDown={handleKonamiTouchStart}
         onPointerUp={handleKonamiTouchEnd}
         onPointerLeave={handleKonamiTouchEnd}>

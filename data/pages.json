@@ -5,10 +5,12 @@
       "title": "JPD",
       "description": "Jeremy Prowse Digital - Design & Development"
     },
+    "pageTheme": "brand_2",
+    "template": "HomeTemplate",
     "displayTitle": "Jeremy Prowse Digital",
     "aboutContent": {
       "title": "Welcome",
-      "content": "Kia Ora! <br/>Jeremy here, a digital designer and developer based in Auckland, New Zealand with a soft spot for minimal design and clean code. Over the past 10+ years I've worked as a developer in the marketing industry crafting solutions for clients spanning a range of sectors. From sites housing extensive catalogs of products, to bespoke interactive experiences, I've had the privilege of tackling dev and design challenges across the board."
+      "content": "Kia Ora! <br/>Jeremy here, a digital designer and developer based in Auckland, New Zealand with a soft spot for minimal design and clean code. Over the past 10+ years I've worked as a developer in the marketing industry crafting solutions for clients spanning a range of sectors. From sites housing extensive product catalogs, to bespoke interactive experiences, I've had the privilege of tackling dev and design challenges across the board."
     }
   },
   {
@@ -17,6 +19,8 @@
       "title": "JPD - Work",
       "description": "Check out some of the latest, most notable projects I've been involved with."
     },
+    "pageTheme": "brand_1",
+    "template": "WorkTemplate",
     "displayTitle": "Work work work work work.",
     "workItems": [
       {

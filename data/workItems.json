@@ -1,11 +1,9 @@
 [
   {
     "displayTitle": "BurgerFuel: Bunder",
-    "year": "2022",
+    "pageTheme": "brand_2",
+    "template": "DynamicTemplate",
     "slug": "bunder",
-    "url": "/work/bunder",
-    "roles": "Tech Lead | Front End Development",
-    "tech": "Next.js | Styled Components | Strapi | GraphQl",
     "coverImage": {
       "url": "/images/work/bunder-cover.jpeg",
       "alt": "BurgerFuel Bunder App Mockup"

@@ -10,7 +10,15 @@ import {
       _WorkDetailsColumn
 } from './styles'
 
-const WorkCard = ({card}) => {
+interface CardProps {
+  title: string,
+  roles: string[],
+  tech: string[],
+  year: string,
+  link: {url:string, type:string, target:string}
+}
+
+const WorkCard = ({card}:{card:CardProps}) => {
 
   const {
     title,
@@ -30,13 +38,13 @@ const WorkCard = ({card}) => {
         <_WorkDetailsColumn>
           <h3>ROLES</h3>
           <ul>
-            {roles.map((r, k) => <li key={k}>{r}</li>)}
+            {roles.map((r:string, k:number) => <li key={k}>{r}</li>)}
           </ul>
         </_WorkDetailsColumn>
         <_WorkDetailsColumn>
           <h3>TECHNOLOGY</h3>
           <ul>
-            {tech.map((t, k) => <li key={k}>{t}</li>)}
+            {tech.map((t:string, k:number) => <li key={k}>{t}</li>)}
           </ul>
         </_WorkDetailsColumn>
       </_WorkDetailsWrapper>

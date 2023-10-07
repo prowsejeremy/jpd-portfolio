@@ -1,28 +1,12 @@
 import { RelativeSize } from 'styles/mixins'
 import { styled } from 'styled-components'
 
-interface NavLinkProps {
-  active: boolean;
-}
-
-export const _NavBar = styled.nav`
-  padding: 2rem;
-  position: fixed;
-  top: 0;
-  right: 0;
-  z-index: 90;
-
-  ${(props) => props.theme.mediaQueries.desktopSm} {
-    padding: ${RelativeSize(20)};
-  }
-`
-
 export const _NavItems = styled.div`
   display: flex;
   flex-direction: column;
 `
 
-export const _NavLink = styled.a<NavLinkProps>`
+export const _NavLink = styled.a<{active: boolean}>`
   text-transform: uppercase;
   font-weight: 300;
   font-size: 2rem;
@@ -105,4 +89,35 @@ export const _NavLink = styled.a<NavLinkProps>`
       transition: all 200ms ease-out 200ms;
     }
   }
+`
+
+export const _NavBar = styled.nav<{pageTheme:string}>`
+  padding: 2rem;
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 90;
+
+  ${(props) => props.theme.mediaQueries.desktopSm} {
+    padding: ${RelativeSize(20)};
+  }
+
+  ${(props) => {
+    let navCircleColor = 'brand_1'
+
+    switch (props.pageTheme) {
+      case 'brand_1':
+        navCircleColor = 'brand_2'
+        break
+      case 'brand_2':
+        navCircleColor = 'brand_1'
+        break
+    }
+
+    return `
+      ${_NavLink}:before {
+        background: ${props.theme.colors[navCircleColor]};
+      }
+    `
+  }}
 `

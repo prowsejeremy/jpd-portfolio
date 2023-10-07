@@ -1,7 +1,8 @@
 import {notFound} from 'next/navigation'
 import { Metadata } from 'next'
-import DynamicTemplate from 'templates/DynamicTemplate'
+// import DynamicTemplate from 'templates/DynamicTemplate'
 import PagesData from 'data/workItems.json'
+import PageTemplate from 'templates'
 
 async function getData(slug:String) {
   const pageData = await PagesData.find((page) => page.slug === slug)
@@ -27,5 +28,6 @@ export default async function WorkDetailPage({ params }:{ params:{slug:String} }
 
   const data = await getData(params.slug)
 
-  return data ? <DynamicTemplate page={data} /> : notFound()
+  // return data ? <DynamicTemplate page={data} /> : notFound()
+  return data ? <PageTemplate page={data} /> : notFound()
 }

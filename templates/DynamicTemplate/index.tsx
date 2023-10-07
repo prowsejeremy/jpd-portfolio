@@ -5,13 +5,10 @@ import PageSections from 'components/PageSections'
 
 import {
   _DynamicPageContent,
-    _PageHero,
-      _HeroImage,
-      _PageTitle,
-      _DynamicPageDetails
+    _DynamicPageDetails
 } from './styles'
 
-const DynamicTemplate = ({page}) => {
+const DynamicTemplate = ({page}:{page:any}) => {
 
   const {
     displayTitle,
