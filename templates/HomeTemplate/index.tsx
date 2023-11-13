@@ -7,13 +7,18 @@ import { useGlobalState } from 'lib/Store'
 
 import {
   _HomePageContent,
+    _AboutContentWrapper,
+      _AboutTitle,
+      _AboutContent,
     _HomeLogoLockup,
+      _Circle,
       _ButtonOfDespair,
+      _BODLine,
       _PageTitle,
     _UpUpDownDownLeftRightLeftRightBA
 } from './styles'
 
-const calcYearsBetweenDates = (dateString) => {
+const calcYearsBetweenDates = (dateString:string) => {
   const start = new Date(dateString);
   const now = new Date();
   
@@ -22,13 +27,16 @@ const calcYearsBetweenDates = (dateString) => {
   return timeDiff/365.25;
 }
 
-const HomeTemplate = () => {
+const HomeTemplate = ({page}:{page:any}) => {
+
+  const {
+    aboutContent
+  } = page
 
   const {dispatch} = useGlobalState()
   const [index, setIndex] = useState(0);
-  const [sanityData, setSanityData] = useState(false)
-  const [timeID, setTimeoutID] = useState(false)
-  const [randomIdx, setRandomIdx] = useState(false)
+  const [sanityData, setSanityData] = useState<{intro:string; value:string}[] | null>(null)
+  const [timeID, setTimeoutID] = useState<NodeJS.Timeout | null>(null)
 
   const handleTimeClick = () => {
     setIndex(index <= 1 ? index+1 : 0)
@@ -37,7 +45,7 @@ const HomeTemplate = () => {
   const handleKonamiTouchStart = () => {
     const timeout = setTimeout(() => {
       timeID && clearTimeout(timeID)
-      setTimeoutID(false)
+      setTimeoutID(null)
       dispatch({type: 'setKonami', value: true})
     }, 3000)
     setTimeoutID(timeout)
@@ -45,7 +53,7 @@ const HomeTemplate = () => {
 
   const handleKonamiTouchEnd = () => {
     timeID && clearTimeout(timeID)
-    setTimeoutID(false)
+    setTimeoutID(null)
   }
 
   useEffect(() => {
@@ -55,25 +63,44 @@ const HomeTemplate = () => {
     const displayDays = displayHours / 8 // divide by hours a day worked
 
     setSanityData([
-      `Years in the industry - ${displayYears.toFixed(2)}`,
-      `Days spent indoors - ${displayDays.toFixed(2)}`,
-      `Hours of sanity lost - ${displayHours.toFixed(2)}`
+      {
+        intro: 'Years in the industry',
+        value: displayYears.toFixed(2)
+      },
+      {
+        intro: 'Days spent indoors',
+        value: displayDays.toFixed(2)
+      },
+      {
+        intro: 'Hours of sanity lost',
+        value: displayHours.toFixed(2)
+      }
     ])
   }, [])
 
   return (
     <_HomePageContent>
+
       <_HomeLogoLockup>
+        <_Circle />
         <Logo />
-        { sanityData && <_ButtonOfDespair onClick={handleTimeClick}>{sanityData[index]}</_ButtonOfDespair>}
       </_HomeLogoLockup>
+
+      { sanityData && <_ButtonOfDespair onClick={handleTimeClick}>{sanityData[index].intro}<_BODLine />{sanityData[index].value}</_ButtonOfDespair>}
+
+      <_AboutContentWrapper>
+        <_AboutTitle>{aboutContent.title}</_AboutTitle>
+        <_AboutContent dangerouslySetInnerHTML={{ __html: aboutContent.content }} />
+      </_AboutContentWrapper>
+
       <_UpUpDownDownLeftRightLeftRightBA
-        animate={timeID ? 1 : 0}
+        animate={timeID ? true : false}
         onPointerDown={handleKonamiTouchStart}
         onPointerUp={handleKonamiTouchEnd}
         onPointerLeave={handleKonamiTouchEnd}>
         <KonamiIcons />
       </_UpUpDownDownLeftRightLeftRightBA>
+      
     </_HomePageContent>
   )
 }

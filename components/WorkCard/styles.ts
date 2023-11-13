@@ -1,144 +1,107 @@
 import { RelativeSize } from 'styles/mixins'
-import { keyframes, styled } from 'styled-components'
-
-const animateTextCoverIn =  keyframes`
-  0% {
-    transform: translateX(-100%);
-  }
-
-  100% {
-    transform: translateX(0);
-  }
-`
-
-const animateTextCoverOut =  keyframes`
-  0% {
-    transform: translateX(0);
-  }
-
-  100% {
-    transform: translateX(100%);
-  }
-`
+import { styled } from 'styled-components'
 
 export const _WorkTitle = styled.h3`
-  font-size: 4rem;
+  font-size: 5.5rem;
   text-transform: uppercase;
-  color: ${(props) => props.theme.colors.brand_3};
-  line-height: 0.9;
-  margin-bottom: 2rem;
-
-  ${(props) => props.theme.mediaQueries.tablet} {
-    font-size: 6rem;
-    /* margin: 0; */
-  }
+  color: ${(props) => props.theme.colors.brand_2};
+  line-height: 0.8;
 
   ${(props) => props.theme.mediaQueries.desktopSm} {
-    font-size: ${RelativeSize(130)};
-    padding: ${RelativeSize(20)} 0 ${RelativeSize(15)};
+    font-size: ${RelativeSize(80)};
   }
 `
 
 export const _WorkDetailsWrapper = styled.div`
-  width: 100%;
+  width: auto;
 
   ${(props) => props.theme.mediaQueries.desktopSm} {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 2;
-    padding: ${RelativeSize(30)};
-    animation: ${animateTextCoverOut} 300ms ease-in-out forwards;
-  }
-  
-  ${(props) => props.theme.mediaQueries.desktopSm} {
-    height: 100%;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-direction: row;
+    align-items: flex-start;
+
+    margin-top ${RelativeSize(20)};
+    opacity: 0;
+    visibility: hidden;
+    height: auto;
+    max-height: 0;
+    transition: all 300ms ease-out;
   }
 `
 
-export const _WorkDetailsInner = styled.div`
-  width: 100%;
-  height: auto;
-
-  display: flex;
-  align-items: flex-start;
-  flex-direction: column;
-
-  padding-top: 3rem;
-  border-top: 2px solid ${(props) => props.theme.colors.brand_3};
-
-  font-size: 1.6rem;
-  text-transform: uppercase;
-  color: ${(props) => props.theme.colors.brand_3};
-  line-height: 0.9;
-
-  ${(props) => props.theme.mediaQueries.tablet} {
-    font-size: 2rem;
-  }
+export const _WorkDetailsColumn = styled.div`
+  color: ${(props) => props.theme.colors.white};
+  margin-top: 1.5rem;
 
   ${(props) => props.theme.mediaQueries.desktopSm} {
-    align-items: center;
-    justify-content: space-between;
-    flex-direction: row;
-    border-bottom: 2px solid ${(props) => props.theme.colors.brand_3};
-    padding: ${RelativeSize(15)} 0;
-    font-size: ${RelativeSize(30)};
+    margin: 0 ${RelativeSize(30)} 0 0;
   }
-`
 
-export const _WorkDetailsSummary = styled.div`
   h3 {
-    font-weight: 300;
-    margin-bottom: 2rem;
+    font-size: 2.8rem;
 
     ${(props) => props.theme.mediaQueries.desktopSm} {
-      margin-bottom: 0;
+      font-size: ${RelativeSize(20)};
+    }
+  }
+  ul {
+    padding-left: 2rem;
+
+    ${(props) => props.theme.mediaQueries.desktopSm} {
+      padding-left: ${RelativeSize(20)};
+    }
+    
+    li {
+      font-size: 1.6rem;
+      margin-top: 0.5rem;
+      list-style-type: "–  ";
+
+      ${(props) => props.theme.mediaQueries.desktopSm} {
+        font-size: ${RelativeSize(12)};
+        margin-top: ${RelativeSize(5)};
+      }
     }
   }
 `
 
-export const _WorkYear = styled.h3``
+export const _WorkYear = styled.p`
+  font-size: 1.4rem;
+  text-align: right;
+  color: ${(props) => props.theme.colors.white};
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: rotate(-90deg) translate(60%, -60%);
+  transform-origin: bottom right;
+  
+  ${(props) => props.theme.mediaQueries.desktopSm} {
+    font-size: ${RelativeSize(20)};
+  }
+`
 
 export const _WorkCard = styled.a`
-  display: block;
-  width: 100%;
+  display: inline-block;
+  width: auto;
   position: relative;
   overflow: hidden;
-  background: ${(props) => props.theme.colors.brand_2};
-  padding: 1.5rem;
+  padding-left: 2.8rem;
 
-  ${(props) => props.theme.mediaQueries.tablet} {
-    padding: 3rem;
+  &:not(:last-child) {
+    margin-bottom: 5rem;
   }
 
   ${(props) => props.theme.mediaQueries.desktopSm} {
-    padding: 0;
-    background: none;
-    &:before {
-      content: '';
-      display: block;
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: 1;
-      background: ${(props) => props.theme.colors.brand_2};
-      transform: translateX(-100%);
-      animation: ${animateTextCoverOut} 400ms ease-in-out forwards;
+    padding-left: ${RelativeSize(35)};
+
+    &:not(:last-child) {
+      margin-bottom: ${RelativeSize(60)};
     }
 
     &:hover {
-      &:before {
-        animation: ${animateTextCoverIn} 300ms ease-in-out forwards;
-      }
       ${_WorkDetailsWrapper} {
-        /* opacity: 1;
-        visibility: visible; */
-        animation: ${animateTextCoverIn} 400ms ease-in-out forwards;
+        opacity: 1;
+        visibility: visible;
+        max-height: ${RelativeSize(150)};
       }
     }
   }

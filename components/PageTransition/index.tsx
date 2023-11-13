@@ -6,7 +6,7 @@ import {
   _PageTransitionWrapper
 } from './styles'
 
-const PageTransition = ({children}) => {
+const PageTransition = ({children}:{children:React.ReactNode}) => {
 
   const pathname = usePathname()
 

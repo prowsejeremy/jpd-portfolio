@@ -1,7 +1,7 @@
 import {notFound} from 'next/navigation'
 import { Metadata } from 'next'
 // import DynamicTemplate from 'templates/DynamicTemplate'
-import PagesData from 'data/workItems.json'
+import PagesData from 'data/pages.json'
 import PageTemplate from 'templates'
 
 async function getData(slug:String) {
@@ -24,7 +24,7 @@ export async function generateMetadata(
   return data ? data?.seo : {}
 }
 
-export default async function WorkDetailPage({ params }:{ params:{slug:String} }) {
+export default async function DynamicPage({ params }:{ params:{slug:String} }) {
 
   const data = await getData(params.slug)
 

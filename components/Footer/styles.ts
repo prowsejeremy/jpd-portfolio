@@ -3,33 +3,40 @@ import { styled } from 'styled-components'
 
 export const _FooterWrapper = styled.footer`
   width: 100%;
-  padding: 2rem;
-  background: ${(props) => props.theme.colors.brand_2};
+  padding: 1rem;
+  display: flex;
 
   ${(props) => props.theme.mediaQueries.desktopSm} {
-    padding: ${RelativeSize(20)};
+    padding: ${RelativeSize(10)};
+    width: auto;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    z-index: 2;
   }
 `
 
 export const _FooterItems = styled.div`
   display: flex;
-  justify-content: space-between;
+  margin-left: auto;
 `
 
 export const _FooterLink = styled.a`
   text-transform: uppercase;
-  font-weight: 600;
-  font-size: 2rem;
-  font-family: ${(props) => props.theme.fonts.heading};
+  font-weight: 300;
+  font-size: 1.4rem;
+  font-family: ${(props) => props.theme.fonts.body};
   color: ${(props) => props.theme.colors.white};
   transition: all 500ms ease;
   line-height: 1;
+  padding: 1rem;
 
   &:hover, &:focus {
     color: ${(props) => props.theme.colors.brand_3};
   }
 
   ${(props) => props.theme.mediaQueries.desktopSm} {
-    font-size: ${RelativeSize(20)};
+    font-size: ${RelativeSize(10)};
+    padding: ${RelativeSize(10)};
   }
 `

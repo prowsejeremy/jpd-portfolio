@@ -37,8 +37,12 @@ export default function KonamiSurprise() {
     const headingFont = getComputedStyle(document.body).getPropertyValue('--font-heading')
     
     const snek = new Snek({
-      gameFont: headingFont,
-      gameElement: gameWrapper
+      gameElement: gameWrapper,
+      gameFont: {
+        family: headingFont,
+        weight: 600,
+        size: 30
+      }
     })
 
     setSnekInstance(snek)

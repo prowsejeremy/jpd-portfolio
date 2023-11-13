@@ -1,33 +1,6 @@
 import { RelativeSize } from 'styles/mixins'
 import { keyframes, styled, css } from 'styled-components'
 
-const dash = keyframes`
-  0% {
-    opacity: 0;
-    stroke-dashoffset: 2000;
-  }
-  30% {
-    opacity: 1;
-  }
-  75% {
-    stroke: #FFFFFF;
-    stroke-dashoffset: 0;
-    fill: transparent;
-  }
-  100% {
-    stroke: transparent;
-    stroke-dashoffset: 0;
-    fill: #FFFFFF;
-  }
-`
-
-const fadeDownIn = keyframes`
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-`
-
 const changeColor = keyframes`
   to {
     fill: #2bf599;
@@ -36,31 +9,110 @@ const changeColor = keyframes`
 
 export const _HomePageContent = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 100vh;
-`
-
-export const _HomeLogoLockup = styled.div`
-  width: 100%;
-  padding: 2rem;
-  max-width: 70rem;
+  position: relative;
 
   ${(props) => props.theme.mediaQueries.desktopSm} {
-    max-width: ${RelativeSize(650)};
+    height: 100vh;
+    flex-direction: row;
+    overflow: hidden;
   }
+`
+
+export const _AboutContentWrapper = styled.div`
+  width: 100%;
+  max-width: 40rem;
+  padding: 5rem 2rem;
+  color: ${(props) => props.theme.colors.white};
+
+  ${(props) => props.theme.mediaQueries.desktopSm} {
+    max-width: ${RelativeSize(250)};
+    padding: 0;
+    position: absolute;
+    top: 40%;
+    transform: translateY(-50%);
+    left: ${RelativeSize(50)};
+  }
+`
+
+export const _AboutTitle = styled.h2`
+  text-transform: uppercase;
+  font-size: 3rem;
+  margin-bottom: 2rem;
+
+  ${(props) => props.theme.mediaQueries.desktopSm} {
+    font-size: ${RelativeSize(30)};
+    margin-bottom: ${RelativeSize(5)};
+  }
+`
+
+export const _AboutContent = styled.p`
+  display: block;
+  padding-left: 2rem;
+  margin-left: 2rem;
+  border-left: 1px solid ${(props) => props.theme.colors.white};
+  font-size: 1.6rem;
+  line-height: 1.6;
+
+  ${(props) => props.theme.mediaQueries.desktopSm} {
+    font-size: ${RelativeSize(10)};
+    margin-left: ${RelativeSize(20)};
+    padding-left: ${RelativeSize(20)};
+  }
+`
+
+
+export const _HomeLogoLockup = styled.div`
+  padding: 2rem;
+  position: relative;
+  margin-right: auto;
 
   svg {
     display: block;
     width: 100%;
     height: auto;
-    path {
-      stroke-dasharray: 2000;
-      stroke-dashoffset: 2000;
-      animation: ${dash} 3s linear forwards 500ms;
-    }
+    position: absolute;
+    bottom: -10%;
+    right: -25%;
+    fill: ${(props) => props.theme.colors.white};
+  }
+
+  ${(props) => props.theme.mediaQueries.desktopSm} {
+    margin: 0 auto;
+  }
+`
+
+export const _Circle = styled.div`
+  width: 20rem;
+  height: auto;
+  border-radius: 100%;
+  background: ${(props) => props.theme.colors.brand_1};
+
+  ${(props) => props.theme.mediaQueries.desktopSm} {
+    width: ${RelativeSize(250)};
+  }
+
+  &:before {
+    content: '';
+    display: block;
+    width: 100%;
+    padding-bottom: 100%;
+  }
+`
+
+export const _BODLine = styled.span`
+  width: 5rem;
+  height: 1px;
+  display: block;
+  background: ${(props) => props.theme.colors.white};
+  margin: 0 2rem;
+  transition: all 500ms ease;
+
+  ${(props) => props.theme.mediaQueries.tablet} {
+    width: 20vh;
   }
 `
 
@@ -70,30 +122,32 @@ export const _ButtonOfDespair = styled.button`
   outline: none;
   margin: auto;
   width: auto;
-  display: block;
-  padding: 1.5rem;
-  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  font-size: 1.2rem;
+  font-weight: 300;
   text-transform: uppercase;
-  font-family: ${(props) => props.theme.fonts.heading};
+  font-family: ${(props) => props.theme.fonts.body};
   color: ${(props) => props.theme.colors.white};
   transition: all 500ms ease;
-  
-  opacity: 0;
-  transform: translateY(-2rem);
-
-  animation: ${fadeDownIn} 300ms linear forwards 2s;
+  transform-origin: center right;
+  padding-top: 5rem;
 
   &:hover {
     color: ${(props) => props.theme.colors.brand_3};
-  }
-
-  ${(props) => props.theme.mediaQueries.tablet} {
-    font-size: 3rem;
+    ${_BODLine} {
+      background: ${(props) => props.theme.colors.brand_3};
+    }
   }
 
   ${(props) => props.theme.mediaQueries.desktopSm} {
-    font-size: ${RelativeSize(28)};
+    font-size: ${RelativeSize(10)};
     padding: ${RelativeSize(15)};
+
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: rotate(-90deg) translate(50%, -50%);
   }
 `
 
@@ -105,20 +159,21 @@ export const _PageTitle = styled.h1`
 `
 
 export const _UpUpDownDownLeftRightLeftRightBA = styled.button<{animate: boolean}>`
-  position: absolute;
-  bottom: 0;
-  right: 0;
   padding: 2rem;
-  width: 25rem;
+  width: 20rem;
   height: auto;
   display: block;
   background: none;
   border: none;
   outline: none;
+  margin-left: auto;
 
   ${(props) => props.theme.mediaQueries.desktopSm} {
-    padding: ${RelativeSize(30)};
-    width: ${RelativeSize(250)};
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: ${RelativeSize(20)};
+    width: ${RelativeSize(180)};
   }
 
   svg {
@@ -126,36 +181,37 @@ export const _UpUpDownDownLeftRightLeftRightBA = styled.button<{animate: boolean
     width: 100%;
     height: auto;
     path {
-      fill: ${(props) => props.theme.colors.brand_2};
+      fill: transparent;
+      stroke-width: 3px;
+      stroke: ${(props) => props.theme.colors.white};
       transition: 500ms all ease;
     }
   }
 
   &:hover {
     svg path {
-      fill: ${(props) => props.theme.colors.brand_3};
+      stroke: ${(props) => props.theme.colors.brand_3};
     }
+  }
 
-    ${(props) => {
-      if (props.animate) {
-        let cssStyle = ''
-        
-        for (let index = 0; index < 11; index++) {
-          cssStyle += `
-            &:nth-child(${index}n) {
-              animation-delay: ${index * 250}ms;
-            }
-          `
-        }
-
-        return css`
-          svg path {
-            fill: ${(props) => props.theme.colors.brand_2};
-            animation: ${changeColor} 300ms linear forwards;
-            ${cssStyle}
+  ${(props) => {
+    if (props.animate) {
+      let cssStyle = ''
+      
+      for (let index = 0; index < 11; index++) {
+        cssStyle += `
+          &:nth-child(${index}n) {
+            animation-delay: ${index * 250}ms;
           }
         `
       }
-    }}
-  }
+
+      return css`
+        svg path {
+          animation: ${changeColor} 300ms linear forwards;
+          ${cssStyle}
+        }
+      `
+    }
+  }}
 `

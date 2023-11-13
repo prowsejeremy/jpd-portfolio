@@ -57,6 +57,7 @@ export const _PageTitle = styled.h1`
   }
   
   ${(props) => props.theme.mediaQueries.desktopSm} {
-    font-size: ${RelativeSize(170)};
+    max-width: ${RelativeSize(500)};
+    font-size: ${RelativeSize(80)};
   }
 `

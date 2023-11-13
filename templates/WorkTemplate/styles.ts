@@ -7,19 +7,13 @@ export const _WorkPageContent = styled.div`
 
 export const _WorkItems = styled.div`
   width: 100%;
+  max-width: 50rem;
   height: auto;
-  padding: 5rem 2rem;
-
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-gap: 2rem;
-
-  ${(props) => props.theme.mediaQueries.tablet} {
-    grid-template-columns: 1fr 1fr;
-  }
+  padding: 5rem 1rem;
 
   ${(props) => props.theme.mediaQueries.desktopSm} {
-    display: block;
-    padding: ${RelativeSize(50)} ${RelativeSize(20)};
+    max-width: initial;
+    width: ${RelativeSize(700)};
+    padding: ${RelativeSize(70)} ${RelativeSize(20)};
   }
 `

@@ -1,6 +1,7 @@
-import { Metadata, ResolvingMetadata } from 'next'
-import WorkTemplate from 'templates/WorkTemplate'
+import { Metadata } from 'next'
+// import WorkTemplate from 'templates/WorkTemplate'
 import PagesData from 'data/pages.json'
+import PageTemplate from 'templates'
 
 async function getData(slug:String) {
 
@@ -21,5 +22,6 @@ export default async function WorkPage() {
 
   const data = await getData('work')
 
-  return <WorkTemplate page={data} />
+  // return <WorkTemplate page={data} />
+  return <PageTemplate page={data} />
 }

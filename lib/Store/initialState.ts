@@ -1,15 +1,17 @@
 export interface initialGlobalStateType {
-  transitionState: boolean,
+  transitionState: string,
   isMobile: boolean,
   isTablet: boolean,
   isDesktop: boolean,
-  konami: boolean
+  konami: boolean,
+  pageTheme: string
 }
 
 export const initialGlobalState:initialGlobalStateType = {
-  transitionState: false,
+  transitionState: 'exiting',
   isMobile: false,
   isTablet: false,
   isDesktop: true,
-  konami: false
+  konami: false,
+  pageTheme: 'brand_1'
 }
