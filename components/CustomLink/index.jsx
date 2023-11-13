@@ -15,6 +15,11 @@ const CustomLink = (props) => {
   const router = useRouter()
   const pathname = usePathname()
   const handleLinkClick = (e) => {
+    
+    // Allow default behavior for opening in new tab/window
+    // via keyboard shortcuts
+    if (e.metaKey || e.shiftKey) { return }
+
     e.preventDefault()
 
     if (pathname !== href) {
