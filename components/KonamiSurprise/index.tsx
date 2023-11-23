@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { useGlobalState } from 'lib/Store/index'
 import { AnimatePresence } from 'framer-motion'
 
-import Snek from 'snek'
+import Snek from '@jpd.nz/snek'
 import SnekLogo from 'components/KonamiSurprise/snekLogo'
 import CloseIcon from 'components/CloseIcon'
 
