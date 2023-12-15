@@ -10,6 +10,7 @@ export const _ErrorPageWrapper = styled.div`
   align-items: center;
   width: 100%;
   position: relative;
+  height: 90vh;
 
   ${(props) => props.theme.mediaQueries.desktopSm} {
     height: 100vh;
@@ -20,8 +21,14 @@ export const _ErrorPageWrapper = styled.div`
 
 export const _ErrorPageContent = styled.div`
   color: ${(props) => props.theme.colors.white};
-  max-width: 80rem;
+  max-width: 50rem;
+  padding: 0 2rem;
   margin: auto;
+
+  ${(props) => props.theme.mediaQueries.desktopSm} {
+    max-width: ${RelativeSize(500)};
+    padding: 0;
+  }
 `
 
 export const _ErrorPageTitle = styled.h1`

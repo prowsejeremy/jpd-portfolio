@@ -30,7 +30,7 @@ export default createGlobalStyle`
     outline: none;
     color: inherit;
     text-decoration: none;
-    transition: all 300ms ease-out;
+    transition: color 300ms ease-out;
     &:hover {
       color: ${defaultTheme.colors.brand_3};
     }
