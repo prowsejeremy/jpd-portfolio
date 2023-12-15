@@ -1,7 +1,7 @@
 import { styled } from 'styled-components'
 
 interface pageWrapperProps {
-  pageTheme: string;
+  $pageTheme: string;
 }
 
 export const _PageWrapper = styled.main<pageWrapperProps>`
@@ -9,9 +9,9 @@ export const _PageWrapper = styled.main<pageWrapperProps>`
   min-height: 100vh;
 
   ${(props) => {
-    if (props.pageTheme) {
+    if (props.$pageTheme) {
       return `
-        background: ${props.theme.colors[props.pageTheme]};
+        background: ${props.theme.colors[props.$pageTheme]};
       `
     }
   }}

@@ -3,12 +3,14 @@ import { styled } from 'styled-components'
 
 export const _WorkTitle = styled.h3`
   font-size: 5.5rem;
+  letter-spacing: -0.1rem;
   text-transform: uppercase;
   color: ${(props) => props.theme.colors.brand_2};
   line-height: 0.8;
 
   ${(props) => props.theme.mediaQueries.desktopSm} {
     font-size: ${RelativeSize(80)};
+    letter-spacing: ${RelativeSize(-2)};
   }
 `
 

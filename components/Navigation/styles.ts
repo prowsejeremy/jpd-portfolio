@@ -6,7 +6,7 @@ export const _NavItems = styled.div`
   flex-direction: column;
 `
 
-export const _NavLink = styled.a<{active: boolean}>`
+export const _NavLink = styled.a<{$active: boolean}>`
   text-transform: uppercase;
   font-weight: 300;
   font-size: 2rem;
@@ -49,7 +49,7 @@ export const _NavLink = styled.a<{active: boolean}>`
   }
 
   ${(props) => {
-    if (props.active) {
+    if (props.$active) {
       return `
         &:before {
           transform: translateY(-50%) scale(1);
@@ -91,7 +91,7 @@ export const _NavLink = styled.a<{active: boolean}>`
   }
 `
 
-export const _NavBar = styled.nav<{pageTheme:string}>`
+export const _NavBar = styled.nav<{$pageTheme:string}>`
   padding: 2rem;
   position: fixed;
   top: 0;
@@ -105,7 +105,7 @@ export const _NavBar = styled.nav<{pageTheme:string}>`
   ${(props) => {
     let navCircleColor = 'brand_1'
 
-    switch (props.pageTheme) {
+    switch (props.$pageTheme) {
       case 'brand_1':
         navCircleColor = 'brand_2'
         break

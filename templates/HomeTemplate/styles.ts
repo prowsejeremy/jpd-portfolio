@@ -158,7 +158,7 @@ export const _PageTitle = styled.h1`
   color: ${(props) => props.theme.colors.white};
 `
 
-export const _UpUpDownDownLeftRightLeftRightBA = styled.button<{animate: boolean}>`
+export const _UpUpDownDownLeftRightLeftRightBA = styled.button<{$animate: boolean}>`
   padding: 2rem;
   width: 20rem;
   height: auto;
@@ -195,7 +195,7 @@ export const _UpUpDownDownLeftRightLeftRightBA = styled.button<{animate: boolean
   }
 
   ${(props) => {
-    if (props.animate) {
+    if (props.$animate) {
       let cssStyle = ''
       
       for (let index = 0; index < 11; index++) {

@@ -44,7 +44,7 @@ const CustomLink = (props:CustomLinkProps) => {
 
   return !!Component ?
     (
-      <Component active={active} onClick={(e:MouseEvent) => handleLinkClick(e)} href={href}>
+      <Component $active={active} onClick={(e:MouseEvent) => handleLinkClick(e)} href={href}>
         {children}
       </Component>
     )

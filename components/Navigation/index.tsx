@@ -20,7 +20,7 @@ export default function Navbar() {
   let pathname = usePathname()
 
   return (
-    <_NavBar pageTheme={state.pageTheme}>
+    <_NavBar $pageTheme={state.pageTheme}>
       <_NavItems>
         <CustomLink component={_NavLink} active={pathname == '/' ? true : false} href='/'>HOME</CustomLink>
         <CustomLink component={_NavLink} active={pathname.includes('work') ? true : false} href='/work'>WORK</CustomLink>

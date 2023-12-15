@@ -24,6 +24,16 @@
     "displayTitle": "Work work work work work.",
     "workItems": [
       {
+        "title": "Skyline",
+        "year": "2023",
+        "link": {
+          "url": "https://queenstown.skyline.co.nz",
+          "type": "external"
+        },
+        "roles": ["Tech Lead", "Full Stack Development"],
+        "tech": ["Next.js", "Styled Components", "Headless Wordpress", "GraphQl"]
+      },
+      {
         "title": "Craigs Investment <br/>Partners",
         "year": "2023",
         "link": {

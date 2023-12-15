@@ -43,7 +43,7 @@ const PageWrapper = ({children}:{children:React.ReactNode}) => {
   }
 
   return (
-    <_PageWrapper pageTheme={state.pageTheme}>
+    <_PageWrapper $pageTheme={state.pageTheme}>
       
       { state.isDesktop && <CustomCursor disableDefaultCursor={state.isDesktop} /> }
       

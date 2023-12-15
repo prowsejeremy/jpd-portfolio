@@ -94,7 +94,7 @@ const HomeTemplate = ({page}:{page:any}) => {
       </_AboutContentWrapper>
 
       <_UpUpDownDownLeftRightLeftRightBA
-        animate={timeID ? true : false}
+        $animate={timeID ? true : false}
         onPointerDown={handleKonamiTouchStart}
         onPointerUp={handleKonamiTouchEnd}
         onPointerLeave={handleKonamiTouchEnd}>
