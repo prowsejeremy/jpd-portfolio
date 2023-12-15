@@ -1,11 +1,11 @@
 import {notFound} from 'next/navigation'
 import { Metadata } from 'next'
-// import DynamicTemplate from 'templates/DynamicTemplate'
-import PagesData from 'data/workItems.json'
+
+import workItems from 'data/workItems.json'
 import PageTemplate from 'templates'
 
 async function getData(slug:String) {
-  const pageData = await PagesData.find((page) => page.slug === slug)
+  const pageData = await workItems.find((page) => page.slug === slug)
 
   return pageData
 }
@@ -24,10 +24,18 @@ export async function generateMetadata(
   return data ? data?.seo : {}
 }
 
+export async function generateStaticParams() {
+
+  const routes = await workItems.map((workItem) => ({
+    slug: workItem.slug,
+  }))
+
+  return routes
+}
+
 export default async function WorkDetailPage({ params }:{ params:{slug:String} }) {
 
   const data = await getData(params.slug)
 
-  // return data ? <DynamicTemplate page={data} /> : notFound()
   return data ? <PageTemplate page={data} /> : notFound()
 }

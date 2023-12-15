@@ -1,6 +1,6 @@
 import {notFound} from 'next/navigation'
 import { Metadata } from 'next'
-// import DynamicTemplate from 'templates/DynamicTemplate'
+
 import PagesData from 'data/pages.json'
 import PageTemplate from 'templates'
 
@@ -24,10 +24,18 @@ export async function generateMetadata(
   return data ? data?.seo : {}
 }
 
+export async function generateStaticParams() {
+
+  const routes = await PagesData.map((page) => ({
+    slug: page.slug,
+  }))
+
+  return routes
+}
+
 export default async function DynamicPage({ params }:{ params:{slug:String} }) {
 
   const data = await getData(params.slug)
 
-  // return data ? <DynamicTemplate page={data} /> : notFound()
   return data ? <PageTemplate page={data} /> : notFound()
 }

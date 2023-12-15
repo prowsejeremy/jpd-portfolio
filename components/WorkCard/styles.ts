@@ -22,7 +22,7 @@ export const _WorkDetailsWrapper = styled.div`
     flex-direction: row;
     align-items: flex-start;
 
-    margin-top ${RelativeSize(20)};
+    margin-top: ${RelativeSize(20)};
     opacity: 0;
     visibility: hidden;
     height: auto;
