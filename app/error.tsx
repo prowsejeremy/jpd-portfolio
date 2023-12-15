@@ -25,7 +25,7 @@ export default function Error({
     <_ErrorPageWrapper>
       <_ErrorPageContent>
         <_ErrorPageTitle>Whoa there!</_ErrorPageTitle>
-        <_ErrorPageDescription>Something seems to have gone a little pear shaped. Don't fret, we're on it and will have the lights back up lickety-split.</_ErrorPageDescription>
+        <_ErrorPageDescription>Something seems to have gone a little pear shaped. Don&apos;t fret, we&apos;re on it and will have the lights back up lickety-split.</_ErrorPageDescription>
         <_ErrorPageButton onClick={ () => reset() } >
           Try again
         </_ErrorPageButton>
