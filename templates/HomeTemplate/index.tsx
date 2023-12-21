@@ -89,7 +89,6 @@ const HomeTemplate = ({page}:{page:any}) => {
       { sanityData && <_ButtonOfDespair onClick={handleTimeClick}>{sanityData[index].intro}<_BODLine />{sanityData[index].value}</_ButtonOfDespair>}
 
       <_AboutContentWrapper>
-        <_AboutTitle>{aboutContent.title}</_AboutTitle>
         <_AboutContent dangerouslySetInnerHTML={{ __html: aboutContent.content }} />
       </_AboutContentWrapper>
 
