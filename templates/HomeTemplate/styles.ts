@@ -38,28 +38,15 @@ export const _AboutContentWrapper = styled.div`
   }
 `
 
-export const _AboutTitle = styled.h2`
-  text-transform: uppercase;
-  font-size: 3rem;
-  margin-bottom: 2rem;
-
-  ${(props) => props.theme.mediaQueries.desktopSm} {
-    font-size: ${RelativeSize(30)};
-    margin-bottom: ${RelativeSize(5)};
-  }
-`
-
 export const _AboutContent = styled.p`
   display: block;
   padding-left: 2rem;
-  margin-left: 2rem;
   border-left: 1px solid ${(props) => props.theme.colors.white};
   font-size: 1.6rem;
   line-height: 1.6;
 
   ${(props) => props.theme.mediaQueries.desktopSm} {
     font-size: ${RelativeSize(10)};
-    margin-left: ${RelativeSize(20)};
     padding-left: ${RelativeSize(20)};
   }
 `
@@ -142,7 +129,7 @@ export const _ButtonOfDespair = styled.button`
 
   ${(props) => props.theme.mediaQueries.desktopSm} {
     font-size: ${RelativeSize(10)};
-    padding: ${RelativeSize(15)};
+    padding: ${RelativeSize(15)} ${RelativeSize(15)} ${RelativeSize(20)} ${RelativeSize(15)};
 
     position: absolute;
     right: 0;

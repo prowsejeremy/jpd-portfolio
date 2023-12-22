@@ -8,7 +8,6 @@ import { useGlobalState } from 'lib/Store'
 import {
   _HomePageContent,
     _AboutContentWrapper,
-      _AboutTitle,
       _AboutContent,
     _HomeLogoLockup,
       _Circle,
