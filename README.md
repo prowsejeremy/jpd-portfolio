@@ -5,7 +5,7 @@ If, for whatever bizarre reason you find yourself reading this, welcome! This is
 
 The site, while rather simple in design has a few key elements going on under the hood 👀:
 
-- Next.js 13 using the app dir
+- Next.js 14 using the src dir and app router
 - Styled Components
 - Fully Typescript
 - Scalable UI/Design > 1024px

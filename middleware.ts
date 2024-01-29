@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
-import { DecryptAndValidate } from 'lib/helpers/crypt'
+import { DecryptAndValidate } from 'src/_lib/helpers/crypt'
 
 export function middleware(request: NextRequest) {
   
