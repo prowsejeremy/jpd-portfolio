@@ -24,6 +24,16 @@
     "displayTitle": "Work work work work work.",
     "workItems": [
       {
+        "title": "Alcohol&Me",
+        "year": "2024",
+        "link": {
+          "url": "https://alcoholandme.co.nz",
+          "type": "external"
+        },
+        "roles": ["Tech Lead", "Full Stack Development"],
+        "tech": ["Next.js", "SASS modules", "Payload CMS", "GraphQl"]
+      },
+      {
         "title": "Skyline",
         "year": "2023",
         "link": {
@@ -92,16 +102,6 @@
         },
         "roles": ["Tech Lead", "Full Stack Development"],
         "tech": ["Next.js", "SASS", "Headless Wordpress", "GraphQl"]
-      },
-      {
-        "title": "Alcohol&Me",
-        "year": "2017",
-        "link": {
-          "url": "https://alcoholandme.org.nz",
-          "type": "external"
-        },
-        "roles": ["Tech Lead", "Full Stack Development"],
-        "tech": ["Next.js", "SASS", "Headless Wordpress", "Rest API"]
       }
     ]
   }
