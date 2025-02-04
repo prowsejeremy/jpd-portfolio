@@ -1,0 +1,81 @@
+@use 'src/_styles/breakpoints' as breakpoints;
+@use 'src/_styles/mixins' as mixins;
+
+.ErrorPageWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  position: relative;
+  height: 90vh;
+
+  @include breakpoints.desktopSm {
+    height: 100vh;
+    flex-direction: row;
+    overflow: hidden;
+  }
+}
+
+.ErrorPageContent {
+  color: var(--color-white);
+  max-width: 50rem;
+  padding: 0 2rem;
+  margin: auto;
+
+  @include breakpoints.desktopSm {
+    @include mixins.RelativeSize(max-width, 500);
+    padding: 0;
+  }
+}
+
+.ErrorPageTitle {
+  font-size: 5.5rem;
+  letter-spacing: -0.1rem;
+  text-transform: uppercase;
+  line-height: 0.8;
+  font-weight: 900;
+
+  @include breakpoints.desktopSm {
+    @include mixins.RelativeSize(font-size, 120);
+    @include mixins.RelativeSize(letter-spacing, -2);
+  }
+}
+
+.ErrorPageDescription {
+  font-size: 1.6rem;
+
+  a {
+    text-decoration: underline;
+  }
+
+  @include breakpoints.desktopSm {
+    @include mixins.RelativeSize(font-size, 18);
+  }
+}
+
+.ErrorPageButton {
+  cursor: pointer;
+  font-size: 1.6rem;
+  background: var(--color-white);
+  color: var(--color-brand_2);
+  text-transform: uppercase;
+  font-weight: 600;
+  font-family: var(--font-main);
+  border: none;
+  outline: none;
+  transition: all 300ms ease-out;
+  padding: 1.5rem 3rem;
+  margin-top: 1rem;
+
+  &:hover {
+    background: var(--color-brand_3);
+  }
+  
+  $paddingValues: 10 25;
+  @include breakpoints.desktopSm {
+    @include mixins.RelativeSize(font-size, 16);
+    @include mixins.RelativeSize(padding, $paddingValues);
+    @include mixins.RelativeSize(margin-top, 10);
+  }
+}

@@ -1,4 +1,4 @@
-import { styled } from 'styled-components'
+import { styled } from "styled-components";
 
 interface pageWrapperProps {
   $pageTheme: string;
@@ -12,12 +12,12 @@ export const _PageWrapper = styled.main<pageWrapperProps>`
     if (props.$pageTheme) {
       return `
         background: ${props.theme.colors[props.$pageTheme]};
-      `
+      `;
     }
   }}
-`
+`;
 
 export const _MainContentWrapper = styled.div`
   width: 100%;
-  overflow: hidden;
-`
+  /* overflow: hidden;p */
+`;

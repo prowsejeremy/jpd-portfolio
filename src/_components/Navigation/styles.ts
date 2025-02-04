@@ -1,14 +1,14 @@
-import { RelativeSize } from 'src/_styles/mixins'
-import { styled } from 'styled-components'
+import { RelativeSize } from "src/_styles/mixins";
+import { styled } from "styled-components";
 
 export const _NavItems = styled.div`
   display: flex;
   flex-direction: column;
-`
+`;
 
-export const _NavLink = styled.a<{$active: boolean}>`
+export const _NavLink = styled.a<{ $active: boolean }>`
   text-transform: uppercase;
-  font-weight: 300;
+  font-weight: 600;
   font-size: 2rem;
   font-family: ${(props) => props.theme.fonts.heading};
   color: ${(props) => props.theme.colors.white};
@@ -20,7 +20,7 @@ export const _NavLink = styled.a<{$active: boolean}>`
   margin-bottom: 1rem;
 
   &:before {
-    content: '';
+    content: "";
     display: block;
     width: 1rem;
     height: 1rem;
@@ -35,7 +35,7 @@ export const _NavLink = styled.a<{$active: boolean}>`
   }
 
   &:after {
-    content: '';
+    content: "";
     display: block;
     width: 100%;
     height: 1px;
@@ -58,12 +58,12 @@ export const _NavLink = styled.a<{$active: boolean}>`
         &:after {
           transform: translateY(-50%) scaleX(1);
         }
-      `
+      `;
     }
   }}
 
   ${(props) => props.theme.mediaQueries.desktopSm} {
-    font-size: ${RelativeSize(20)};
+    font-size: ${RelativeSize(14)};
     padding-right: ${RelativeSize(20)};
     margin-bottom: ${RelativeSize(10)};
 
@@ -71,7 +71,7 @@ export const _NavLink = styled.a<{$active: boolean}>`
       width: ${RelativeSize(10)};
       height: ${RelativeSize(10)};
     }
-    
+
     &:after {
       right: ${RelativeSize(5)};
     }
@@ -89,9 +89,9 @@ export const _NavLink = styled.a<{$active: boolean}>`
       transition: all 200ms ease-out 200ms;
     }
   }
-`
+`;
 
-export const _NavBar = styled.nav<{$pageTheme:string}>`
+export const _NavBar = styled.nav<{ $pageTheme: string }>`
   padding: 2rem;
   position: fixed;
   top: 0;
@@ -103,21 +103,21 @@ export const _NavBar = styled.nav<{$pageTheme:string}>`
   }
 
   ${(props) => {
-    let navCircleColor = 'brand_1'
+    let navCircleColor = "brand_1";
 
     switch (props.$pageTheme) {
-      case 'brand_1':
-        navCircleColor = 'brand_2'
-        break
-      case 'brand_2':
-        navCircleColor = 'brand_1'
-        break
+      case "brand_1":
+        navCircleColor = "brand_2";
+        break;
+      case "brand_2":
+        navCircleColor = "brand_1";
+        break;
     }
 
     return `
       ${_NavLink}:before {
         background: ${props.theme.colors[navCircleColor]};
       }
-    `
+    `;
   }}
-`
+`;

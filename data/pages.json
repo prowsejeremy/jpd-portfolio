@@ -10,7 +10,7 @@
     "displayTitle": "Jeremy Prowse Digital",
     "aboutContent": {
       "title": "Welcome",
-      "content": "Kia Ora! <br/>Jeremy here, a digital designer and developer based in Auckland, New Zealand with a soft spot for minimal design and clean code. Over the past 10+ years I've worked as a developer in the marketing industry crafting solutions for clients spanning a range of sectors. From sites housing extensive product catalogs, to bespoke interactive experiences, I've had the privilege of tackling dev and design challenges across the board."
+      "content": "<p>Jeremy here, a digital designer and developer based in Auckland, New Zealand with a soft spot for minimal design and clean code. Over the past 10+ years I've worked as a developer in the marketing industry crafting solutions for clients spanning a range of sectors. From sites housing extensive product catalogs, to bespoke interactive experiences, I've had the privilege of tackling dev and design challenges across the board.</p>"
     }
   },
   {
@@ -30,8 +30,16 @@
           "url": "https://queenstown.skyline.co.nz",
           "type": "external"
         },
-        "roles": ["Tech Lead", "Full Stack Development"],
-        "tech": ["Next.js", "Styled Components", "Headless Wordpress", "GraphQl"]
+        "roles": [
+          "Tech Lead",
+          "Full Stack Development"
+        ],
+        "tech": [
+          "Next.js",
+          "Styled Components",
+          "Headless Wordpress",
+          "GraphQl"
+        ]
       },
       {
         "title": "Craigs Investment <br/>Partners",
@@ -40,8 +48,16 @@
           "url": "https://craigsip.com",
           "type": "external"
         },
-        "roles": ["Tech Lead", "Full Stack Development"],
-        "tech": ["Next.js", "Styled Components", "Headless Wordpress", "GraphQl"]
+        "roles": [
+          "Tech Lead",
+          "Full Stack Development"
+        ],
+        "tech": [
+          "Next.js",
+          "Styled Components",
+          "Headless Wordpress",
+          "GraphQl"
+        ]
       },
       {
         "title": "YoungShand.",
@@ -50,8 +66,16 @@
           "url": "https://youngshand.com",
           "type": "external"
         },
-        "roles": ["Tech Oversight", "Front End Development"],
-        "tech": ["Next.js", "Styled Components", "Strapi", "GraphQl"]
+        "roles": [
+          "Tech Oversight",
+          "Front End Development"
+        ],
+        "tech": [
+          "Next.js",
+          "Styled Components",
+          "Strapi",
+          "GraphQl"
+        ]
       },
       {
         "title": "Provincia <br/>Property",
@@ -60,8 +84,16 @@
           "url": "https://provincia.co.nz",
           "type": "external"
         },
-        "roles": ["Tech Lead", "Full Stack Development"],
-        "tech": ["Next.js", "Styled Components", "Headless Wordpress", "GraphQl"]
+        "roles": [
+          "Tech Lead",
+          "Full Stack Development"
+        ],
+        "tech": [
+          "Next.js",
+          "Styled Components",
+          "Headless Wordpress",
+          "GraphQl"
+        ]
       },
       {
         "title": "BurgerFuel <br/>Bunder",
@@ -70,8 +102,16 @@
           "url": "/work/bunder",
           "type": "internal"
         },
-        "roles": ["Tech Lead", "Front End Development"],
-        "tech": ["Next.js", "Styled Components", "Strapi", "GraphQl"]
+        "roles": [
+          "Tech Lead",
+          "Front End Development"
+        ],
+        "tech": [
+          "Next.js",
+          "Styled Components",
+          "Strapi",
+          "GraphQl"
+        ]
       },
       {
         "title": "Blind Low <br/>Vision NZ",
@@ -80,8 +120,16 @@
           "url": "https://blindlowvision.org.nz",
           "type": "external"
         },
-        "roles": ["Tech Lead", "Full Stack Development"],
-        "tech": ["Next.js", "Styled Components", "Headless Wordpress", "GraphQl"]
+        "roles": [
+          "Tech Lead",
+          "Full Stack Development"
+        ],
+        "tech": [
+          "Next.js",
+          "Styled Components",
+          "Headless Wordpress",
+          "GraphQl"
+        ]
       },
       {
         "title": "Oceania <br/>HealthCare",
@@ -90,8 +138,16 @@
           "url": "https://oceaniahealthcare.co.nz",
           "type": "external"
         },
-        "roles": ["Tech Lead", "Full Stack Development"],
-        "tech": ["Next.js", "SASS", "Headless Wordpress", "GraphQl"]
+        "roles": [
+          "Tech Lead",
+          "Full Stack Development"
+        ],
+        "tech": [
+          "Next.js",
+          "SASS",
+          "Headless Wordpress",
+          "GraphQl"
+        ]
       },
       {
         "title": "Alcohol&Me",
@@ -100,8 +156,16 @@
           "url": "https://alcoholandme.org.nz",
           "type": "external"
         },
-        "roles": ["Tech Lead", "Full Stack Development"],
-        "tech": ["Next.js", "SASS", "Headless Wordpress", "Rest API"]
+        "roles": [
+          "Tech Lead",
+          "Full Stack Development"
+        ],
+        "tech": [
+          "Next.js",
+          "SASS",
+          "Headless Wordpress",
+          "Rest API"
+        ]
       }
     ]
   }

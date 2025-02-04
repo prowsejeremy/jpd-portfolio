@@ -1,0 +1,158 @@
+// ///////////////////////////////////////////////////
+// Relative Size
+// ///////////////////////////////////////////////////
+
+// @mixin RelativeSize($property, $value) {
+
+//   $relativeSizeBase: 1024;
+//   $baseSize: 100vw;
+//   $setValue: calc($value / $relativeSizeBase) * $baseSize * 1vw;
+
+//   #{$property}: $setValue;
+// }
+
+@mixin RelativeSize($property, $values) {
+
+  $relativeSizeBase: 1024;
+  $baseSize: 100vw;
+
+  $setValue: ();
+
+	@each $value in $values {
+		$setValue: append($setValue, ($value/$relativeSizeBase)*$baseSize);
+  }
+
+  #{$property}: $setValue;
+
+	// EXAMPLES:
+
+	// SINGLE VALUE
+  //	@include relative-size(font-size, 32);
+
+	// MULTIPLE VALUES
+	//	$values: 100 50 20;
+  //	@include relative-size(padding, $values);
+
+}
+
+// @mixin relative-size-transform($property, $values, $baseSize:100vw) {
+
+//   $setValue: ();
+
+// 	@each $value in $values {
+// 		$setValue: append($setValue, ($value/$relativeSizeBase)*$baseSize);
+// 	}
+
+//   $propVal: '';
+
+//   @if ($property == 'translate') {
+//     $propVal: translate($setValue);
+//   } @else if ($property == 'translateX'){
+//     $propVal: translateX($setValue);
+//   } @else if ($property == 'translateY'){
+//     $propVal: translateY($setValue);
+//   } @else if ($property == 'scale'){
+//     $propVal: scale($setValue);
+//   } @else if ($property == 'scaleX'){
+//     $propVal: scaleX($setValue);
+//   } @else if ($property == 'scaleY'){
+//     $propVal: scaleY($setValue);
+//   } @else if ($property == 'rotate'){
+//     $propVal: rotate($setValue);
+//   } @else if ($property == 'rotateX'){
+//     $propVal: rotateX($setValue);
+//   } @else if ($property == 'rotateZ'){
+//      $propVal: rotateX($setValue);
+//   } @else if ($property == 'rotateY'){
+//     $propVal: rotateY($setValue);
+//   } @else if ($property == 'skew'){
+//     $propVal: skew($setValue);
+//   } @else if ($property == 'skewX'){
+//     $propVal: skewX($setValue);
+//   } @else if ($property == 'skewY'){
+//     $propVal: skewY($setValue);
+//   }
+
+//   transform: $propVal;
+
+// 	/// EXAMPLES:
+
+// 	/// SINGLE VALUE
+//   //	@include relative-size(scale, 50);
+
+// 	/// MULTIPLE VALUES
+// 	//	$values: 100 50 20;
+//   //	@include relative-size(translate, $values);
+
+// }
+
+
+// ///////////////////////////////////////////////////
+// Themeing
+// ///////////////////////////////////////////////////
+
+// $themes: (
+//   "theme-dark": (
+//     "standard": (
+//       "background": $ocean700,
+//       "foreground": $ocean500,
+//       "textColor": rgba($white, 0.6),
+
+//     ),
+//     "reversed": (
+//       "background": $ocean700,
+//       "foreground": $ocean500,
+//       "textColor": rgba($white, 0.6),
+//     )
+//   ),
+  
+//   "theme-light": (
+//     "standard": (
+//       "background": $ocean700,
+//       "foreground": $ocean500,
+//       "textColor": rgba($white, 0.6),
+
+//     ),
+//     "reversed": (
+//       "background": $ocean700,
+//       "foreground": $ocean500,
+//       "textColor": rgba($white, 0.6),
+//     )
+//   ),
+// );
+
+@mixin themify() {
+  @each $themeStyleKey, $themeStyleMap in $themes {
+
+    @each $theme, $map in $themeStyleMap {
+      @if $theme == "reversed" {
+        .reversed & {
+          .#{$themeStyleKey} & {
+            $theme-map: () !global;
+            @each $key, $submap in $map {
+              $value: map-get(map-get(map-get($themes, $themeStyleKey), $theme), '#{$key}');
+              $theme-map: map-merge($theme-map, ($key: $value)) !global;
+            }
+            @content;
+            $theme-map: null !global;
+          }
+        }
+      }
+      @else {
+        .#{$themeStyleKey} & {
+          $theme-map: () !global;
+          @each $key, $submap in $map {
+            $value: map-get(map-get(map-get($themes, $themeStyleKey), $theme), '#{$key}');
+            $theme-map: map-merge($theme-map, ($key: $value)) !global;
+          }
+          @content;
+          $theme-map: null !global;
+        }
+      }
+    }
+  }
+}
+
+@function themed($value) {
+  @return map-get($theme-map, $value);
+}

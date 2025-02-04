@@ -14,6 +14,7 @@ export const _HomePageContent = styled.div`
   align-items: center;
   width: 100%;
   position: relative;
+  z-index: 2;
 
   ${(props) => props.theme.mediaQueries.desktopSm} {
     height: 100vh;
@@ -56,6 +57,11 @@ export const _HomeLogoLockup = styled.div`
   padding: 2rem;
   position: relative;
   margin-right: auto;
+  width: 20rem;
+  
+  ${(props) => props.theme.mediaQueries.desktopSm} {
+    width: ${RelativeSize(250)};
+  }
 
   svg {
     display: block;
@@ -76,7 +82,7 @@ export const _Circle = styled.div`
   width: 20rem;
   height: auto;
   border-radius: 100%;
-  background: ${(props) => props.theme.colors.brand_1};
+  /* background: ${(props) => props.theme.colors.brand_1}; */
 
   ${(props) => props.theme.mediaQueries.desktopSm} {
     width: ${RelativeSize(250)};

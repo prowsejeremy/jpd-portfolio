@@ -1,37 +1,47 @@
-'use client'
+"use client";
 
-import { useEffect } from 'react'
-import { useGlobalState } from 'src/_lib/Store'
+import { useEffect } from "react";
+import { useGlobalState } from "src/_lib/Store";
 
-import HomeTemplate from 'src/_templates/HomeTemplate'
-import WorkTemplate from 'src/_templates/WorkTemplate'
-import DynamicTemplate from 'src/_templates/DynamicTemplate'
+import HomeTemplate from "src/_templates/HomeTemplate";
+import WorkTemplate from "src/_templates/WorkTemplate";
+import DynamicTemplate from "src/_templates/DynamicTemplate";
+import NewHomeTemplate from "src/_templates/NewHomeTemplate";
 
-const PageTemplate = ({page}:{page:any}) => {
+import { notFound } from "next/navigation";
 
-  const {dispatch} = useGlobalState()
+const PageTemplate = ({ page }: { page: any }) => {
+  const { dispatch } = useGlobalState();
 
   useEffect(() => {
-    dispatch({type: 'setPageTheme', value: page.pageTheme ? page.pageTheme : 'brand_1'})
-  }, [])
+    dispatch({
+      type: "setPageTheme",
+      value: page.pageTheme ? page.pageTheme : "brand_1",
+    });
+  }, []);
 
-  let Template = DynamicTemplate
+  let Template = DynamicTemplate;
 
-  switch(page.template) {
-    case 'HomeTemplate':
-      Template = HomeTemplate
-      break
-    case 'WorkTemplate':
-      Template = WorkTemplate
-      break
-    case 'DynamicTemplate':
+  switch (page.template) {
+    case "HomeTemplate":
+      Template = HomeTemplate;
+      break;
+    case "WorkTemplate":
+      Template = WorkTemplate;
+      break;
+    case "DynamicTemplate":
+      Template = DynamicTemplate;
+      break;
+    case "newHome":
+      Template = NewHomeTemplate;
+      break;
     default:
-      Template = DynamicTemplate
-      break
+      return notFound();
+    // Template = DynamicTemplate
+    // break;
   }
 
-  return <Template page={page} />
-}
+  return <Template page={page} />;
+};
 
-export default PageTemplate
-        
+export default PageTemplate;
