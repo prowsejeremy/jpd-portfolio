@@ -10,12 +10,18 @@ const NewHomeTemplate = ({ page }: { page: any }) => {
   const { aboutContent } = page;
 
   const [blurAmount, setBlurAmount] = useState<number>(0);
+  const [opacityAmount, setOpacityAmount] = useState<number>(1);
 
   useEffect(() => {
     const trackScroll = (): void => {
       const offset: number = window.scrollY;
       const threshold: number = window.innerHeight;
       const blurProp: number = offset / threshold;
+      const opacityProp: number = 1 - offset / threshold;
+
+      if (opacityProp > 0.2) {
+        setOpacityAmount(opacityProp);
+      }
 
       if (blurProp < 1) {
         setBlurAmount(blurProp * 20);
@@ -34,7 +40,7 @@ const NewHomeTemplate = ({ page }: { page: any }) => {
       <div className={styles.HomePageContent}>
         <div
           className={styles.TitleWrapper}
-          style={{ filter: `blur(${blurAmount}px)` }}
+          style={{ filter: `blur(${blurAmount}px)`, opacity: opacityAmount }}
         >
           <h2 className={styles.Title}>
             <span>K</span>

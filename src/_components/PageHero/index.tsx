@@ -1,21 +1,36 @@
-import Image from 'next/image'
-import VideoBlock from 'src/_components/Blocks/VideoBlock'
+// Core
+import Image from "next/image";
 
-import {
-  _PageHero,
-  _PageTitle,
-  _HeroBackgroundMedia,
-  _HeroImage
-} from './styles'
+// Components
+import VideoBlock from "src/_components/Blocks/VideoBlock";
 
-export default function PageHero({title, videoUrl, image}:{title:string, videoUrl:string, image:{url:string, alt:string}}) {
+// Styles
+import styles from "./styles.module.scss";
+
+export default function PageHero({
+  title,
+  videoUrl,
+  image,
+}: {
+  title: string;
+  videoUrl: string;
+  image: { url: string; alt: string };
+}) {
   return (
-    <_PageHero>
-      <_PageTitle>{title}</_PageTitle>
-      <_HeroBackgroundMedia>
-        {image?.url && <_HeroImage as={Image} src={image.url} alt={image.alt} fill={true} priority /> }
-        { videoUrl && <VideoBlock src={videoUrl} /> }
-      </_HeroBackgroundMedia>
-    </_PageHero>
-  )
+    <div className={styles.PageHero}>
+      <h1 className={styles.PageTitle}>{title}</h1>
+      <div className={styles.HeroBackgroundMedia}>
+        {image?.url && (
+          <Image
+            className={styles.HeroImage}
+            src={image.url}
+            alt={image.alt}
+            fill={true}
+            priority
+          />
+        )}
+        {videoUrl && <VideoBlock src={videoUrl} />}
+      </div>
+    </div>
+  );
 }

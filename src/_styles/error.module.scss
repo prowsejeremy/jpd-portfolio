@@ -1,5 +1,5 @@
 @use 'src/_styles/breakpoints' as breakpoints;
-@use 'src/_styles/mixins' as mixins;
+@use 'src/_styles/functions' as *;
 
 .ErrorPageWrapper {
   display: flex;
@@ -24,7 +24,7 @@
   margin: auto;
 
   @include breakpoints.desktopSm {
-    @include mixins.RelativeSize(max-width, 500);
+    max-width: RelativeSize(500);
     padding: 0;
   }
 }
@@ -37,8 +37,8 @@
   font-weight: 900;
 
   @include breakpoints.desktopSm {
-    @include mixins.RelativeSize(font-size, 120);
-    @include mixins.RelativeSize(letter-spacing, -2);
+    font-size: RelativeSize(120);
+    letter-spacing: RelativeSize(-2);
   }
 }
 
@@ -50,7 +50,7 @@
   }
 
   @include breakpoints.desktopSm {
-    @include mixins.RelativeSize(font-size, 18);
+    font-size: RelativeSize(18);
   }
 }
 
@@ -74,8 +74,8 @@
   
   $paddingValues: 10 25;
   @include breakpoints.desktopSm {
-    @include mixins.RelativeSize(font-size, 16);
-    @include mixins.RelativeSize(padding, $paddingValues);
-    @include mixins.RelativeSize(margin-top, 10);
+    font-size: RelativeSize(16);
+    padding: RelativeSize($paddingValues);
+    margin-top: RelativeSize(10);
   }
 }

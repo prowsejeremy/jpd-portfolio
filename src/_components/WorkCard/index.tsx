@@ -1,65 +1,58 @@
-'use client'
+"use client";
 
-import CustomLink from 'src/_components/CustomLink'
+import CustomLink from "src/_components/CustomLink";
 
-import {
-  _WorkCard,
-    _WorkYear,
-    _WorkTitle,
-    _WorkDetailsWrapper,
-      _WorkDetailsColumn
-} from './styles'
+import styles from "./styles.module.scss";
 
 interface CardProps {
-  title: string,
-  roles: string[],
-  tech: string[],
-  year: string,
-  link: {url:string, type:string, target:string}
+  title: string;
+  roles: string[];
+  tech: string[];
+  year: string;
+  link: { url: string; type: string; target: string };
 }
 
-const WorkCard = ({card}:{card:CardProps}) => {
-
-  const {
-    title,
-    roles,
-    tech,
-    year,
-    link
-  } = card
+const WorkCard = ({ card }: { card: CardProps }) => {
+  const { title, roles, tech, year, link } = card;
 
   const CardInner = (
     <>
-      
-      <_WorkYear>{year}</_WorkYear>
-      <_WorkTitle dangerouslySetInnerHTML={{ __html: title }} />
+      <p className={styles.WorkYear}>{year}</p>
+      <h3
+        className={styles.WorkTitle}
+        dangerouslySetInnerHTML={{ __html: title }}
+      />
 
-      <_WorkDetailsWrapper>
-        <_WorkDetailsColumn>
+      <div className={styles.WorkDetailsWrapper}>
+        <div className={styles.WorkDetailsColumn}>
           <h3>ROLES</h3>
           <ul>
-            {roles.map((r:string, k:number) => <li key={k}>{r}</li>)}
+            {roles.map((r: string, k: number) => (
+              <li key={k}>{r}</li>
+            ))}
           </ul>
-        </_WorkDetailsColumn>
-        <_WorkDetailsColumn>
+        </div>
+        <div className={styles.WorkDetailsColumn}>
           <h3>TECHNOLOGY</h3>
           <ul>
-            {tech.map((t:string, k:number) => <li key={k}>{t}</li>)}
+            {tech.map((t: string, k: number) => (
+              <li key={k}>{t}</li>
+            ))}
           </ul>
-        </_WorkDetailsColumn>
-      </_WorkDetailsWrapper>
+        </div>
+      </div>
     </>
-  )
+  );
 
-  return link.type === 'internal' ? (
-      <CustomLink component={_WorkCard} href={link.url}>
-        {CardInner}   
-      </CustomLink>
-    ) : (
-      <_WorkCard href={link.url} target='_blank'>
-        {CardInner}   
-      </_WorkCard>
-    )
-}
+  return link.type === "internal" ? (
+    <CustomLink className={styles.WorkCard} href={link.url}>
+      {CardInner}
+    </CustomLink>
+  ) : (
+    <a className={styles.WorkCard} href={link.url} target="_blank">
+      {CardInner}
+    </a>
+  );
+};
 
-export default WorkCard
+export default WorkCard;

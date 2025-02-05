@@ -1,5 +1,5 @@
 @use 'src/_styles/breakpoints' as breakpoints;
-@use 'src/_styles/mixins' as mixins;
+@use 'src/_styles/functions' as *;
 
 .FooterWrapper {
   width: 100%;
@@ -9,7 +9,7 @@
   background-color: var(--color-brand_1);
 
   @include breakpoints.desktopSm {
-    @include mixins.RelativeSize(padding, 20);
+    padding: RelativeSize(20);
   }
 }
 
@@ -32,8 +32,8 @@
   }
 
   @include breakpoints.desktopSm {
-    @include mixins.RelativeSize(font-size, 10);
-    @include mixins.RelativeSize(padding, 10);
+    font-size: RelativeSize(10);
+    padding: RelativeSize(10);
   }
 }
 
@@ -54,8 +54,8 @@
   margin-right: auto;
 
   @include breakpoints.desktopSm {
-    @include mixins.RelativeSize(padding, 10);
-    @include mixins.RelativeSize(width, 180);
+    padding: RelativeSize(10);
+    width: RelativeSize(180);
   }
 
   svg {

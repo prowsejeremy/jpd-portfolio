@@ -1,0 +1,26 @@
+// ///////////////////////////////////////////////////
+// Relative Size
+// ///////////////////////////////////////////////////
+
+@function RelativeSize($values) {
+
+  $relativeSizeBase: 1024;
+  $baseSize: 100vw;
+  $setValue: ();
+
+	@each $value in $values {
+		$setValue: append($setValue, ($value/$relativeSizeBase)*$baseSize);
+  }
+
+  @return $setValue;
+
+	// EXAMPLES:
+
+	// SINGLE VALUE
+  //	@include relative-size(32);
+
+	// MULTIPLE VALUES
+	//	$values: 100 50 20;
+  //	@include relative-size($values);
+
+}

@@ -1,0 +1,112 @@
+@use 'src/_styles/breakpoints' as breakpoints;
+@use 'src/_styles/mixins' as mixins;
+@use 'src/_styles/functions' as *;
+
+.WorkTitle {
+  font-size: 5.5rem;
+  letter-spacing: -0.1rem;
+  text-transform: uppercase;
+  color: var(--color-brand_2);
+  line-height: 0.8;
+  font-weight: 900;
+
+  @include breakpoints.desktopSm {
+    font-size: RelativeSize(80);
+    letter-spacing: RelativeSize(-2);
+  }
+}
+
+.WorkDetailsWrapper {
+  width: auto;
+
+  @include breakpoints.desktopSm {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+
+    margin-top: RelativeSize(20);
+    opacity: 0;
+    visibility: hidden;
+    height: auto;
+    max-height: 0;
+    transition: all 300ms ease-out;
+  }
+}
+
+.WorkDetailsColumn {
+  color: var(--color-white);
+  margin-top: 1.5rem;
+
+  @include breakpoints.desktopSm {
+    margin: 0 RelativeSize(30) 0;
+  }
+
+  h3 {
+    font-size: 2.8rem;
+
+    @include breakpoints.desktopSm {
+      font-size: RelativeSize(20);
+    }
+  }
+  ul {
+    padding-left: 2rem;
+
+    @include breakpoints.desktopSm {
+      padding-left: RelativeSize(20);
+    }
+
+    li {
+      font-size: 1.6rem;
+      margin-top: 0.5rem;
+      list-style-type: "–  ";
+
+      @include breakpoints.desktopSm {
+        font-size: RelativeSize(14);
+        margin-top: RelativeSize(5);
+      }
+    }
+  }
+}
+
+.WorkYear {
+  font-size: 1.4rem;
+  text-align: right;
+  color: var(--color-white);
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: rotate(-90deg) translate(60%, -60%);
+  transform-origin: bottom right;
+
+  @include breakpoints.desktopSm {
+    font-size: RelativeSize(23);
+  }
+}
+
+.WorkCard {
+  display: inline-block;
+  width: auto;
+  position: relative;
+  overflow: hidden;
+  padding-left: 2.8rem;
+
+  &:not(:last-child) {
+    margin-bottom: 5rem;
+  }
+
+  @include breakpoints.desktopSm {
+    padding-left: RelativeSize(35);
+
+    &:not(:last-child) {
+      margin-bottom: RelativeSize(60);
+    }
+
+    &:hover {
+      .WorkDetailsWrapper {
+        opacity: 1;
+        visibility: visible;
+        max-height: RelativeSize(150);
+      }
+    }
+  }
+}
