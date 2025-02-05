@@ -1,0 +1,11 @@
+.PageTransitionWrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  background: var(--color-brand_3);
+  z-index: 150;
+}

@@ -1,21 +1,12 @@
-'use client'
+"use client";
 
-import PageHero from 'src/_components/PageHero'
-import PageSections from 'src/_components/PageSections'
+import PageHero from "@/src/_components/globals/PageHero";
+import PageSections from "@/src/_components/Blocks/PageSections";
 
-import {
-  _DynamicPageContent,
-    _DynamicPageDetails
-} from './styles'
+import { _DynamicPageContent, _DynamicPageDetails } from "./styles";
 
-const DynamicTemplate = ({page}:{page:any}) => {
-
-  const {
-    displayTitle,
-    coverImage,
-    coverVideo,
-    pageSections
-  } = page
+const DynamicTemplate = ({ page }: { page: any }) => {
+  const { displayTitle, coverImage, coverVideo, pageSections } = page;
 
   return (
     <_DynamicPageContent>
@@ -24,7 +15,7 @@ const DynamicTemplate = ({page}:{page:any}) => {
         <PageSections sections={pageSections} />
       </_DynamicPageDetails>
     </_DynamicPageContent>
-  )
-}
+  );
+};
 
-export default DynamicTemplate
+export default DynamicTemplate;

@@ -1,10 +1,8 @@
-import { createGlobalStyle } from 'styled-components'
+import { createGlobalStyle } from "styled-components";
 
-import defaultTheme from './theme'
-import reset from './reset'
+import defaultTheme from "./theme";
 
 export default createGlobalStyle`
-  ${reset};
 
   html,
   body {
@@ -44,4 +42,4 @@ export default createGlobalStyle`
     cursor: url('/images/cursor.png') 15 15, default;
     box-sizing: border-box;
   }
-`
+`;

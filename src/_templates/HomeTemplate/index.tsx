@@ -1,9 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Logo from "src/_components/Logo";
-import KonamiIcons from "src/_components/KonamiIcons";
-import CanvasBackground from "src/_components/CanvasBackground";
+import Logo from "@/src/_components/svgs/Logo";
+import KonamiIcons from "@/src/_components/svgs/KonamiIcons";
+import CanvasBackground from "@/src/_components/globals/CanvasBackground";
 import { useGlobalState } from "src/_lib/Store";
 
 import {

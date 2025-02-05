@@ -2,7 +2,7 @@ import { DM_Sans, Teko } from "next/font/google";
 
 import StyledComponentsRegistry from "src/_lib/helpers/registry";
 
-import AppWrapper from "src/_components/AppWrapper";
+import AppWrapper from "@/src/_components/globals/AppWrapper";
 
 import "src/_styles/globals.scss";
 

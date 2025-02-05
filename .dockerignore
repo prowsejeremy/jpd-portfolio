@@ -1,0 +1,10 @@
+# Folders
+.next/
+.git/
+.idea/
+.vscode/
+node_modules/
+
+# Files
+.env.example
+pnpm-lock.*
