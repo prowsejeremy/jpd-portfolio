@@ -51,6 +51,8 @@ const NewHomeTemplate = ({ page }: { page: any }) => {
             <span>r</span>
             <span>a</span>
           </h2>
+
+          <JPLogo />
         </div>
 
         <div className={styles.AboutContentWrapper}>
@@ -66,6 +68,21 @@ const NewHomeTemplate = ({ page }: { page: any }) => {
 };
 
 export default NewHomeTemplate;
+
+const JPLogo = () => {
+  return (
+    <svg className={styles.JPLogo} viewBox="0 0 200 200">
+      <path
+        d="M102.09431,9.49757h41.06516c21.43487,0,45.25379,16.7022,45.25379,45.25379s-24.10917,45.25379-45.25379,45.25379-65.36094-.01029-86.31895-.01029-45.25379,16.4993-45.25379,45.25379,24.34238,45.25379,45.25379,45.25379,45.25379-16.44763,45.25379-45.25379V9.49757"
+        fill="none"
+        stroke="#fff"
+        strokeLinecap="square"
+        strokeMiterlimit="10"
+        strokeWidth="15px"
+      />
+    </svg>
+  );
+};
 
 // InSanity Button
 const InSanityButton = () => {

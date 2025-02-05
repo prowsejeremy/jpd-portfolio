@@ -1,10 +1,26 @@
 :root {
   // Colors
+  // ///////////////////////////////////////////
   --color-brand_1: #f42c5c; // Pink
   --color-brand_2: #1b0a24; // Purple
   --color-brand_3: #2bf599; // Green
   --color-white: #ffffff;
   --color-black: #000000;
+
+
+  // Font Weights
+  // ///////////////////////////////////////////
+  --weight-light: 100;
+  --weight-regular: 400;
+  --weight-medium: 600;
+  // --weight-bold: 800;
+  --weight-black: 900;
+
+
+  // Easing
+  // ///////////////////////////////////////////
+  --easing-inout: cubic-bezier(0.3, 0, 0.5, 1);
+  --easing-bounce: cubic-bezier(0.4, -1, 0.6, 2);
 }
 
 html,

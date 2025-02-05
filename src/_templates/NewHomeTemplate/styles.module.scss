@@ -1,13 +1,6 @@
 @use 'src/_styles/breakpoints' as breakpoints;
 @use 'src/_styles/functions' as *;
 
-@keyframes popIn {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
 .HomePageContent {
   display: flex;
   flex-direction: column;
@@ -28,10 +21,22 @@
   height: 100vh;
 }
 
+
+// Title & animation
+
+@keyframes popIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .Title {
   display: block;
   margin: auto;
 
+  position: relative;
+  z-index: 2;
   font-weight: 900;
   font-size: 23vw;
   text-transform: uppercase;
@@ -43,13 +48,54 @@
     display: inline-block;
     opacity: 0;
     transform: translateY(100px);
-    animation: popIn 125ms linear forwards;
+    animation: popIn 125ms var(--easing-inout) forwards;
     
     @for $i from 1 through 8 {
       &:nth-child(#{$i}) {
         animation-delay: calc($i * 200ms + 100ms);
       }
     }
+  }
+}
+
+// Logo & animation
+
+@keyframes dash {
+  0% {
+    stroke-dashoffset: 2000;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(0deg);
+    
+  }
+}
+
+.JPLogo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+  display: block;
+  width: auto;
+  height: 90vh;
+  z-index: 1;
+  opacity: 0.02;
+  transform-origin: center;
+  animation: rotate 500ms var(--easing-inout) forwards 3500ms;
+
+  path {
+    stroke-dasharray: 1400;
+    stroke-dashoffset: 1400;
+    animation: dash 3500ms var(--easing-inout) forwards 1000ms;
   }
 }
 
@@ -68,13 +114,6 @@
 
 .AboutContent {
   display: block;
-
-  h2 {
-    font-size: 2rem;
-    @include breakpoints.desktopSm {
-      font-size: RelativeSize(30);
-    }
-  }
 
   p {
     font-size: 1.6rem;
