@@ -21,9 +21,8 @@
   &:before {
     content: "";
     display: block;
-    width: 1rem;
-    height: 1rem;
-    background: var(--color-brand_1);
+    width: 1.5rem;
+    height: 1.5rem;
     border-radius: 100%;
     position: absolute;
     top: 45%;
@@ -92,22 +91,6 @@
   top: 0;
   right: 0;
   z-index: 90;
-
-  &.pageTheme-brand_1 {
-    .NavLink {
-      &:before {
-        background: var(--color-brand_2);
-      }
-    }
-  }
-  
-  &.pageTheme-brand_2 {
-    .NavLink {
-      &:before {
-        background: var(--color-brand_1);
-      }
-    }
-  }
 
   @include breakpoints.desktopSm {
     padding: RelativeSize(20);

@@ -2,7 +2,7 @@ import styles from "./styles.module.scss";
 
 export default function Footer() {
   return (
-    <footer className={styles.FooterWrapper}>
+    <footer className={`${styles.FooterWrapper} FooterWrapper`}>
       <KonamiButton />
 
       <div className={styles.FooterItems}>

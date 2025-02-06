@@ -53,8 +53,9 @@ const PageWrapper = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <div
-      className={`${styles.PageWrapper}`}
-      style={{ background: `var(--color-${state.pageTheme})` }}
+      className={`${styles.PageWrapper} ${
+        styles[`pageTheme-${state.pageTheme}`]
+      }`}
     >
       {state.isDesktop && (
         <CustomCursor disableDefaultCursor={state.isDesktop} />

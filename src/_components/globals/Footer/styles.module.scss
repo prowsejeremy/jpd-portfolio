@@ -6,7 +6,6 @@
   padding: 1rem;
   display: flex;
   align-items: center;
-  background-color: var(--color-brand_1);
 
   @include breakpoints.desktopSm {
     padding: RelativeSize(20);

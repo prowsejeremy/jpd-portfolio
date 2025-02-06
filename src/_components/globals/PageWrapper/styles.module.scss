@@ -1,6 +1,46 @@
 .PageWrapper {
   background: var(--color-brand_2);
   min-height: 100vh;
+
+  &.pageTheme-brand_1 {
+    background: var(--color-brand_1);
+
+    :global(.NavLink) {
+      &:before {
+        background: var(--color-brand_2);
+      }
+    }
+    :global(.FooterWrapper) {
+      background: var(--color-brand_2);
+    }
+  }
+
+  &.pageTheme-brand_2 {
+    background: var(--color-brand_2);
+
+    :global(.NavLink) {
+      &:before {
+        background: var(--color-brand_1);
+      }
+    }
+    :global(.FooterWrapper) {
+      background: var(--color-brand_1);
+    }
+  }
+
+  &.pageTheme-brand_3 {
+    background: var(--color-brand_3);
+
+    :global(.NavLink) {
+      background: red;
+      &:before {
+        background: var(--color-brand_2);
+      }
+    }
+    :global(.FooterWrapper) {
+      background: var(--color-brand_2);
+    }
+  }
 }
 
 .MainContentWrapper {

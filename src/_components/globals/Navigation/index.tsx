@@ -15,20 +15,24 @@ export default function Navbar() {
   let pathname = usePathname();
 
   return (
-    <div
-      className={`${styles.NavBar} ${styles[`pageTheme-${state.pageTheme}`]}`}
-    >
+    <div className={styles.NavBar}>
       <div className={styles.NavItems}>
         <CustomLink
-          className={`${styles.NavLink} ${pathname == "/" && styles.active}`}
+          className={`
+            ${styles.NavLink} 
+            NavLink 
+            ${pathname == "/" && styles.active}
+          `}
           href="/"
         >
           HOME
         </CustomLink>
         <CustomLink
-          className={`${styles.NavLink} ${
-            pathname.includes("work") && styles.active
-          }`}
+          className={`
+            ${styles.NavLink} 
+            NavLink 
+            ${pathname.includes("work") && styles.active}
+          `}
           href="/work"
         >
           WORK

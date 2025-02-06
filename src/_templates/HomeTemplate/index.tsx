@@ -5,11 +5,12 @@ import { useEffect, useState } from "react";
 
 // Styles
 import styles from "./styles.module.scss";
+import JPLogo from "@/src/_components/svgs/JPLogo";
 
 const HomeTemplate = ({ page }: { page: any }) => {
   const { aboutContent } = page;
 
-  const [loaded, setLoaded] = useState<boolean>(false);
+  const [hoverEnabled, setHoverEnabled] = useState<boolean>(false);
   const [blurAmount, setBlurAmount] = useState<number>(0);
   const [opacityAmount, setOpacityAmount] = useState<number>(1);
 
@@ -32,7 +33,7 @@ const HomeTemplate = ({ page }: { page: any }) => {
     window.addEventListener("scroll", trackScroll);
 
     setTimeout(() => {
-      setLoaded(true);
+      setHoverEnabled(true);
     }, 2000);
 
     return () => {
@@ -48,7 +49,11 @@ const HomeTemplate = ({ page }: { page: any }) => {
             className={styles.TitleWrapper}
             style={{ filter: `blur(${blurAmount}px)`, opacity: opacityAmount }}
           >
-            <h2 className={`${styles.Title} ${loaded && styles.loaded}`}>
+            <h2
+              className={`${styles.Title} ${
+                hoverEnabled && styles.hoverEnabled
+              }`}
+            >
               <div className={styles.kiaOra}>
                 <span>K</span>
                 <span>i</span>
@@ -67,7 +72,7 @@ const HomeTemplate = ({ page }: { page: any }) => {
               </div>
             </h2>
 
-            <JPLogo />
+            <JPLogo className={styles.JPLogo} />
           </div>
         </section>
 
@@ -86,21 +91,6 @@ const HomeTemplate = ({ page }: { page: any }) => {
 };
 
 export default HomeTemplate;
-
-const JPLogo = () => {
-  return (
-    <svg className={styles.JPLogo} viewBox="0 0 200 200">
-      <path
-        // d="M102.09431,9.49757h41.06516c21.43487,0,45.25379,16.7022,45.25379,45.25379s-24.10917,45.25379-45.25379,45.25379-65.36094-.01029-86.31895-.01029-45.25379,16.4993-45.25379,45.25379,24.34238,45.25379,45.25379,45.25379,45.25379-16.44763,45.25379-45.25379V9.49757"
-        d="M94.68131,9.5h48.51869c21.39999,0,45.3,16.7,45.3,45.3s-24.10001,45.3-45.3,45.3H56.89999c-20.9,0-45.3,16.5-45.3,45.3s24.3,45.3,45.3,45.3,45.3-16.39999,45.3-45.3l-.02021-135.89999"
-        fill="none"
-        stroke="#fff"
-        strokeMiterlimit="10"
-        strokeWidth="15px"
-      />
-    </svg>
-  );
-};
 
 // InSanity Button
 const InSanityButton = () => {
