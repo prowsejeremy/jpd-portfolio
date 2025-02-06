@@ -1,21 +1,25 @@
-import Image from 'next/image'
+// Core
+import Image from "next/image";
 
-import {
-  _ImageBlock,
-    _Image,
-} from './styles'
+// Styles
+import styles from "./styles.module.scss";
 
 export type ImageType = {
-  url:string,
-  alt:string
-}
+  url: string;
+  alt: string;
+};
 
-const ImageBlock = ({image}:{image:ImageType}) => {
+const ImageBlock = ({ image }: { image: ImageType }) => {
   return (
-    <_ImageBlock>
-      <_Image as={Image} src={image.url} alt={image.alt} fill={true} />
-    </_ImageBlock>
-  )
-}
+    <div className={styles.ImageBlock}>
+      <Image
+        className={styles.Image}
+        src={image.url}
+        alt={image.alt}
+        fill={true}
+      />
+    </div>
+  );
+};
 
-export default ImageBlock
+export default ImageBlock;

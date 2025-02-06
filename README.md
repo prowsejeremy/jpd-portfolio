@@ -6,19 +6,26 @@ If, for whatever bizarre reason you find yourself reading this, welcome! This is
 The site, while rather simple in design has a few key elements going on under the hood 👀:
 
 - Next.js 14 using the src dir and app router
-- Styled Components
+- Sass Modules
 - Fully Typescript
 - Scalable UI/Design > 1024px
 - Deployment and hosting via AWS Amplify
+- pnpm package manager
 - A super secret easter egg 🤫 that integrates with [AWS AppSync to host a custom backend](https://medium.com/@prowsejeremy/aws-appsync-api-access-via-iam-user-in-nodejs-95f8d722e3c6)
 
 ### Setup and dev
 
-- Ensure you have a current Node.js (16>) development environment setup.
+- Ensure you have a current Node.js (20>=) development environment setup.
 - Configure a local .env file with the appropriate environment variables then run:
 
 ```
-  npm i && npm run dev
+  pnpm i && pnpm run dev
 ```
 
-Head to [localhost:3000](http://localhost:3000) in your browser and you're off to the races 🐎
+- Or alternatively if you have docker setup and [configured with caddy](https://gist.github.com/prowsejeremy/696764a4a6a9ca56181dacd5c934bb24):
+
+```
+  docker compose -f docker/compose.yml watch
+```
+
+Head to [localhost:3000](http://localhost:3000) or [jpd.test](https://jpd.test) in your browser and you're off to the races 🐎

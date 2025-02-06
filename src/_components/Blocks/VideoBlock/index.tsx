@@ -1,16 +1,14 @@
-import {
-  _VideoWrapper,
-    _Video,
-} from './styles'
+// Styles
+import styles from "./styles.module.scss";
 
-const VideoBlock = ({src}:{src:string}) => {
+const VideoBlock = ({ src }: { src: string }) => {
   return (
-    <_VideoWrapper>
-      <_Video autoPlay muted loop controls={false}>
-        <source src={src} type='video/mp4' />
-      </_Video>
-    </_VideoWrapper>
-  )
-}
+    <div className={styles.VideoWrapper}>
+      <video className={styles.Video} autoPlay muted loop controls={false}>
+        <source src={src} type="video/mp4" />
+      </video>
+    </div>
+  );
+};
 
-export default VideoBlock
+export default VideoBlock;

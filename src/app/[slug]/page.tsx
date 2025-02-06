@@ -1,41 +1,42 @@
-import {notFound} from 'next/navigation'
-import { Metadata } from 'next'
+import { notFound } from "next/navigation";
+import { Metadata } from "next";
 
-import PagesData from 'data/pages.json'
-import PageTemplate from 'src/_templates'
+import PagesData from "data/pages.json";
+import PageTemplate from "src/_templates";
 
-async function getData(slug:String) {
-  const pageData = await PagesData.find((page) => page.slug === slug)
+// Types
+type PageArgs = {
+  params: Promise<{ slug: string }>;
+};
 
-  return pageData
+async function getData(slug: string): Promise<any> {
+  const pageData = await PagesData.find((page) => page.slug === slug);
+
+  return pageData;
 }
 
-type Props = {
-  params: { slug: string }
-}
-
-export async function generateMetadata(
-  { params }: Props
-): Promise<Metadata> {
-
+export async function generateMetadata({
+  params,
+}: PageArgs): Promise<Metadata> {
+  const { slug } = await params;
   // fetch data
-  const data = await getData(params.slug)
+  const data = await getData(slug);
 
-  return data ? data?.seo : {}
+  return data ? data?.seo : {};
 }
 
 export async function generateStaticParams() {
-
   const routes = await PagesData.map((page) => ({
     slug: page.slug,
-  }))
+  }));
 
-  return routes
+  return routes;
 }
 
-export default async function DynamicPage({ params }:{ params:{slug:String} }) {
+export default async function DynamicPage({ params }: PageArgs) {
+  const { slug } = await params;
 
-  const data = await getData(params.slug)
+  const data = await getData(slug);
 
-  return data ? <PageTemplate page={data} /> : notFound()
+  return data ? <PageTemplate page={data} /> : notFound();
 }

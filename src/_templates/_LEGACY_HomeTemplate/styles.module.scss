@@ -1,0 +1,150 @@
+@use 'src/_styles/breakpoints' as breakpoints;
+@use 'src/_styles/functions' as *;
+
+@keyframes changeColor {
+  to {
+    fill: #2bf599;
+  }
+}
+
+.HomePageContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  position: relative;
+  z-index: 2;
+
+  @include breakpoints.desktopSm {
+    height: 100vh;
+    flex-direction: row;
+    overflow: hidden;
+  }
+}
+
+.AboutContentWrapper {
+  width: 100%;
+  max-width: 40rem;
+  padding: 5rem 2rem;
+  color: var(--color-white);
+
+  @include breakpoints.desktopSm {
+    max-width: RelativeSize(250);
+    padding: 0;
+    position: absolute;
+    top: 40%;
+    transform: translateY(-50%);
+    left: RelativeSize(50);
+  }
+}
+
+.AboutContent {
+  display: block;
+  padding-left: 2rem;
+  border-left: 1px solid var(--color-white);
+  font-size: 1.6rem;
+  line-height: 1.6;
+
+  @include breakpoints.desktopSm {
+    font-size: RelativeSize(10);
+    padding-left: RelativeSize(20);
+  }
+}
+
+
+.HomeLogoLockup {
+  padding: 2rem;
+  position: relative;
+  margin-right: auto;
+  width: 20rem;
+  
+  @include breakpoints.desktopSm {
+    width: RelativeSize(250);
+  }
+
+  svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    position: absolute;
+    bottom: -10%;
+    right: -25%;
+    fill: var(--color-white);
+  }
+
+  @include breakpoints.desktopSm {
+    margin: 0 auto;
+  }
+}
+
+.Circle {
+  width: 20rem;
+  height: auto;
+  border-radius: 100%;
+
+  @include breakpoints.desktopSm {
+    width: RelativeSize(250);
+  }
+
+  &:before {
+    content: '';
+    display: block;
+    width: 100%;
+    padding-bottom: 100%;
+  }
+}
+
+.BODLine {
+  width: 5rem;
+  height: 1px;
+  display: block;
+  background: var(--color-white);
+  margin: 0 2rem;
+  transition: all 500ms ease;
+
+  @include breakpoints.tablet {
+    width: 20vh;
+  }
+}
+
+.ButtonOfDespair {
+  background: none;
+  border: none;
+  outline: none;
+  margin: auto;
+  width: auto;
+  display: flex;
+  align-items: center;
+  font-size: 1.2rem;
+  font-weight: 300;
+  text-transform: uppercase;
+  color: var(--color-white);
+  transition: all 500ms ease;
+  transform-origin: center right;
+  padding-top: 5rem;
+
+  &:hover {
+    color: var(--color-brand_3);
+    .BODLine {
+      background: var(--color-brand_3);
+    }
+  }
+
+  @include breakpoints.desktopSm {
+    font-size: RelativeSize(10);
+    padding: RelativeSize(15) RelativeSize(15) RelativeSize(20) RelativeSize(15);
+
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: rotate(-90deg) translate(50%, -50%);
+  }
+}
+
+.PageTitle {
+  margin: auto;
+  width: auto;
+  display: block;
+  color: var(--color-white);
+}

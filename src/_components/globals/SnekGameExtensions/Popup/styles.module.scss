@@ -1,0 +1,15 @@
+.PopupWrapper {
+  background: var(--color-brand_3);
+  padding: 30px;
+  width: 95%;
+  height: 95%;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  top: 2.5%;
+  left: 2.5%;
+  text-align: center;
+  z-index: 5;
+}

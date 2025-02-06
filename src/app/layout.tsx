@@ -1,32 +1,31 @@
-import { Teko, Inter } from 'next/font/google'
+import { DM_Sans, Teko } from "next/font/google";
 
-import StyledComponentsRegistry from 'src/_lib/helpers/registry'
+import AppWrapper from "@/src/_components/globals/AppWrapper";
 
-import AppWrapper from 'src/_components/AppWrapper'
+import "src/_styles/globals.scss";
 
-const headingFont = Teko({
-  subsets: ['latin'],
-  weight: ['300', '600'],
-  variable: '--font-heading'
-})
+const mainFont = DM_Sans({
+  subsets: ["latin"],
+  weight: ["300", "600", "900"],
+  variable: "--font-main",
+});
 
-const bodyFont = Inter({
-  subsets: ['latin'],
-  weight: ['300', '500'],
-  variable: '--font-body'
-})
+const gameFont = Teko({
+  subsets: ["latin"],
+  weight: ["300", "600"],
+  variable: "--font-game",
+});
 
-export default function RootLayout({children}:{children:React.ReactNode}) {
-
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en">
-      <body className={`${bodyFont.variable} ${headingFont.variable}`}>
-        <StyledComponentsRegistry>
-          <AppWrapper>
-            {children}
-          </AppWrapper>
-        </StyledComponentsRegistry>
+      <body className={`${mainFont.variable} ${gameFont.variable}`}>
+        <AppWrapper>{children}</AppWrapper>
       </body>
     </html>
-  )
+  );
 }
