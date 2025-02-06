@@ -1,17 +1,16 @@
-// import Link from 'next/link'
 "use client";
 
+// Core
 import { usePathname } from "next/navigation";
+// import Link from 'next/link'
 
-import { useGlobalState } from "src/_lib/Store";
-
+// Components
 import CustomLink from "@/src/_components/ui/CustomLink";
 
+// Styles
 import styles from "./styles.module.scss";
 
 export default function Navbar() {
-  const { state } = useGlobalState();
-
   let pathname = usePathname();
 
   return (
