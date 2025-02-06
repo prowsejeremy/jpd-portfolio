@@ -1,25 +1,31 @@
-FROM node:20-alpine
+# Base step
+# ####################################
 
-# Set working dir
+FROM node:20-slim AS base
+
+# Install pnpm
+ENV PNPM_HOME="/pnpm"
+ENV PATH="$PNPM_HOME:$PATH"
+RUN npm install -g pnpm@latest
+
+
+# Development step
+# ####################################
+
+FROM base AS dev
+
 WORKDIR /app
 
-# Copy dependency list
-COPY package.json package-lock.json ./
-
-# Install dependencies based on the preferred package manager.
-RUN \
-  if [ -f package-lock.json ]; then npm install; \
-  else echo "Lockfile not found." && exit 1; \
-  fi
-
-# Configure user groups and permissions.
-RUN addgroup --system --gid 1001 nodejs
-RUN adduser --system --uid 1001 nextjs
-
-RUN chown nextjs:nodejs /app && chmod -R 777 /app
-USER nextjs
+RUN echo "Development build"
 
 # Copy all other files.
-COPY --chown=nextjs:nodejs . /app
+COPY . /app
 
-CMD ["npm", "run", "dev"]
+RUN if [ ! -f pnpm-lock.yaml ]; then \
+      echo "Error: pnpm-lock.yaml not found." && exit 1; \
+    fi
+
+# Install non-prod dependancys too
+RUN pnpm install --frozen-lockfile
+
+CMD export NODE_TLS_REJECT_UNAUTHORIZED=0 && pnpm run dev
