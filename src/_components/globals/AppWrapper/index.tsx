@@ -9,26 +9,18 @@
 // </PageTransition>
 // </AnimatePresence>
 
-import { ThemeProvider } from "styled-components";
-
 import { GlobalStateProvider } from "src/_lib/Store/index";
 
 import PageTransition from "@/src/_components/globals/PageTransition";
 import PageWrapper from "@/src/_components/globals/PageWrapper";
 
-import defaultTheme from "src/_styles/theme";
-import GlobalStyle from "src/_styles/global";
-
 const AppWrapper = ({ children }: { children: React.ReactNode }) => {
   return (
-    <ThemeProvider theme={defaultTheme}>
-      <GlobalStateProvider>
-        <GlobalStyle />
-        <PageTransition>
-          <PageWrapper>{children}</PageWrapper>
-        </PageTransition>
-      </GlobalStateProvider>
-    </ThemeProvider>
+    <GlobalStateProvider>
+      <PageTransition>
+        <PageWrapper>{children}</PageWrapper>
+      </PageTransition>
+    </GlobalStateProvider>
   );
 };
 

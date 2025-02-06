@@ -1,12 +1,27 @@
+@use 'src/_styles/functions' as *;
+
 :root {
   // Colors
   // ///////////////////////////////////////////
-  --color-brand_1: #f42c5c; // Pink
-  --color-brand_2: #1b0a24; // Purple
-  --color-brand_3: #2bf599; // Green
-  --color-white: #ffffff;
-  --color-black: #000000;
+  
+  // Pink
+  --color-brand_1: #f42c5c;
+  --rgb-brand_1: #{hexToRGB(#f42c5c)};
 
+  // Purple
+  --color-brand_2: #1b0a24;
+  --rgb-brand_2: #{hexToRGB(#1b0a24)};
+
+  // Green
+  --color-brand_3: #2bf599;
+  --rgb-brand_3: #{hexToRGB(#2bf599)};
+
+  // Generics
+  --color-white: #ffffff;
+  --rgb-white: #{hexToRGB(#ffffff)};
+  --color-black: #000000;
+  --rgb-black: #{hexToRGB(#000000)};
+  
 
   // Font Weights
   // ///////////////////////////////////////////
@@ -27,7 +42,7 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: var(--fonts-main);
+  font-family: var(--font-main);
   font-weight: 300;
   font-size: 10px;
   line-height: 1.5;

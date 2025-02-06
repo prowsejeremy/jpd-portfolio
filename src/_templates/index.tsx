@@ -3,10 +3,9 @@
 import { useEffect } from "react";
 import { useGlobalState } from "src/_lib/Store";
 
-import HomeTemplate from "src/_templates/HomeTemplate";
+import HomeTemplate from "@/src/_templates/HomeTemplate";
 import WorkTemplate from "src/_templates/WorkTemplate";
 import DynamicTemplate from "src/_templates/DynamicTemplate";
-import NewHomeTemplate from "src/_templates/NewHomeTemplate";
 
 import { notFound } from "next/navigation";
 
@@ -31,9 +30,6 @@ const PageTemplate = ({ page }: { page: any }) => {
       break;
     case "DynamicTemplate":
       Template = DynamicTemplate;
-      break;
-    case "newHome":
-      Template = NewHomeTemplate;
       break;
     default:
       return notFound();

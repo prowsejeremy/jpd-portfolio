@@ -1,0 +1,33 @@
+@use 'src/_styles/breakpoints' as breakpoints;
+@use 'src/_styles/functions' as *;
+
+.TextBlock {
+  position: relative;
+  width: 100%;
+  height: auto;
+  padding: 8rem 2rem;
+  background: var(--color-brand_2);
+
+  @include breakpoints.tablet {
+    padding: 15rem 2rem;
+  }
+
+  @include breakpoints.desktopSm {
+    padding: RelativeSize(100) RelativeSize(50);
+  }  
+}
+
+.TextContent {
+  font-size: 1.6rem;
+  color: var(--color-white);
+
+  padding-left: 2rem;
+  border-left: 1px solid var(--color-white);
+  line-height: 1.6;
+
+  @include breakpoints.desktopSm {
+    max-width: RelativeSize(600);
+    font-size: RelativeSize(16);
+    padding-left: RelativeSize(30);
+  }
+}

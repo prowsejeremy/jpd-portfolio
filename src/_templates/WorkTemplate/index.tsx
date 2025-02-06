@@ -1,22 +1,24 @@
 "use client";
 
+// Components
 import WorkCard from "@/src/_components/ui/WorkCard";
 
-import { _WorkPageContent, _WorkItems } from "./styles";
+// Styles
+import styles from "./styles.module.scss";
 
 const WorkTemplate = ({ page }: { page: any }) => {
   const { workItems } = page;
 
   return (
-    <_WorkPageContent>
+    <div className={styles.WorkPageContent}>
       {workItems && (
-        <_WorkItems>
+        <div className={styles.WorkItems}>
           {workItems.map((item: any, key: number) => {
             return <WorkCard card={item} key={key} />;
           })}
-        </_WorkItems>
+        </div>
       )}
-    </_WorkPageContent>
+    </div>
   );
 };
 

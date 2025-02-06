@@ -11,48 +11,131 @@
   z-index: 2;
 }
 
-.TitleWrapper {
+.TitleSection {
   position: sticky;
   left: 0;
   top: 0;
   z-index: 1;
-  display: flex;
   width: 100%;
   height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
 }
 
+.TitleWrapper {
+  width: 100%;
+  display: block;
+  display: flex;
+  align-items: center;
+}
 
 // Title & animation
 
 @keyframes popIn {
+  from {
+    opacity: 0;
+    transform: translateY(RelativeSize(150));
+  }
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
+@keyframes popOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(RelativeSize(-150));
+  }
+}
+
 .Title {
   display: block;
-  margin: auto;
-
+  width: 100%;
   position: relative;
   z-index: 2;
   font-weight: 900;
   font-size: 23vw;
+  line-height: 1;
   text-transform: uppercase;
   text-align: center;
-  user-select: none;
   color: var(--color-brand_1);
+
+  div, span {
+    pointer-events: none;
+    user-select: none;
+  }
 
   span {
     display: inline-block;
-    opacity: 0;
-    transform: translateY(100px);
-    animation: popIn 125ms var(--easing-inout) forwards;
-    
-    @for $i from 1 through 8 {
-      &:nth-child(#{$i}) {
-        animation-delay: calc($i * 200ms + 100ms);
+    animation-duration: 100ms;
+    animation-timing-function: var(--easing-inout);
+    animation-fill-mode: forwards;
+  }
+
+  .kiaOra {
+    span {
+      opacity: 0;
+      transform: translateY(RelativeSize(150));
+      animation-name: popIn;
+
+      @for $i from 1 through 7 {
+        &:nth-child(#{$i}) {
+          animation-delay: calc($i * 100ms + 500ms);
+        }
+      }
+    }
+  }
+
+  .hello {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    span {
+      opacity: 1;
+      transform: translateY(0);
+      animation-name: popOut;
+    }
+  }
+
+  &.loaded {
+
+    span {
+      @for $i from 1 through 7 {
+        &:nth-child(#{$i}) {
+          animation-delay: calc($i * 100ms + 100ms);
+        }
+      }
+    }
+
+    .hello {
+      opacity: 1;
+    }
+
+    &:hover {
+      .kiaOra {
+        span {
+          animation-name: popOut;
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .hello {
+        span {
+          animation-name: popIn;
+          opacity: 0;
+          transform: translateY(RelativeSize(150));
+        }
       }
     }
   }
@@ -62,7 +145,7 @@
 
 @keyframes dash {
   0% {
-    stroke-dashoffset: 2000;
+    stroke-dashoffset: 630;
   }
   100% {
     stroke-dashoffset: 0;
@@ -86,29 +169,35 @@
   transform: translate(-50%, -50%) rotate(45deg);
   display: block;
   width: auto;
+  max-width: 80vw;
   height: 90vh;
   z-index: 1;
   opacity: 0.02;
   transform-origin: center;
-  animation: rotate 500ms var(--easing-inout) forwards 3500ms;
+  animation: rotate 300ms var(--easing-inout) forwards 2500ms;
 
   path {
-    stroke-dasharray: 1400;
-    stroke-dashoffset: 1400;
-    animation: dash 3500ms var(--easing-inout) forwards 1000ms;
+    stroke-dasharray: 630;
+    stroke-dashoffset: 630;
+    animation: dash 1500ms var(--easing-inout) forwards 1000ms;
   }
 }
 
+.AboutSection {
+  width: 100%;
+}
+
 .AboutContentWrapper {
-  width: 1000px;
+  max-width: 1000px;
+  margin: 0 auto;
+
   color: var(--color-white);
-  padding: 50rem 0;
+  padding: 10rem 2rem;
   position: relative;
   z-index: 10;
 
-  $paddingValues: 200 0;
   @include breakpoints.desktopSm {
-    padding: RelativeSize($paddingValues);
+    padding: RelativeSize(150) 0;
   }
 }
 
@@ -130,7 +219,7 @@
   display: block;
   background: var(--color-white);
   margin: 0 2rem;
-  transition: all 500ms ease;
+  transition: all 500ms var(--easing-inout);
 
   @include breakpoints.tablet {
     width: 20vh;
@@ -141,7 +230,6 @@
   background: none;
   border: none;
   outline: none;
-  margin: auto;
   width: auto;
   display: flex;
   align-items: center;
@@ -150,8 +238,7 @@
   font-weight: 300;
   text-transform: uppercase;
   color: var(--color-white);
-  transition: all 500ms ease;
-  transform-origin: center right;
+  transition: all 500ms var(--easing-inout);
   padding-top: 5rem;
 
   &:hover {

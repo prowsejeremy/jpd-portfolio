@@ -1,7 +1,5 @@
 import { DM_Sans, Teko } from "next/font/google";
 
-import StyledComponentsRegistry from "src/_lib/helpers/registry";
-
 import AppWrapper from "@/src/_components/globals/AppWrapper";
 
 import "src/_styles/globals.scss";
@@ -26,9 +24,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${mainFont.variable} ${gameFont.variable}`}>
-        <StyledComponentsRegistry>
-          <AppWrapper>{children}</AppWrapper>
-        </StyledComponentsRegistry>
+        <AppWrapper>{children}</AppWrapper>
       </body>
     </html>
   );

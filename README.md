@@ -6,7 +6,7 @@ If, for whatever bizarre reason you find yourself reading this, welcome! This is
 The site, while rather simple in design has a few key elements going on under the hood 👀:
 
 - Next.js 14 using the src dir and app router
-- Styled Components
+- Sass Modules
 - Fully Typescript
 - Scalable UI/Design > 1024px
 - Deployment and hosting via AWS Amplify
@@ -14,7 +14,7 @@ The site, while rather simple in design has a few key elements going on under th
 
 ### Setup and dev
 
-- Ensure you have a current Node.js (16>) development environment setup.
+- Ensure you have a current Node.js (20>=) development environment setup.
 - Configure a local .env file with the appropriate environment variables then run:
 
 ```
