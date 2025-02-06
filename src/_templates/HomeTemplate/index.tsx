@@ -11,6 +11,7 @@ const HomeTemplate = ({ page }: { page: any }) => {
   const { aboutContent } = page;
 
   const [hoverEnabled, setHoverEnabled] = useState<boolean>(false);
+  const [translate, setTranslate] = useState<boolean>(false);
   const [blurAmount, setBlurAmount] = useState<number>(0);
   const [opacityAmount, setOpacityAmount] = useState<number>(1);
 
@@ -50,9 +51,14 @@ const HomeTemplate = ({ page }: { page: any }) => {
             style={{ filter: `blur(${blurAmount}px)`, opacity: opacityAmount }}
           >
             <h2
-              className={`${styles.Title} ${
-                hoverEnabled && styles.hoverEnabled
-              }`}
+              onPointerEnter={() => {
+                setTranslate(!translate);
+              }}
+              className={`
+                ${styles.Title}
+                ${hoverEnabled && styles.hoverEnabled}
+                ${translate && styles.translate}
+              `}
             >
               <div className={styles.kiaOra}>
                 <span>K</span>

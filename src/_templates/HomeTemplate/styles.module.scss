@@ -122,7 +122,8 @@
       opacity: 1;
     }
 
-    &:hover {
+    // &:hover {
+    &.translate {
       .kiaOra {
         span {
           animation-name: popOut;
