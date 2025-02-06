@@ -11,7 +11,7 @@ import CustomLink from "@/src/_components/ui/CustomLink";
 import styles from "./styles.module.scss";
 
 export default function Navbar() {
-  let pathname = usePathname();
+  const pathname = usePathname();
 
   return (
     <div className={styles.NavBar}>

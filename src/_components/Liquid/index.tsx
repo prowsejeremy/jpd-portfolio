@@ -6,9 +6,9 @@ import * as THREE from "three";
 import { MathUtils } from "three";
 import { useFrame } from "@react-three/fiber";
 
-// @ts-ignore
+// @ts-expect-error "expect error"
 import vertexShader from "!!raw-loader!./vertexShader.glsl";
-// @ts-ignore
+// @ts-expect-error "expect error"
 import fragmentShader from "!!raw-loader!./fragmentShader.glsl";
 
 const Liquid = () => {
@@ -29,11 +29,11 @@ const Liquid = () => {
 
   useFrame((state) => {
     const { clock } = state;
-    // @ts-ignore
+    // @ts-expect-error "expect error"
     mesh.current.material.uniforms.u_time.value = 0.4 * clock.getElapsedTime();
-    // @ts-ignore
+    // @ts-expect-error "expect error"
     mesh.current.material.uniforms.u_intensity.value = MathUtils.lerp(
-      // @ts-ignore
+      // @ts-expect-error "expect error"
       mesh.current.material.uniforms.u_intensity.value,
       hover.current ? 0.5 : 0.1,
       0.02

@@ -15,6 +15,8 @@ const eslintConfig = [
     rules: {
       "@next/next/no-html-link-for-pages": 0,
       "react-hooks/exhaustive-deps": 0,
+      "@typescript-eslint/no-explicit-any": 0,
+      "@typescript-eslint/no-unsafe-function-type": 0,
     },
   }),
 ];

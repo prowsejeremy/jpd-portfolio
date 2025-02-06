@@ -1,4 +1,5 @@
 @use 'sass:color';
+@use 'sass:list';
 
 // ///////////////////////////////////////////////////
 // Convert hex colors to rgb
@@ -23,7 +24,7 @@
   $setValue: ();
 
 	@each $value in $values {
-		$setValue: append($setValue, ($value/$relativeSizeBase)*$baseSize);
+		$setValue: list.append($setValue, calc(($value/$relativeSizeBase)*$baseSize));
   }
 
   @return $setValue;

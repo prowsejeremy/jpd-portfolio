@@ -42,13 +42,13 @@ const KonamiButton = () => {
   const [timeID, setTimeoutID] = useState<NodeJS.Timeout | null>(null);
 
   const handleKonamiTouchEnd = () => {
-    timeID && clearTimeout(timeID);
+    if (timeID) clearTimeout(timeID);
     setTimeoutID(null);
   };
 
   const handleKonamiTouchStart = () => {
     const timeout = setTimeout(() => {
-      timeID && clearTimeout(timeID);
+      if (timeID) clearTimeout(timeID);
       setTimeoutID(null);
       dispatch({ type: "setKonami", value: true });
     }, 2000);

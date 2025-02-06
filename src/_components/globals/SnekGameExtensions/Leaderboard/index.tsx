@@ -29,7 +29,7 @@ export default function SnekLeaderboard() {
         setLeaderboardData(data);
         setLeaderboardState(data.length > 0 ? LBENUM.LOADED : LBENUM.NORESULTS);
       })
-      .catch((err) => {
+      .catch(() => {
         setLeaderboardState(LBENUM.ERROR);
       });
   };

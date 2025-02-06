@@ -1,22 +1,22 @@
-import { signedFetch } from 'src/_lib/helpers/aws-signv4-helper'
-import { GetLeaderboardQuery } from 'src/_lib/graphql/Queries/GetPlayersQuery'
-import { PostScoreMutation } from 'src/_lib/graphql/Mutations/PostScoreMutation'
+import { signedFetch } from "src/_lib/helpers/aws-signv4-helper";
+import { GetLeaderboardQuery } from "src/_lib/graphql/Queries/GetPlayersQuery";
+import { PostScoreMutation } from "src/_lib/graphql/Mutations/PostScoreMutation";
 
-export default {
+const api = {
   appsync: {
     getLeaderboard: async () => {
+      const leaderboard = await signedFetch(GetLeaderboardQuery);
 
-      const leaderboard = await signedFetch(GetLeaderboardQuery)
-
-      return leaderboard
+      return leaderboard;
     },
-    postScore: async ({name, score}:{name:String, score:Number}) => {
+    postScore: async ({ name, score }: { name: string; score: number }) => {
+      PostScoreMutation.variables = { name, score };
 
-      PostScoreMutation.variables = { name, score }
+      const playerRecord = await signedFetch(PostScoreMutation);
 
-      const playerRecord = await signedFetch(PostScoreMutation)
+      return playerRecord;
+    },
+  },
+};
 
-      return playerRecord
-    }
-  }
-}
+export default api;

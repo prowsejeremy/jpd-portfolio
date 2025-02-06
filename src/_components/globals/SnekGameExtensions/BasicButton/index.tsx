@@ -1,3 +1,6 @@
+// Core
+import React from "react";
+
 // Styles
 import styles from "./styles.module.scss";
 
@@ -7,11 +10,7 @@ type ButtonPropTypes = {
   type?: React.ButtonHTMLAttributes<HTMLButtonElement>["type"];
 };
 
-export default function BasicButton({
-  text,
-  action,
-  type = "button",
-}: ButtonPropTypes) {
+const BasicButton = ({ text, action, type = "button" }: ButtonPropTypes) => {
   return (
     <button
       className={styles.Button}
@@ -21,4 +20,6 @@ export default function BasicButton({
       {text}
     </button>
   );
-}
+};
+
+export default BasicButton;

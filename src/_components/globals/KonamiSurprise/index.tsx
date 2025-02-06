@@ -61,12 +61,10 @@ export default function KonamiSurprise() {
           setShowSubmitForm(false);
           snek.handleDirChange("up");
 
-          // @ts-ignore
           snek?.canvas?.focus();
         }, 100);
       });
 
-      // @ts-ignore
       snek?.canvas?.focus();
 
       setSnekInstance(snek);
