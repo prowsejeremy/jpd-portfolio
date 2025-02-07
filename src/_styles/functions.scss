@@ -20,7 +20,7 @@
   $relativeSizeBase: 1024;
   $baseSize: 100vw;
 
-  @return ($value/$relativeSizeBase)*$baseSize;
+  @return calc(($value/$relativeSizeBase)*$baseSize);
 
 	// EXAMPLES:
 
