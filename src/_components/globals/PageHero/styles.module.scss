@@ -11,10 +11,9 @@
   display: flex;
   align-items: flex-end;
 
-  $paddingValues: 200 30 30;
   @include breakpoints.desktopSm {
     min-height: 80rem;
-    padding: RelativeSize($paddingValues);
+    padding: RelativeSize(200) RelativeSize(30) RelativeSize(30);
   }
 }
 
