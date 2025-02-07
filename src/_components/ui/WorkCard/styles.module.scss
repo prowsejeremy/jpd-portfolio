@@ -3,15 +3,48 @@
 
 .WorkTitle {
   font-size: 4rem;
+  display: inline-block;
   letter-spacing: -0.1rem;
   text-transform: uppercase;
   color: var(--color-brand_2);
   line-height: 0.8;
   font-weight: 900;
+  transition: color 300ms var(--easing-inout);
 
   @include breakpoints.desktopSm {
     font-size: RelativeSize(80);
     letter-spacing: RelativeSize(-2);
+  }
+}
+
+.ArrowIcon {
+  width: 2.6rem;
+  height: 2.6rem;
+  margin-left: 0.8rem;
+  display: inline-block;
+  fill: var(--color-brand_2);
+  transition: all 300ms var(--easing-bounce);
+  
+  @include breakpoints.desktopSm {
+    width: RelativeSize(50);
+    height: RelativeSize(50);
+    margin-left: RelativeSize(10);
+    
+    transform: scale(0);
+    opacity: 0;
+  }
+}
+
+.WorkLink {
+  &:hover {
+    .WorkTitle {
+      color: var(--color-brand_3);
+    }
+    .ArrowIcon {
+      opacity: 1;
+      transform: scale(1);
+      fill: var(--color-brand_3);
+    }
   }
 }
 
@@ -28,7 +61,7 @@
     visibility: hidden;
     height: auto;
     max-height: 0;
-    transition: all 300ms ease-out;
+    transition: all 300ms var(--easing-inout);
   }
 }
 

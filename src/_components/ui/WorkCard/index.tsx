@@ -1,7 +1,10 @@
 "use client";
 
+// Components
 import CustomLink from "@/src/_components/ui/CustomLink";
+import ArrowIcon from "@/src/_components/svgs/Arrow";
 
+// Styles
 import styles from "./styles.module.scss";
 
 interface CardProps {
@@ -15,13 +18,26 @@ interface CardProps {
 const WorkCard = ({ card }: { card: CardProps }) => {
   const { title, roles, tech, year, link } = card;
 
-  const CardInner = (
-    <>
+  const titleMarkup = (
+    <h3 className={styles.WorkTitle}>
+      {title}
+      <ArrowIcon className={styles.ArrowIcon} />
+    </h3>
+  );
+
+  return (
+    <div className={styles.WorkCard}>
       <p className={styles.WorkYear}>{year}</p>
-      <h3
-        className={styles.WorkTitle}
-        dangerouslySetInnerHTML={{ __html: title }}
-      />
+
+      {link.type === "internal" ? (
+        <CustomLink className={styles.WorkLink} href={link.url}>
+          {titleMarkup}
+        </CustomLink>
+      ) : (
+        <a className={styles.WorkLink} href={link.url} target="_blank">
+          {titleMarkup}
+        </a>
+      )}
 
       <div className={styles.WorkDetailsWrapper}>
         <div className={styles.WorkDetailsColumn}>
@@ -41,17 +57,7 @@ const WorkCard = ({ card }: { card: CardProps }) => {
           </ul>
         </div>
       </div>
-    </>
-  );
-
-  return link.type === "internal" ? (
-    <CustomLink className={styles.WorkCard} href={link.url}>
-      {CardInner}
-    </CustomLink>
-  ) : (
-    <a className={styles.WorkCard} href={link.url} target="_blank">
-      {CardInner}
-    </a>
+    </div>
   );
 };
 

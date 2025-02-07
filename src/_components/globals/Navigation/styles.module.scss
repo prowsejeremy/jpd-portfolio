@@ -28,7 +28,7 @@
     top: 45%;
     right: 0;
     transform: translateY(-50%) scale(0);
-    transition: all 200ms ease-out 200ms;
+    transition: all 200ms var(--easing-inout) 200ms;
     opacity: 0;
   }
 
@@ -43,7 +43,7 @@
     right: 1rem;
     transform: translateY(-50%) scaleX(0);
     transform-origin: center right;
-    transition: all 200ms ease-out;
+    transition: all 200ms var(--easing-inout);
   }
 
   &.active {
@@ -75,11 +75,11 @@
       &:before {
         transform: translateY(-50%) scale(1);
         opacity: 1;
-        transition: all 200ms ease-out;
+        transition: all 200ms var(--easing-inout);
       }
       &:after {
         transform: translateY(-50%) scaleX(1);
-        transition: all 200ms ease-out 200ms;
+        transition: all 200ms var(--easing-inout) 200ms;
       }
     }
   }
