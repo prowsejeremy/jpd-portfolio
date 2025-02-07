@@ -3,6 +3,9 @@
 // Core
 import { useEffect, useState } from "react";
 
+// Components
+import ScrollIndicator from "@/src/_components/ui/ScrollIndicator";
+
 // Styles
 import styles from "./styles.module.scss";
 import JPLogo from "@/src/_components/svgs/JPLogo";
@@ -45,11 +48,11 @@ const HomeTemplate = ({ page }: { page: any }) => {
   return (
     <>
       <div className={styles.HomePageContent}>
-        <section className={styles.TitleSection}>
-          <div
-            className={styles.TitleWrapper}
-            style={{ filter: `blur(${blurAmount}px)`, opacity: opacityAmount }}
-          >
+        <section
+          className={styles.TitleSection}
+          style={{ filter: `blur(${blurAmount}px)`, opacity: opacityAmount }}
+        >
+          <div className={styles.TitleWrapper}>
             <h2
               onPointerEnter={() => {
                 setTranslate(!translate);
@@ -80,6 +83,8 @@ const HomeTemplate = ({ page }: { page: any }) => {
 
             <JPLogo className={styles.JPLogo} />
           </div>
+
+          <ScrollIndicator />
         </section>
 
         <section className={styles.AboutSection}>

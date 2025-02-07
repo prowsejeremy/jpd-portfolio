@@ -69,18 +69,18 @@
     &:after {
       right: RelativeSize(5);
     }
-  }
 
-  &:hover {
-    color: var(--color-white);
-    &:before {
-      transform: translateY(-50%) scale(1);
-      opacity: 1;
-      transition: all 200ms ease-out;
-    }
-    &:after {
-      transform: translateY(-50%) scaleX(1);
-      transition: all 200ms ease-out 200ms;
+    &:hover {
+      color: var(--color-white);
+      &:before {
+        transform: translateY(-50%) scale(1);
+        opacity: 1;
+        transition: all 200ms ease-out;
+      }
+      &:after {
+        transform: translateY(-50%) scaleX(1);
+        transition: all 200ms ease-out 200ms;
+      }
     }
   }
 }

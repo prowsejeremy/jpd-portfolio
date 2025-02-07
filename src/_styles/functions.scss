@@ -1,5 +1,4 @@
 @use 'sass:color';
-@use 'sass:list';
 
 // ///////////////////////////////////////////////////
 // Convert hex colors to rgb
@@ -17,17 +16,11 @@
 // Relative Size
 // ///////////////////////////////////////////////////
 
-@function RelativeSize($values) {
-
+@function RelativeSize($value) {
   $relativeSizeBase: 1024;
   $baseSize: 100vw;
-  $setValue: ();
 
-	@each $value in $values {
-		$setValue: list.append($setValue, calc(($value/$relativeSizeBase)*$baseSize));
-  }
-
-  @return $setValue;
+  @return ($value/$relativeSizeBase)*$baseSize;
 
 	// EXAMPLES:
 

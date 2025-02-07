@@ -72,10 +72,9 @@
     background: var(--color-brand_3);
   }
   
-  $paddingValues: 10 25;
   @include breakpoints.desktopSm {
     font-size: RelativeSize(16);
-    padding: RelativeSize($paddingValues);
+    padding: RelativeSize(10) RelativeSize(25);
     margin-top: RelativeSize(10);
   }
 }
