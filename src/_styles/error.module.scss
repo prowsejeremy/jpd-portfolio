@@ -64,7 +64,7 @@
   font-family: var(--font-main);
   border: none;
   outline: none;
-  transition: all 300ms ease-out;
+  transition: all 300ms var(--easing-inout);
   padding: 1.5rem 3rem;
   margin-top: 1rem;
 
