@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
 // Helpers
-import { getData } from "src/_lib/helpers/fetch-and-cache";
+import { getData } from "@/src/_lib/helpers/fetchAndCache";
 
 // Styles
 import styles from "./styles.module.scss";

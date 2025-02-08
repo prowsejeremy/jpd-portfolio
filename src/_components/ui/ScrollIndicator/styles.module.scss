@@ -15,6 +15,12 @@
 
   @include breakpoints.desktopSm {
     bottom: RelativeSize(-25);
+
+    &:hover {
+      .text {
+        color: var(--color-brand_3);
+      }
+    }
   }
 }
 
@@ -23,6 +29,8 @@
   font-size: 1.2rem;
   margin-bottom: 2rem;
   display: block;
+  transition: color 300ms var(--easing-inout);
+  user-select: none;
 
   @include breakpoints.desktopSm {
     font-size: RelativeSize(10);
