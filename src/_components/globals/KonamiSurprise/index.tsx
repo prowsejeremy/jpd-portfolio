@@ -29,6 +29,10 @@ export default function KonamiSurprise() {
 
   useEffect(() => {
     const gameWrapper = document.getElementById("game");
+
+    // lock scroll on body while konami is active
+    document.body.style.overflow = "hidden";
+
     const gameFont = getComputedStyle(document.body).getPropertyValue(
       "--font-game"
     );
@@ -69,6 +73,11 @@ export default function KonamiSurprise() {
 
       setSnekInstance(snek);
     }
+
+    return () => {
+      // Return scroll to body
+      document.body.style.overflow = "initial";
+    };
   }, []);
 
   const startGame = () => {

@@ -1,7 +1,7 @@
 "use client";
 
 // Core
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 // Components
 import ScrollIndicator from "@/src/_components/ui/ScrollIndicator";
@@ -10,13 +10,18 @@ import ScrollIndicator from "@/src/_components/ui/ScrollIndicator";
 import styles from "./styles.module.scss";
 import JPLogo from "@/src/_components/svgs/JPLogo";
 
+// Types
+type intervalType = ReturnType<typeof setInterval>;
+
 const HomeTemplate = ({ page }: { page: any }) => {
   const { aboutContent } = page;
 
-  const [hoverEnabled, setHoverEnabled] = useState<boolean>(false);
+  const [loaded, setLoaded] = useState<boolean>(false);
+  const [enabled, setEnabled] = useState<boolean>(false);
   const [translate, setTranslate] = useState<boolean>(false);
   const [blurAmount, setBlurAmount] = useState<number>(0);
   const [opacityAmount, setOpacityAmount] = useState<number>(1);
+  const intervalRef = useRef<intervalType | null>(null);
 
   useEffect(() => {
     const trackScroll = (): void => {
@@ -37,13 +42,27 @@ const HomeTemplate = ({ page }: { page: any }) => {
     window.addEventListener("scroll", trackScroll);
 
     setTimeout(() => {
-      setHoverEnabled(true);
-    }, 2000);
+      setLoaded(true);
+      setTimeout(() => {
+        setEnabled(true);
+      }, 7000);
+    }, 300);
 
     return () => {
       window.removeEventListener("scroll", trackScroll);
     };
   }, []);
+
+  useEffect(() => {
+    if (!loaded) return;
+    intervalRef.current = setInterval(() => {
+      setTranslate(!translate);
+    }, 7000);
+
+    return () => {
+      if (intervalRef.current !== null) clearInterval(intervalRef.current);
+    };
+  }, [loaded, translate]);
 
   return (
     <>
@@ -54,13 +73,11 @@ const HomeTemplate = ({ page }: { page: any }) => {
         >
           <div className={styles.TitleWrapper}>
             <h2
-              onPointerEnter={() => {
-                setTranslate(!translate);
-              }}
               className={`
                 ${styles.Title}
-                ${hoverEnabled && styles.hoverEnabled}
                 ${translate && styles.translate}
+                ${enabled && styles.enabled}
+                ${loaded && styles.loaded}
               `}
             >
               <div className={styles.kiaOra}>

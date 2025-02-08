@@ -107,7 +107,7 @@
   position: absolute;
   top: 0;
   left: 0;
-  transform: rotate(-90deg) translate(60%, -60%);
+  transform: rotate(-90deg) translate(5%, -60%);
   transform-origin: bottom right;
 
   @include breakpoints.desktopSm {
@@ -121,18 +121,10 @@
   max-width: 100%;
   position: relative;
   overflow: hidden;
-  padding-left: 2.8rem;
-
-  &:not(:last-child) {
-    margin-bottom: 5rem;
-  }
+  padding: 2rem 0 2rem 2.8rem;
 
   @include breakpoints.desktopSm {
-    padding-left: RelativeSize(35);
-
-    &:not(:last-child) {
-      margin-bottom: RelativeSize(60);
-    }
+    padding: RelativeSize(30) 0 RelativeSize(30) RelativeSize(35);
 
     &:hover {
       .WorkDetailsWrapper {
