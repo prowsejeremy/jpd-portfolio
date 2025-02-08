@@ -1,4 +1,4 @@
-import { signedFetch } from "src/_lib/helpers/aws-signv4-helper";
+import { signedFetch } from "@/src/_lib/helpers/awsSignv4Helper";
 import { GetLeaderboardQuery } from "src/_lib/graphql/Queries/GetPlayersQuery";
 import { PostScoreMutation } from "src/_lib/graphql/Mutations/PostScoreMutation";
 

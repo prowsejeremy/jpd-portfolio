@@ -69,6 +69,7 @@ const HomeTemplate = ({ page }: { page: any }) => {
       <div className={styles.HomePageContent}>
         <section
           className={styles.TitleSection}
+          id={`intro`}
           style={{ filter: `blur(${blurAmount}px)`, opacity: opacityAmount }}
         >
           <div className={styles.TitleWrapper}>
@@ -101,10 +102,10 @@ const HomeTemplate = ({ page }: { page: any }) => {
             <JPLogo className={styles.JPLogo} />
           </div>
 
-          <ScrollIndicator />
+          <ScrollIndicator text="ABOUT" target="about" />
         </section>
 
-        <section className={styles.AboutSection}>
+        <section className={styles.AboutSection} id={`about`}>
           <div className={styles.AboutContentWrapper}>
             <div
               className={styles.AboutContent}
