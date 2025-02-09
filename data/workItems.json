@@ -10,7 +10,12 @@
     },
     "seo": {
       "title": "JPD - BurgerFuel Bunder",
-      "description": "A burger dating app that let’s you swipe through the hotties on the menu to find your perfect burger match."
+      "description": "A burger dating app that let’s you swipe through the hotties on the menu to find your perfect burger match.",
+      "openGraph": {
+        "images": [
+          "/images/work/bunder-cover.jpeg"
+        ]
+      }
     },
     "pageSections": [
       {

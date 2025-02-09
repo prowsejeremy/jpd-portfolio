@@ -3,7 +3,12 @@
     "slug": "home",
     "seo": {
       "title": "JPD",
-      "description": "Jeremy Prowse Digital - Design & Development"
+      "description": "Jeremy Prowse Digital - Design & Development",
+      "openGraph": {
+        "images": [
+          "/images/share.jpg"
+        ]
+      }
     },
     "pageTheme": "brand_2",
     "template": "HomeTemplate",
@@ -17,7 +22,12 @@
     "slug": "work",
     "seo": {
       "title": "JPD - Work",
-      "description": "Check out some of the latest, most notable projects I've been involved with."
+      "description": "Check out some of the latest, most notable projects I've been involved with.",
+      "openGraph": {
+        "images": [
+          "/images/share.jpg"
+        ]
+      }
     },
     "pageTheme": "brand_1",
     "template": "WorkTemplate",
