@@ -5,10 +5,11 @@ import { useEffect, useRef, useState } from "react";
 
 // Components
 import ScrollIndicator from "@/src/_components/ui/ScrollIndicator";
+import Flower from "@/src/_components/svgs/Flower";
+// import JPLogo from "@/src/_components/svgs/JPLogo";
 
 // Styles
 import styles from "./styles.module.scss";
-import JPLogo from "@/src/_components/svgs/JPLogo";
 
 // Types
 type intervalType = ReturnType<typeof setInterval>;
@@ -99,7 +100,8 @@ const HomeTemplate = ({ page }: { page: any }) => {
               </div>
             </h2>
 
-            <JPLogo className={styles.JPLogo} />
+            {/* <JPLogo className={styles.JPLogo} /> */}
+            <Flower className={styles.Flower} />
           </div>
 
           <ScrollIndicator text="ABOUT" target="about" />
