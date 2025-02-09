@@ -21,6 +21,7 @@ const gameFont = Teko({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_URL || "https://jpd.nz"),
   title: "JPD",
   description: "Jeremy Prowse Digital - Design & Development",
   openGraph: {
