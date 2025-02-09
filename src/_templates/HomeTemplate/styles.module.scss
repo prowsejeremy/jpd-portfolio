@@ -157,12 +157,12 @@
   }
 }
 
-@keyframes fadeIn {
+@keyframes dashFlower {
   0% {
-    opacity: 0;
+    stroke-dashoffset: 300;
   }
   100% {
-    opacity: 1;
+    stroke-dashoffset: 0;
   }
 }
 
@@ -181,19 +181,11 @@
   animation: rotate360 60000ms linear infinite 1000ms;
 
   path {
-    fill: none;
-    animation-name: fadeIn;
-    animation-timing-function: var(--easing-inout);
-    animation-duration: 250ms;
-    animation-fill-mode: forwards;
-    opacity: 0;
     stroke: var(--color-white);
-    
-    @for $i from 1 through 12 {
-      &:nth-child(#{$i}) {
-        animation-delay: calc($i * 200ms + 1000ms);
-      }
-    }
+
+    stroke-dasharray: 300;
+    stroke-dashoffset: 300;
+    animation: dashFlower 2000ms var(--easing-inout) forwards 1000ms;
   }
 }
 
