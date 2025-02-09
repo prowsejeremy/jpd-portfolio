@@ -7,9 +7,13 @@ frontend:
         - pnpm install
     build:
       commands:
-        - env | grep -e API_URL -e IAM_ACCESS_KEY_ID -e IAM_SECRET_ACCESS_KEY >> .env.production
-        - env | -e NEXT_URL >> .env.production
-        - env | grep -e NEXT_PUBLIC_ >> .env.production
+        - env | grep
+          -e API_URL
+          -e IAM_ACCESS_KEY_ID
+          -e IAM_SECRET_ACCESS_KEY
+          -e NEXT_URL
+          -e NEXT_PUBLIC_
+          >> .env.production
         - pnpm run build
   artifacts:
     baseDirectory: .next
