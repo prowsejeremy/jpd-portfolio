@@ -1,6 +1,6 @@
-// import { _VideoWrapper } from 'src/_components/Blocks/VideoBlock/styles'
-@use 'src/_styles/breakpoints' as breakpoints;
-@use 'src/_styles/functions' as *;
+// import { _VideoWrapper } from 'src/_components/blocks/VideoBlock/styles'
+@use "src/_styles/breakpoints" as breakpoints;
+@use "src/_styles/functions" as *;
 
 .PageHero {
   position: relative;
@@ -51,7 +51,7 @@
   @include breakpoints.tablet {
     font-size: 16rem;
   }
-  
+
   @include breakpoints.desktopSm {
     max-width: RelativeSize(500);
     font-size: RelativeSize(80);
