@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import { Metadata } from "next";
 
 import PagesData from "data/pages.json";
-import PageTemplate from "src/_templates";
+import PageTemplate from "src/templates";
 
 // Types
 type PageArgs = {

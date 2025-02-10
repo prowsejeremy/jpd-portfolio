@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import { Metadata } from "next";
 
 import workItems from "data/workItems.json";
-import PageTemplate from "src/_templates";
+import PageTemplate from "src/templates";
 
 async function getData(slug: string) {
   const pageData = await workItems.find((page) => page.slug === slug);

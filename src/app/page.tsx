@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import PagesData from "data/pages.json";
-import PageTemplate from "src/_templates";
+import PageTemplate from "src/templates";
 
 async function getData(slug: string) {
   const pageData = await PagesData.find((page) => page.slug === slug);
