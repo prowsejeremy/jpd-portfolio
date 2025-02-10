@@ -1,8 +1,8 @@
 // Components
-import AppWrapper from "@/src/_components/globals/AppWrapper";
+import AppWrapper from "@/src/components/globals/AppWrapper";
 
 // Styles
-import "src/_styles/globals.scss";
+import "src/styles/globals.scss";
 import { Metadata } from "next";
 
 // Fonts

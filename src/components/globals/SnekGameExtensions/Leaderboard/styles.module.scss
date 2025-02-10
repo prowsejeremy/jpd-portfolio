@@ -1,0 +1,58 @@
+@use "src/styles/breakpoints" as breakpoints;
+@use "src/styles/functions" as *;
+
+.LeaderboardWrapper {
+  position: absolute;
+  bottom: 8rem;
+  background: var(--color-brand_3);
+  color: var(--color-brand_2);
+  z-index: 10;
+  left: 2rem;
+  padding: 2rem;
+  max-width: 30rem;
+
+  @include breakpoints.desktopSm {
+    bottom: RelativeSize(80);
+    left: RelativeSize(20);
+    padding: RelativeSize(20);
+    max-width: RelativeSize(300);
+  }
+}
+
+.Title {
+  font-size: 2rem;
+  font-family: var(--font-game);
+  font-weight: 600;
+  text-transform: uppercase;
+
+  @include breakpoints.desktopSm {
+    font-size: RelativeSize(30);
+  }
+}
+
+.Message {
+  font-size: 1.6rem;
+  margin: 1rem auto;
+  line-height: 1.3;
+
+  @include breakpoints.desktopSm {
+    font-size: RelativeSize(14);
+    margin: RelativeSize(10) auto;
+  }
+}
+
+.LeaderboardTable {
+  border-collapse: collapse;
+  width: 100%;
+
+  td,
+  th {
+    text-align: center;
+    font-size: 2rem;
+    font-family: var(--font-game);
+
+    @include breakpoints.desktopSm {
+      font-size: RelativeSize(20);
+    }
+  }
+}

@@ -1,0 +1,154 @@
+@use "src/styles/breakpoints" as breakpoints;
+@use "src/styles/functions" as *;
+
+.ToolTipMessage {
+  display: block;
+  background: var(--color-brand_3);
+  color: var(--color-brand_2);
+  font-weight: var(--weight-medium);
+  line-height: 1;
+  text-wrap: nowrap;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  position: absolute;
+  opacity: 0;
+  transition: 300ms all var(--easing-bounce) 150ms;
+  z-index: 2;
+
+  @include breakpoints.desktopSm {
+    font-size: RelativeSize(12);
+    padding: RelativeSize(10);
+    border-radius: RelativeSize(5);
+  }
+}
+
+.ToolTipPointer {
+  display: block;
+  width: 0;
+  height: 0;
+  position: absolute;
+  transition: 300ms all var(--easing-inout);
+  z-index: 1;
+
+  @include breakpoints.desktopSm {
+    border-width: RelativeSize(10) !important;
+  }
+}
+
+// TOP & BOTTOM SHARED
+.ToolTipTop,
+.ToolTipBottom {
+  left: 50%;
+  transform: translateX(-50%) scale(0);
+
+  .ToolTipPointer {
+    left: 50%;
+    transform: translateX(-50%);
+    // Triangle settings
+    border-left: 1rem solid transparent;
+    border-right: 1rem solid transparent;
+  }
+
+  &.active {
+    transition: 300ms all var(--easing-bounce);
+    transform: translateX(-50%) scale(1);
+    opacity: 1;
+  }
+}
+
+// TOP
+.ToolTipTop {
+  bottom: calc(100% + 1rem);
+
+  @include breakpoints.desktopSm {
+    bottom: calc(100% + RelativeSize(8));
+  }
+
+  .ToolTipPointer {
+    bottom: -1rem;
+    // Triangle settings
+    border-top: 1rem solid var(--color-brand_3);
+
+    @include breakpoints.desktopSm {
+      bottom: RelativeSize(-8);
+    }
+  }
+}
+
+// BOTTOM
+.ToolTipBottom {
+  top: calc(100% + 1rem);
+
+  @include breakpoints.desktopSm {
+    top: calc(100% + RelativeSize(8));
+  }
+
+  .ToolTipPointer {
+    top: -1rem;
+    // Triangle settings
+    border-bottom: 1rem solid var(--color-brand_3);
+
+    @include breakpoints.desktopSm {
+      top: RelativeSize(-8);
+    }
+  }
+}
+
+// LEFT & RIGHT SHARED
+.ToolTipLeft,
+.ToolTipRight {
+  top: 50%;
+  transform: translateY(-50%) scale(0);
+
+  .ToolTipPointer {
+    top: 50%;
+    transform: translateY(-50%);
+    // Triangle settings
+    border-top: 1rem solid transparent;
+    border-bottom: 1rem solid transparent;
+  }
+
+  &.active {
+    transition: 300ms all var(--easing-bounce);
+    transform: translateY(-50%) scale(1);
+    opacity: 1;
+  }
+}
+
+// LEFT
+.ToolTipLeft {
+  right: calc(100% + 1rem);
+
+  @include breakpoints.desktopSm {
+    right: calc(100% + RelativeSize(8));
+  }
+
+  .ToolTipPointer {
+    right: -1rem;
+    // Triangle settings
+    border-left: 1rem solid var(--color-brand_3);
+
+    @include breakpoints.desktopSm {
+      right: RelativeSize(-8);
+    }
+  }
+}
+
+// RIGHT
+.ToolTipRight {
+  left: calc(100% + 1rem);
+
+  @include breakpoints.desktopSm {
+    left: calc(100% + RelativeSize(8));
+  }
+
+  .ToolTipPointer {
+    left: -1rem;
+    // Triangle settings
+    border-right: 1rem solid var(--color-brand_3);
+
+    @include breakpoints.desktopSm {
+      left: RelativeSize(-8);
+    }
+  }
+}

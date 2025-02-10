@@ -1,0 +1,59 @@
+@use "src/styles/breakpoints" as breakpoints;
+@use "src/styles/functions" as *;
+
+.PageHero {
+  position: relative;
+  overflow: hidden;
+  padding: 15rem 2rem 5rem;
+  width: 100%;
+  min-height: 35rem;
+  display: flex;
+  align-items: flex-end;
+
+  @include breakpoints.desktopSm {
+    min-height: 80rem;
+    padding: RelativeSize(200) RelativeSize(30) RelativeSize(30);
+  }
+}
+
+.HeroBackgroundMedia {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background: var(--color-brand_2);
+}
+
+.HeroImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.PageTitle {
+  font-size: 5.2rem;
+  text-transform: uppercase;
+  position: relative;
+  z-index: 2;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.2rem;
+  color: var(--color-white);
+  max-width: 100%;
+  text-shadow: 0.2rem 0.2rem 2rem rgba(var(--rgb-brand_2), 0.4);
+
+  @include breakpoints.tablet {
+    font-size: 16rem;
+  }
+
+  @include breakpoints.desktopSm {
+    max-width: RelativeSize(500);
+    font-size: RelativeSize(80);
+    letter-spacing: RelativeSize(-3);
+  }
+}
