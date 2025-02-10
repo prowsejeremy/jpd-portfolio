@@ -1,7 +1,7 @@
 // Components
-import TextBlock from "src/_components/blocks/TextBlock";
-import ImageBlock, { ImageType } from "src/_components/blocks/ImageBlock";
-import VideoBlock from "src/_components/blocks/VideoBlock";
+import TextBlock from "@/src/_components/block/TextBlock";
+import ImageBlock, { ImageType } from "@/src/_components/block/ImageBlock";
+import VideoBlock from "@/src/_components/block/VideoBlock";
 
 type sectionTypes = {
   type: string;

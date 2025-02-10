@@ -2,7 +2,7 @@
 import Image from "next/image";
 
 // Components
-import VideoBlock from "src/_components/blocks/VideoBlock";
+import VideoBlock from "@/src/_components/block/VideoBlock";
 
 // Styles
 import styles from "./styles.module.scss";
