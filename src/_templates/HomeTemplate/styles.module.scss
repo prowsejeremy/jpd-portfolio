@@ -54,7 +54,7 @@
   }
 }
 
-.Title {
+.FlipBoard {
   display: block;
   width: 100%;
   position: relative;
@@ -84,58 +84,61 @@
     }
   }
 
-  // Starting state, disable "Hello".
-  .hello {
-    display: none;
-  }
-
-  // Starting state, position and hide "Kia Ora".
-  .kiaOra {
+  // Starting state, and styles for textA".
+  .textA {
     span {
       opacity: 0;
       transform: translateY(RelativeSize(150));
     }
   }
 
-  // Once loaded, run the animation for "Kia Ora".
+  .textB {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    span {
+      opacity: 0;
+    }
+  }
+
+  // Once loaded, run the animation for "textA".
   &.loaded {
-    .kiaOra span {
+    .textA span {
       animation-name: popIn;
     }
   }
 
-  // Once enabled, run the animation for hiding
-  // "Kia Ora" and showing "Hello".
-  &.enabled {
-
-    .hello {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-      position: absolute;
-      top: 50%;
-      left: 0;
-      transform: translateY(-50%);
+  // Toggle animation states for the welcome messages.
+  &.show-textA {
+    .textA {
       span {
+        animation-name: popIn;
+        opacity: 0;
+        transform: translateY(RelativeSize(150));
+      }
+    }
+    .textB {
+      span {
+        animation-name: popOut;
         opacity: 1;
         transform: translateY(0);
-        animation-name: popOut;
       }
     }
   }
-
-  // Toggle animation states for the welcome messages.
-  &.translate {
-    
-    .kiaOra {
+  &.show-textB {
+    .textA {
       span {
         animation-name: popOut;
         opacity: 1;
         transform: translateY(0);
       }
     }
-    .hello {
+    .textB {
       span {
         animation-name: popIn;
         opacity: 0;
@@ -170,7 +173,7 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%) rotate(45deg);
+  transform: translate(-50%, -50%);
   display: block;
   width: auto;
   max-width: 80vw;
@@ -178,14 +181,13 @@
   z-index: 1;
   opacity: 0.02;
   transform-origin: center;
-  animation: rotate360 60000ms linear infinite 1000ms;
+  animation: rotate360 60000ms linear infinite 1500ms;
 
   path {
     stroke: var(--color-white);
-
     stroke-dasharray: 300;
     stroke-dashoffset: 300;
-    animation: dashFlower 2000ms var(--easing-inout) forwards 1000ms;
+    animation: dashFlower 2000ms var(--easing-inout) forwards 500ms ;
   }
 }
 
