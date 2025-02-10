@@ -2,7 +2,7 @@
 
 // Components
 import PageHero from "@/src/_components/globals/PageHero";
-import PageSections from "@/src/_components/blocks/PageSections";
+import PageSections from "@/src/_components/block/PageSections";
 
 // Styles
 import styles from "./styles.module.scss";
