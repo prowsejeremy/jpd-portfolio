@@ -52,10 +52,7 @@ export default function SnekSubmitScoreForm({
       playerScore: score,
     };
 
-    const ACT = EncryptKey(
-      process.env.NEXT_PUBLIC_API_TOKEN,
-      process.env.NEXT_PUBLIC_API_SECRET
-    );
+    const ACT = EncryptKey(process.env.API_TOKEN, process.env.API_SECRET);
 
     await fetch("/api/leaderboard", {
       method: "POST",

@@ -14,7 +14,6 @@
     "template": "HomeTemplate",
     "displayTitle": "Jeremy Prowse Digital",
     "aboutContent": {
-      "title": "Welcome",
       "content": "<p>Jeremy here, a digital designer and developer based in Tāmaki Makaurau (Auckland), Aotearoa (New Zealand) with a soft spot for minimal design and clean code. For 10+ years now I've worked as a developer in the marketing industry, crafting solutions for clients spanning a range of sectors. From sites housing extensive product catalogs, to bespoke interactive experiences, I've had the privilege of tackling dev and design challenges across the board.</p>"
     }
   },
