@@ -4,10 +4,7 @@ const dataCache = new Map();
 const ttl = 120000;
 
 const fetchAndCache = async (url: string, ts: number) => {
-  const ACT = EncryptKey(
-    process.env.NEXT_PUBLIC_API_TOKEN,
-    process.env.NEXT_PUBLIC_API_SECRET
-  );
+  const ACT = EncryptKey(process.env.API_TOKEN, process.env.API_SECRET);
 
   const fetchResponse = fetch(url, {
     method: "GET",

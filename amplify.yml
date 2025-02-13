@@ -12,7 +12,7 @@ frontend:
           -e IAM_ACCESS_KEY_ID
           -e IAM_SECRET_ACCESS_KEY
           -e NEXT_URL
-          -e NEXT_PUBLIC_
+          -e
           >> .env.production
         - pnpm run build
   artifacts:

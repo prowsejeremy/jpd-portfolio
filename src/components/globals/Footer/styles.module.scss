@@ -39,13 +39,13 @@
 
 @keyframes changeColor {
   to {
-    fill: #2bf599;
+    fill: var(--color-brand_3);
   }
 }
 
 .UpUpDownDownLeftRightLeftRightBA {
-  padding: 2rem;
-  width: 20rem;
+  padding: 1rem;
+  width: 15rem;
   height: auto;
   display: block;
   background: none;
