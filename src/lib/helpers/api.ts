@@ -10,7 +10,7 @@ const api = {
       return leaderboard;
     },
     postScore: async ({ name, score }: { name: string; score: number }) => {
-      PostScoreMutation.variables = { name, score };
+      PostScoreMutation.variables = { name: name, score: score };
 
       const playerRecord = await signedFetch(PostScoreMutation);
 

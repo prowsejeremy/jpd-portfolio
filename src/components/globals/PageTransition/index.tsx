@@ -20,7 +20,7 @@ const PageTransition = ({ children }: { children: React.ReactNode }) => {
 
   const swipeUpEnterKeyframes = { x: ["0vw", "100vw"] };
   const swipeUpExitKeyframes = { x: ["-100vw", "0vw"] };
-  const swipeUpTimings = { times: [0, 1] };
+  const swipeUpTimings = [0, 1];
 
   return (
     <>
@@ -32,15 +32,15 @@ const PageTransition = ({ children }: { children: React.ReactNode }) => {
           !state.transitionState
             ? { x: "100vw" }
             : state.transitionState === "entering"
-            ? swipeUpEnterKeyframes
-            : swipeUpExitKeyframes
+              ? swipeUpEnterKeyframes
+              : swipeUpExitKeyframes
         }
         // animate={swipeUpEnterKeyframes}
         // exit={swipeUpExitKeyframes}
 
         transition={{
           duration: 0.3,
-          times: { swipeUpTimings },
+          times: swipeUpTimings,
           ease: [0.85, 0, 0.32, 1],
         }}
       />

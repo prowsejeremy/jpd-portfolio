@@ -21,9 +21,9 @@ export const EncryptKey = (key: string, salt: string) => {
 // Decrypt and check validity of the provided access key
 export const DecryptAndValidate = (key: string) => {
   const tsNow = Date.now();
-  const ttl = 5000;
-  const salt = process.env.API_SECRET;
-  const api_token = process.env.API_TOKEN;
+  const ttl = 1000;
+  const salt = process.env.NEXT_PUBLIC_API_SECRET;
+  const api_token = process.env.NEXT_PUBLIC_API_TOKEN;
 
   // Break immediately if provided values aren't in spec
   if (

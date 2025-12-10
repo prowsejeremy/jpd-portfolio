@@ -1,5 +1,5 @@
 // Core
-import { useEffect, useRef } from "react";
+import { JSX, useEffect, useRef } from "react";
 
 // Styles
 import styles from "./styles.module.scss";
@@ -42,9 +42,8 @@ const ToolTip = ({
   return (
     <div
       ref={ToolTipRef}
-      className={`${styles.ToolTipMessage} ${styles[direction]} ${
-        visable && styles.active
-      }`}
+      className={`${styles.ToolTipMessage} ${styles[direction]} ${visable && styles.active
+        }`}
     >
       {children || message}
       <span className={styles.ToolTipPointer} />

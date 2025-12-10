@@ -11,8 +11,8 @@ frontend:
           -e API_URL
           -e IAM_ACCESS_KEY_ID
           -e IAM_SECRET_ACCESS_KEY
-          -e API_TOKEN
-          -e API_SECRET
+          -e NEXT_PUBLIC_API_TOKEN
+          -e NEXT_PUBLIC_API_SECRET
           -e NEXT_URL
           >> .env.production
         - pnpm run build
