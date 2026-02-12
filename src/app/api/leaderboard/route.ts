@@ -1,7 +1,15 @@
 import { NextResponse } from "next/server";
-import api from "@/src/lib/helpers/api";
+import { getScores, postScore } from "@/src/lib/mongo/operations";
 
 export async function POST(request: Request) {
+  // if the request did not come from the same origin, reject it
+  if (
+    process.env.ENV === "production" &&
+    request.headers.get("origin") !== process.env.NEXT_URL
+  ) {
+    return NextResponse.error();
+  }
+
   const { playerName, playerScore } = await request.json();
 
   if (
@@ -18,13 +26,29 @@ export async function POST(request: Request) {
     score: playerScore,
   };
 
-  await api.appsync.postScore(player);
-
-  return NextResponse.json({ msg: "Score Posted!" });
+  try {
+    await postScore(player);
+    return NextResponse.json({ msg: "Score Posted!" });
+  } catch (e: any) {
+    console.error("FAILURE: Could not post score:", e.message);
+    return NextResponse.error();
+  }
 }
 
-export async function GET() {
-  const leaderboard = await api.appsync.getLeaderboard();
+export async function GET(request: Request) {
+  // if the request did not come from the same origin, reject it
+  if (
+    process.env.ENV === "production" &&
+    request.headers.get("origin") !== process.env.NEXT_URL
+  ) {
+    return NextResponse.error();
+  }
 
-  return NextResponse.json(leaderboard.data.playersOrderedByScore.items);
+  try {
+    const leaderboard = await getScores();
+    return NextResponse.json(leaderboard.data);
+  } catch (e: any) {
+    console.error("FAILURE: Could not retrieve leaderboard:", e.message);
+    return NextResponse.error();
+  }
 }

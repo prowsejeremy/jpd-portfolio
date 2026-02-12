@@ -1,31 +1,52 @@
-# Base step
-# ####################################
-
-FROM node:20-slim AS base
+# Stage 1: Install dependencies
+# ##############################
+FROM node:20-alpine AS deps
+RUN apk add --no-cache libc6-compat
 
 # Install pnpm
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
 RUN npm install -g pnpm@latest
 
+WORKDIR /app
+COPY ../package.json ../pnpm-lock.yaml ./
+RUN pnpm install
 
-# Development step
-# ####################################
 
-FROM base AS dev
+# Stage 2: Build the application
+# ##############################
+FROM deps AS builder
+WORKDIR /app
+COPY --from=deps /app/node_modules ./node_modules
+COPY ../ .
 
+RUN pnpm run build
+
+# Clean up dependencies with prune
+RUN pnpm prune --prod
+
+
+# Stage 3: Production runner
+# ##############################
+FROM builder AS runner
 WORKDIR /app
 
-RUN echo "Development build"
+ENV NODE_ENV=production
+ENV NEXT_TELEMETRY_DISABLED=1
 
-# Copy all other files.
-COPY . /app
+# Create a non-root user for security
+RUN addgroup --system --gid 1001 nodejs
+RUN adduser --system --uid 1001 nextjs
 
-RUN if [ ! -f pnpm-lock.yaml ]; then \
-      echo "Error: pnpm-lock.yaml not found." && exit 1; \
-    fi
+# Copy essential files from builder
+COPY --from=builder /app/public ./public
+# Automatically leverages standalone output
+COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
+COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 
-# Install non-prod dependancys too
-RUN pnpm install --frozen-lockfile
+USER nextjs
+EXPOSE 3000
+ENV PORT=3000
 
-CMD export NODE_TLS_REJECT_UNAUTHORIZED=0 && pnpm run dev
+# server.js is created by the standalone build
+CMD ["node", "server.js"]

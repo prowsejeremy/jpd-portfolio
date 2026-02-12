@@ -46,6 +46,7 @@ module.exports = {
   useFileSystemPublicRoutes: true,
   trailingSlash: false,
   poweredByHeader: false,
+  output: "standalone",
 
   distDir: ".next",
 
