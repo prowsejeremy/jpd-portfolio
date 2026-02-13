@@ -5,9 +5,7 @@
       "title": "JPD",
       "description": "Jeremy Prowse Digital - Design & Development",
       "openGraph": {
-        "images": [
-          "/images/share.jpg"
-        ]
+        "images": ["/images/share.jpg"]
       }
     },
     "pageTheme": "brand_2",
@@ -23,9 +21,7 @@
       "title": "JPD - Work",
       "description": "Check out some of the latest, most notable projects I've been involved with.",
       "openGraph": {
-        "images": [
-          "/images/share.jpg"
-        ]
+        "images": ["/images/share.jpg"]
       }
     },
     "pageTheme": "brand_1",
@@ -39,16 +35,8 @@
           "url": "https://alcoholandme.co.nz",
           "type": "external"
         },
-        "roles": [
-          "Tech Lead",
-          "Full Stack Development"
-        ],
-        "tech": [
-          "Next.js",
-          "SASS modules",
-          "Payload CMS",
-          "GraphQl"
-        ]
+        "roles": ["Tech Lead", "Full Stack Development"],
+        "tech": ["Next.js", "SASS modules", "Payload CMS", "GraphQl"]
       },
       {
         "title": "Skyline",
@@ -57,10 +45,7 @@
           "url": "https://queenstown.skyline.co.nz",
           "type": "external"
         },
-        "roles": [
-          "Tech Lead",
-          "Full Stack Development"
-        ],
+        "roles": ["Tech Lead", "Full Stack Development"],
         "tech": [
           "Next.js",
           "Styled Components",
@@ -75,10 +60,7 @@
           "url": "https://craigsip.com",
           "type": "external"
         },
-        "roles": [
-          "Tech Lead",
-          "Full Stack Development"
-        ],
+        "roles": ["Tech Lead", "Full Stack Development"],
         "tech": [
           "Next.js",
           "Styled Components",
@@ -93,16 +75,8 @@
           "url": "https://youngshand.com",
           "type": "external"
         },
-        "roles": [
-          "Tech Oversight",
-          "Front End Development"
-        ],
-        "tech": [
-          "Next.js",
-          "Styled Components",
-          "Strapi",
-          "GraphQl"
-        ]
+        "roles": ["Tech Oversight", "Front End Development"],
+        "tech": ["Next.js", "Styled Components", "Strapi", "GraphQl"]
       },
       {
         "title": "Provincia Property",
@@ -111,10 +85,7 @@
           "url": "https://provincia.co.nz",
           "type": "external"
         },
-        "roles": [
-          "Tech Lead",
-          "Full Stack Development"
-        ],
+        "roles": ["Tech Lead", "Full Stack Development"],
         "tech": [
           "Next.js",
           "Styled Components",
@@ -129,16 +100,8 @@
           "url": "/work/bunder",
           "type": "internal"
         },
-        "roles": [
-          "Tech Lead",
-          "Front End Development"
-        ],
-        "tech": [
-          "Next.js",
-          "Styled Components",
-          "Strapi",
-          "GraphQl"
-        ]
+        "roles": ["Tech Lead", "Front End Development"],
+        "tech": ["Next.js", "Styled Components", "Strapi", "GraphQl"]
       },
       {
         "title": "Blind Low Vision NZ",
@@ -147,10 +110,7 @@
           "url": "https://blindlowvision.org.nz",
           "type": "external"
         },
-        "roles": [
-          "Tech Lead",
-          "Full Stack Development"
-        ],
+        "roles": ["Tech Lead", "Full Stack Development"],
         "tech": [
           "Next.js",
           "Styled Components",
@@ -165,16 +125,8 @@
           "url": "https://healtheries.co.nz",
           "type": "external"
         },
-        "roles": [
-          "Tech Lead",
-          "Full Stack Development"
-        ],
-        "tech": [
-          "Next.js",
-          "SASS",
-          "Headless Wordpress",
-          "GraphQl"
-        ]
+        "roles": ["Tech Lead", "Full Stack Development"],
+        "tech": ["Next.js", "SASS", "Headless Wordpress", "GraphQl"]
       }
     ]
   }

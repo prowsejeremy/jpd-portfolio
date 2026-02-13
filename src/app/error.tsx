@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 
-import styles from "src/styles/error.module.scss";
+import styles from "@/src/styles/error.module.scss";
 
 export default function Error({
   error,

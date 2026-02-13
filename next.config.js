@@ -8,7 +8,7 @@ const ContentSecurityPolicy = `
   font-src 'self' 'unsafe-inline' data: fonts.gstatic.com fonts.googleapis.com;
   object-src 'self' data:;
   frame-ancestors 'none';
-  connect-src 'self' ${process.env.API_URL} https: wss: properties:;
+  connect-src 'self' https: wss: properties:;
 `;
 
 const securityHeaders = [
@@ -46,12 +46,11 @@ module.exports = {
   useFileSystemPublicRoutes: true,
   trailingSlash: false,
   poweredByHeader: false,
-  output: "standalone",
 
   distDir: ".next",
+  output: "standalone",
 
   compiler: {
-    styledComponents: true,
     removeConsole: {
       exclude: ["error", "log"],
     },
@@ -82,7 +81,15 @@ module.exports = {
     return config;
   },
 
-  // images: {
-  //   domains: [process.env.API_URL, '127.0.0.1'],
-  // }
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: `${process.env.NEXT_HOST}`,
+        port: "",
+        pathname: "/*/images/**",
+        search: "",
+      },
+    ],
+  },
 };

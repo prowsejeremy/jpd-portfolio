@@ -16,8 +16,8 @@ RUN pnpm install
 # Stage 2: Build the application
 # ##############################
 FROM deps AS builder
-WORKDIR /app
-COPY --from=deps /app/node_modules ./node_modules
+# WORKDIR /app
+# COPY --from=deps /app/node_modules ./node_modules
 COPY ../ .
 
 RUN pnpm run build
@@ -28,11 +28,8 @@ RUN pnpm prune --prod
 
 # Stage 3: Production runner
 # ##############################
-FROM builder AS runner
+FROM node:20-alpine AS runner
 WORKDIR /app
-
-ENV NODE_ENV=production
-ENV NEXT_TELEMETRY_DISABLED=1
 
 # Create a non-root user for security
 RUN addgroup --system --gid 1001 nodejs

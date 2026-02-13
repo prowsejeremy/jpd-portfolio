@@ -1,0 +1,15 @@
+# name: CI-Pipeline
+# on: [push] # The Event: triggers on every push
+
+# jobs:
+#   build-and-test:
+#     runs-on: ubuntu-latest # The Runner environment
+#     steps:
+#       - name: Checkout code
+#         uses: actions/checkout@v4 # A pre-made Action
+
+#       - name: Run a script
+#         run: echo "The pipeline is running!"
+
+#       - name: Check Node version
+#         run: node -v
