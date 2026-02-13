@@ -9,6 +9,8 @@ source $SCRIPT_DIR/print_message.sh
 printmessage "🔍 Testing SSH connection to the EC2 instance..."
 
 ssh -i $EC2_KEY_PATH $EC2_USER@$EC2_HOST <<EOF
+  set -e;
+
   echo ""
   echo "======================================================================"
   echo "✅ SSH connection to EC2 instance successful. You are logged in as:"
@@ -16,5 +18,9 @@ ssh -i $EC2_KEY_PATH $EC2_USER@$EC2_HOST <<EOF
   echo "======================================================================"
   echo ""
 
-  exit 0
+  exit 0;
 EOF
+
+[[ $? -ne 0 ]] && { printmessage "❌ SSH connection failed."; exit 1; }
+
+exit 0;

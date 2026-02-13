@@ -4,8 +4,11 @@
 # Ensure you've set the following environment variables in connection_variables.sh:
 SCRIPT_DIR="$(dirname "$(realpath "${BASH_SOURCE[0]}")")"
 source $SCRIPT_DIR/connection_variables.sh
+source $SCRIPT_DIR/print_message.sh
 
 ssh -i $EC2_KEY_PATH $EC2_USER@$EC2_HOST <<EOF
+  set -e;
+
   sudo if [ ! -f /etc/systemd/system/certbot-renew.service ]; then
   cat <<EOF > /etc/systemd/system/certbot-renew.service
     [Unit]
@@ -34,4 +37,12 @@ ssh -i $EC2_KEY_PATH $EC2_USER@$EC2_HOST <<EOF
   # Enable and start the timer
   sudo systemctl enable certbot-renew.timer
   sudo systemctl start certbot-renew.timer
+
+  exit 0;
 EOF
+
+[[ $? -ne 0 ]] && { printmessage "❌ Failed to set up certbot renewal timer."; exit 1; }
+
+printmessage "✅ Certbot renewal timer set up successfully."
+
+exit 0;
