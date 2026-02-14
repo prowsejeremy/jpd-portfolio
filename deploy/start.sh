@@ -22,6 +22,17 @@ ssh -i $EC2_KEY_PATH $EC2_USER@$EC2_HOST <<EOF
   # Load the new Docker image into the EC2 instance
   if [ -f "jpd-portfolio-image.tar" ]; then
 
+    # If there is an existing image with the same name, remove it to prevent disk space issues
+    if [ "\$(docker images -q jpd-portfolio 2> /dev/null)" != "" ]; then
+      echo ""
+      echo "==================================================="
+      echo "🗑️ Removing old images to prevent excess disk use"
+      echo "==================================================="
+      echo ""
+
+      docker image rm jpd-portfolio
+    fi
+
     echo ""
     echo "===================================================="
     echo "⌛ Loading the new image and restarting services."
@@ -35,9 +46,9 @@ ssh -i $EC2_KEY_PATH $EC2_USER@$EC2_HOST <<EOF
     echo "✅ Docker image loaded successfully."
     echo "========================================"
     echo ""
-    echo "============================================================="
-    echo "🗑️ Removing the Docker image file from the EC2 instance..."
-    echo "============================================================="
+    echo "================================================================"
+    echo "🗑️ Removing the Docker image tar file from the EC2 instance..."
+    echo "================================================================"
     echo ""
 
     rm jpd-portfolio-image.tar
@@ -50,6 +61,42 @@ ssh -i $EC2_KEY_PATH $EC2_USER@$EC2_HOST <<EOF
   echo ""
   
   docker compose up -d
+
+  echo ""
+  echo "============================================================"
+  echo "🧹 Docker Cleanup: Removing any dangling images or volumes"
+  echo "============================================================"
+  echo ""
+
+  # If there are any dangling volumes, remove them to free up disk space
+  if [ -n "\$(docker volume ls -qf dangling=true)" ]; then
+    echo ""
+    echo "===================================="
+    echo "⚠️ Dangling volumes to be removed:"
+    echo "===================================="
+    echo ""
+    docker volume ls --filter dangling=true
+    docker volume rm \$(docker volume ls -qf dangling=true)
+  fi
+
+  # If there are any dangling images, remove them to free up disk space
+  if [ -n "\$(docker image ls -qf dangling=true)" ]; then
+    echo ""
+    echo "===================================="
+    echo "⚠️ Dangling images to be removed:"
+    echo "===================================="
+    echo ""
+    docker image ls --filter dangling=true
+    docker image rm \$(docker image ls -qf dangling=true --no-trunc)
+  fi
+
+  echo ""
+  echo "========================================================"
+  echo "📋 Docker images currently on the EC2 instance:"
+  echo "========================================================"
+  echo ""
+
+  docker system df
 
   echo ""
   echo "=========================="
