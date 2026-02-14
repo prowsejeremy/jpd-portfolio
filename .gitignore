@@ -4,6 +4,11 @@
 /node_modules
 /.pnp
 .pnp.js
+.pnpm-store
+
+# Docker
+/docker/mongo/mongodata
+*-image.tar
 
 # testing
 /coverage
@@ -26,6 +31,7 @@ yarn-error.log*
 
 # local env files
 .env*
+deploy/connection_variables.sh
 !.env.example
 
 # vercel

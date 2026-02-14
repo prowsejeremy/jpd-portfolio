@@ -1,0 +1,49 @@
+# Connect "remotely" to a docker container via terminal:
+# `docker container attach CONTAINER_NAME`
+
+name: jpd-portfolio-dev
+services:
+  nextjs:
+    image: node:20-alpine
+    stdin_open: true
+    working_dir: /app
+    tty: true
+    volumes:
+      - ../:/app
+      - ../node_modules:/app/node_modules
+      - pnpm-store:/home/node/.pnpm-store
+    environment:
+      - NODE_TLS_REJECT_UNAUTHORIZED=0
+    command: sh -c "npm install -g pnpm && pnpm install && pnpm run dev"
+    # Define your app domain and port to be used by Caddy.
+    # Commented out as caddy is being used through nginx in this setup.
+    labels:
+      caddy: jpd.test
+      caddy.reverse_proxy: "{{upstreams 3000}}"
+      caddy.tls: "internal"
+    networks:
+      - default
+      - caddy
+
+  mongo:
+    image: mongo:latest
+    restart: always
+    ports:
+      - "27017:27017"
+    command: mongod --storageEngine=wiredTiger --quiet --logpath /dev/null
+    env_file:
+      - ../.env
+    volumes:
+      - ./mongo/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+      - ./mongo/mongodata:/data/db
+
+networks:
+  caddy:
+    external: true
+
+volumes:
+  app:
+  node_modules:
+  mongodata:
+  pnpm-store:
+    external: true

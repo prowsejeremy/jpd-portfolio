@@ -1,6 +1,6 @@
 import { FormEvent, useRef, useState } from "react";
 
-import { EncryptKey } from "@/src/lib/helpers/crypt";
+import fetchEncryptKey from "@/src/lib/helpers/fetchEncryptKey";
 
 import Popup from "src/components/globals/SnekGameExtensions/Popup";
 import BasicButton from "src/components/globals/SnekGameExtensions/BasicButton";
@@ -52,7 +52,7 @@ export default function SnekSubmitScoreForm({
       playerScore: score,
     };
 
-    const ACT = EncryptKey(process.env.NEXT_PUBLIC_API_TOKEN, process.env.NEXT_PUBLIC_API_SECRET);
+    const ACT = await fetchEncryptKey({ allowedMethod: "POST", user: data });
 
     await fetch("/api/leaderboard", {
       method: "POST",
