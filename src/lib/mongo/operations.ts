@@ -24,7 +24,11 @@ const getScores = async () => {
     const { db, client } = await dbconnect();
     const collection = db.collection("leaderboard");
 
-    const scores = await collection.find().sort({ score: -1 }).toArray();
+    const scores = await collection
+      .find()
+      .sort({ score: -1 })
+      .limit(10)
+      .toArray();
 
     await dbdisconnect(client);
 

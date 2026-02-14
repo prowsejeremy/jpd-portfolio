@@ -63,6 +63,10 @@ This site is designed to be hosted via docker, while it should run on any server
   ```
   sudo usermod -aG docker ec2-user
   ```
+- Exit and reconnect to the ec2 instance to verify the user add worked
+  ```
+  docker info
+  ```
 - Ensure docker starts if/when the ec2 instance boots
   ```
   sudo systemctl enable docker.service
@@ -71,7 +75,7 @@ This site is designed to be hosted via docker, while it should run on any server
 - Install docker compose
   ```
   sudo mkdir -p /usr/local/lib/docker/cli-plugins
-  sudo curl -SL https://github.com/docker/compose/releases/download/latest/docker-compose-linux-x86_64 -o /usr/local/lib/docker/cli-plugins/docker-compose
+  sudo curl -SL https://github.com/docker/compose/releases/download/v5.0.1/docker-compose-linux-x86_64 -o /usr/local/lib/docker/cli-plugins/docker-compose
   sudo chmod +x /usr/local/lib/docker/cli-plugins/docker-compose
   ```
 
@@ -81,7 +85,7 @@ This site is designed to be hosted via docker, while it should run on any server
   - These will point to the Elastic IP configured earlier.
 - Configure `docker/nginx/default.conf` with your desired domains.
   > **For now ensure the SSL (443) server block is commented out. If not the next steps will fail.**
-- Run `deploy/build_and_deploy.sh` to build a production version of the app and rsync the required files to the ec2 instance.
+- Run `sh deploy/build_and_deploy.sh` to build a production version of the app and rsync the required files to the ec2 instance.
   > **NOTE** This will require you configuring your ssh creds in `deploy/connection_variables.sh.`
   >
   > 🚨 **IMPORTANT** Do _NOT_ select to restart the ec2 Docker instance at this point.
@@ -96,6 +100,10 @@ This site is designed to be hosted via docker, while it should run on any server
   mkdir -p /certbot/conf
   mkdir -p /certbot/www
   ```
+- If the directories have been created, run the following instead:
+  ```
+  sudo chown -R ec2-user:ec2-user /path/to/app/on/ec2-instance/certbot
+  ```
 - Perform a dry-run of the certbot generation to ensure everything is configured correctly
   ```
   docker compose run --rm \
@@ -105,7 +113,7 @@ This site is designed to be hosted via docker, while it should run on any server
     --agree-tos \
     --dry-run \
     -d mydomain.com \
-    -d anotherdomain.com
+    -d www.mydomain.com
   ```
 - If this succeeds then remove the `--dry-run` flag and run again to generate your SSL cert files.
 - Run `docker compose down` to stop all containers.
@@ -117,9 +125,42 @@ This site is designed to be hosted via docker, while it should run on any server
   sh deploy/rsync.sh
   sh deploy/start.sh
   ```
-- Setup the "cron job" to handle renewal of the cert
+
+#### Configure SSL Cert renewal process
+
+- To setup the "cron job" to handle renewal of the cert, create the service and timer files:
+
   ```
-  sh deploy/spawn_timer.sh
+  # Service file:
+  sudo cat <<EOF > /etc/systemd/system/certbot-renew.service
+  [Unit]
+  Description=Renew certificates
+
+  [Service]
+  Type=oneshot
+  ExecStart=cd /home/ec2-user/jpd-portfolio && docker compose run --rm certbot renew --standalone --pre-hook "docker compose stop nginx" --post-hook "docker compose start nginx" --quiet;
+
+  # Timer file:
+  sudo cat <<EOF > /etc/systemd/system/certbot-renew.timer
+  [Unit]
+  Description=Timer to renew certificates
+
+  [Timer]
+  OnCalendar=weekly
+  Persistent=true
+
+  [Install]
+  WantedBy=timers.target
+  ```
+
+- Next enable the service and timer, and verify they have been created correctly:
+
+  ```
+  sudo systemctl enable certbot-renew.timer
+  sudo systemctl start certbot-renew.timer
+
+  # Verify:
+  sudo systemctl status certbot-renew.timer --no-pager
   ```
 
 ### Incremental updates

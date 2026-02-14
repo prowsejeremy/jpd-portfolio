@@ -12,11 +12,10 @@ ssh -i $EC2_KEY_PATH $EC2_USER@$EC2_HOST <<EOF
   set -e;
 
   # Install Docker
-  if ! command -v docker &> /dev/null
-  then
+  if ! docker version &> /dev/null; then
     echo ""
     echo "==================================="
-    echo "Docker not found, installing..."
+    echo "⬇️ Docker not found, installing..."
     echo "==================================="
     echo ""
 
@@ -30,30 +29,42 @@ ssh -i $EC2_KEY_PATH $EC2_USER@$EC2_HOST <<EOF
     # Ensure Docker starts on boot
     sudo systemctl enable docker.service
     sudo systemctl start docker.service
+
+    exit 0;
   else
     echo ""
     echo "======================================================"
-    echo "Docker is already installed, skipping installation."
+    echo "✅ Docker is already installed, skipping installation."
     echo "======================================================"
     echo ""
   fi
 
+  exit 0;
+EOF
+
+[[ $? -ne 0 ]] && { printmessage "❌ Failed to install Docker."; exit 1; }
+
+
+ssh -i $EC2_KEY_PATH $EC2_USER@$EC2_HOST <<EOF
+  set -e;
+
   # Install Docker Compose
-  if ! command -v docker compose &> /dev/null
-  then
+  if ! docker compose version &> /dev/null; then
     echo ""
     echo "=========================================="
-    echo "Docker Compose not found, installing..."
+    echo "⬇️ Docker Compose not found, installing..."
     echo "=========================================="
     echo ""
 
     sudo mkdir -p /usr/local/lib/docker/cli-plugins
-    sudo curl -SL https://github.com/docker/compose/releases/download/latest/docker-compose-linux-x86_64 -o /usr/local/lib/docker/cli-plugins/docker-compose
+    sudo curl -SL https://github.com/docker/compose/releases/download/v5.0.1/docker-compose-linux-x86_64 -o /usr/local/lib/docker/cli-plugins/docker-compose
     sudo chmod +x /usr/local/lib/docker/cli-plugins/docker-compose
+    
+    docker compose version
   else
     echo ""
     echo "=============================================================="
-    echo "Docker Compose is already installed, skipping installation."
+    echo "✅ Docker Compose is already installed, skipping installation."
     echo "=============================================================="
     echo ""
   fi
@@ -61,7 +72,7 @@ ssh -i $EC2_KEY_PATH $EC2_USER@$EC2_HOST <<EOF
   exit 0;
 EOF
 
-[[ $? -ne 0 ]] && { printmessage "❌ Failed to install Docker and Docker Compose."; exit 1; }
+[[ $? -ne 0 ]] && { printmessage "❌ Failed to install Docker Compose."; exit 1; }
 
 printmessage "✅ Docker and Docker Compose installed successfully on the EC2 instance."
 
