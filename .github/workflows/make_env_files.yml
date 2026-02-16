@@ -15,12 +15,14 @@ jobs:
 
       - name: Generate .env files
         run: |
+          echo "🛠️ Generating .env files with environment variables from GitHub Secrets and Variables..."
+
           cat <<EOF > .env.next
           # Next.js environment variables 
-          NODE_ENV=${{ secrets.NODE_ENV }}
-          NEXT_HOST=${{ secrets.NEXT_HOST }}
-          NEXT_URL=${{ secrets.NEXT_URL }}
-          NEXT_TELEMETRY_DISABLED=${{ secrets.NEXT_TELEMETRY_DISABLED }}
+          NODE_ENV=${{ vars.NODE_ENV }}
+          NEXT_HOST=${{ vars.NEXT_HOST }}
+          NEXT_URL=https://${{ vars.NEXT_URL }}
+          NEXT_TELEMETRY_DISABLED=1
 
           # Authentication
           JWT_SECRET=${{ secrets.JWT_SECRET }}
@@ -40,6 +42,8 @@ jobs:
           MONGO_INITDB_DATABASE=${{ secrets.MONGO_DB }}
           EOF
 
+          echo "✅ .env files generated successfully!"
+
       - name: Setup SSH
         run: |
           echo "📂 Creating the .ssh directory..."
@@ -51,7 +55,7 @@ jobs:
           echo "🔒 Setting strict permissions for the SSH key..."
           chmod 600 ~/.ssh/jpd_remote_key.pem
 
-          echo "🌐 Optional: Adding the server to known_hosts to prevent MITM attacks..."
+          echo "🌐 Adding the server to known_hosts to prevent MITM attacks..."
           # ssh-keyscan -H ${{ secrets.REMOTE_HOST }} >> ~/.ssh/known_hosts
 
       - name: Sync files to Server
