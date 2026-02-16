@@ -32,7 +32,7 @@ yarn-error.log*
 # local env files
 .env*
 deploy/connection_variables.sh
-!.env.example
+!.env.dev.example
 
 # vercel
 .vercel

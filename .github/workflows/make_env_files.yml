@@ -1,0 +1,50 @@
+name: Generate and Sync Env Files
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build_env_files:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Generate .env files
+        run: |
+          cat <<EOF > .env.next
+          # Next.js environment variables 
+          NODE_ENV=${{ secrets.NODE_ENV }}
+          NEXT_HOST=${{ secrets.NEXT_HOST }}
+          NEXT_URL=${{ secrets.NEXT_URL }}
+          NEXT_TELEMETRY_DISABLED=${{ secrets.NEXT_TELEMETRY_DISABLED }}
+
+          # Authentication
+          JWT_SECRET=${{ secrets.JWT_SECRET }}
+
+          # Database variables
+          MONGO_HOST=${{ secrets.MONGO_HOST }}
+          MONGO_PORT=${{ secrets.MONGO_PORT }}
+          MONGO_USER=${{ secrets.MONGO_USER }}
+          MONGO_PASS=${{ secrets.MONGO_PASS }}
+          MONGO_DB=${{ secrets.MONGO_DB }}
+          EOF
+
+          cat <<EOF > .env.mongo
+          # MongoDB environment variables
+          MONGO_INITDB_ROOT_USERNAME=${{ secrets.MONGO_USER }}
+          MONGO_INITDB_ROOT_PASSWORD=${{ secrets.MONGO_PASS }}
+          MONGO_INITDB_DATABASE=${{ secrets.MONGO_DB }}
+          EOF
+
+      - name: Sync files to EC2 instance
+        run: |
+          eval $(ssh-agent -s)
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" | tr -d '\r' | ssh-add -
+
+          rsync -avz -e "ssh -o StrictHostKeyChecking=no" \
+            .env.next .env.mongo \
+            ${{ vars.REMOTE_USER }}@${{ vars.REMOTE_HOST }}:${{ vars.REMOTE_APP_DIR }}

@@ -11,7 +11,6 @@ printmessage "📤 Starting the file synchronization process to the EC2 instance
 rsync -avzc --delete-after \
   -e "ssh -i $EC2_KEY_PATH" \
   $SCRIPT_DIR/../jpd-portfolio-image.tar \
-  $SCRIPT_DIR/../.env \
   $SCRIPT_DIR/../docker/mongo/mongo-init.js \
   $SCRIPT_DIR/../docker/compose.yml \
   $SCRIPT_DIR/../docker/nginx \
