@@ -40,17 +40,23 @@ jobs:
           MONGO_INITDB_DATABASE=${{ secrets.MONGO_DB }}
           EOF
 
-      - name: Sync files to EC2 instance
+      - name: Setup SSH
         run: |
-          echo "📡 Starting the agent..."
-          eval $(ssh-agent -s)
+          echo "📂 Creating the .ssh directory..."
+          mkdir -p ~/.ssh
 
-          echo "🔑 Adding the SSH key using a 'Here-Doc' to preserve multi-line formatting..."
-          ssh-add - <<EOF
-          ${{ secrets.SSH_PRIVATE_KEY }}
-          EOF
+          echo "🔑 Extracting the private key from secrets into a file..."
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/jpd_remote_key.pem
 
-          echo "🚀 Syncing .env files to the EC2 instance..."
-          rsync -avz -e "ssh -o StrictHostKeyChecking=no" \
+          echo "🔒 Setting strict permissions for the SSH key..."
+          chmod 600 ~/.ssh/jpd_remote_key.pem
+
+          echo "🌐 Optional: Adding the server to known_hosts to prevent MITM attacks..."
+          # ssh-keyscan -H ${{ secrets.REMOTE_HOST }} >> ~/.ssh/known_hosts
+
+      - name: Sync files to Server
+        run: |
+          echo "🚀 Syncing .env files to the server using rsync..."
+          rsync -avz -e "ssh -i ~/.ssh/jpd_remote_key.pem -o StrictHostKeyChecking=no" \
             .env.next .env.mongo \
             ${{ vars.REMOTE_USER }}@${{ vars.REMOTE_HOST }}:${{ vars.REMOTE_APP_DIR }}
