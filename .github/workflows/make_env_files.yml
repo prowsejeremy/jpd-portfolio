@@ -22,7 +22,7 @@ jobs:
           # Next.js environment variables 
           NODE_ENV=${{ vars.NODE_ENV }}
           NEXT_HOST=${{ vars.NEXT_HOST }}
-          NEXT_URL=https://${{ vars.NEXT_URL }}
+          NEXT_URL=https://${{ vars.NEXT_HOST }}
           NEXT_TELEMETRY_DISABLED=1
 
           # Authentication

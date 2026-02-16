@@ -9,7 +9,7 @@ ENV PATH="$PNPM_HOME:$PATH"
 RUN npm install -g pnpm@latest
 
 WORKDIR /app
-COPY ../package.json ../pnpm-lock.yaml ./
+COPY package.json pnpm-lock.yaml ./
 RUN pnpm install
 
 
@@ -18,7 +18,7 @@ RUN pnpm install
 FROM deps AS builder
 # WORKDIR /app
 # COPY --from=deps /app/node_modules ./node_modules
-COPY ../ .
+COPY . .
 
 RUN pnpm run build
 

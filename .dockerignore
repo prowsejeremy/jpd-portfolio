@@ -8,7 +8,8 @@ node_modules/
 docker/mongo/mongodata
 
 # Files
-.env.example
+.env
+.env.*
 README.md
 eslint.config.js
 prettier.config.js
