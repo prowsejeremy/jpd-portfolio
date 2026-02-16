@@ -42,9 +42,15 @@ jobs:
 
       - name: Sync files to EC2 instance
         run: |
+          echo "📡 Starting the agent..."
           eval $(ssh-agent -s)
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" | tr -d '\r' | ssh-add -
 
+          echo "🔑 Adding the SSH key using a 'Here-Doc' to preserve multi-line formatting..."
+          ssh-add - <<EOF
+          ${{ secrets.SSH_PRIVATE_KEY }}
+          EOF
+
+          echo "🚀 Syncing .env files to the EC2 instance..."
           rsync -avz -e "ssh -o StrictHostKeyChecking=no" \
             .env.next .env.mongo \
             ${{ vars.REMOTE_USER }}@${{ vars.REMOTE_HOST }}:${{ vars.REMOTE_APP_DIR }}
