@@ -163,6 +163,25 @@ This site is designed to be hosted via docker, while it should run on any server
   sudo systemctl status certbot-renew.timer --no-pager
   ```
 
+#### Connecting to the remote mongo instance
+
+- When using a tool like Mongo Compass, first ssh onto the ec2 instance and find the internal ip address mongo is running on:
+  ```
+    docker network ls
+    docker network inspect {{network_id/name}}
+  ```
+- Within this response, find the mongo block. The IPv4Address within will be used for constructing our connection string which will look like this:
+
+  ```
+    mongodb://{{MONGO_USER}}:{{MONGO_PASS}}@{{IPv4Address}}:{{MONGO_PORT}}/{{MONGO_DB}}
+
+    # For example:
+    mongodb://user:password123@172.19.0.1:27017/my_mongo_db
+  ```
+
+- Configure the SSH settings in the `Advanced Connection Options` using your .pem file as the `Identity File`
+- Click `Save & Connect` and you should be in.
+
 ### Incremental updates
 
 - To build the docker image and upload it to the ec2 instance:

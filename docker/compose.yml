@@ -36,6 +36,8 @@ services:
     command: mongod --storageEngine=wiredTiger --quiet --logpath /dev/null
     env_file:
       - .env.mongo
+    ports:
+      - "27017:27017"
     volumes:
       - ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
       - /mnt/ebs/jpd-portfolio/mongodata:/data/db
