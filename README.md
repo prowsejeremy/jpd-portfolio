@@ -14,7 +14,7 @@ The site, while rather simple in design has a few key elements going on under th
 - pnpm package manager
 - A super secret easter egg 🤫
 
-## Developmetn Setup
+## Development Setup
 
 - Ensure you have a current Node.js (20>=) development environment setup.
 - Configure a local .env file with the appropriate environment variables then run:
@@ -28,22 +28,32 @@ Head to [jpd.test](https://jpd.test) in your browser and you're off to the races
 
 ## Production build and deployment
 
-This site is designed to be hosted via docker, while it should run on any server supporting docker, the below guide is specifically for configuration on an EC2 Instance.
+This site is designed to be hosted via docker, while it should run on any server supporting docker, the below guide is specifically for configuration on a Lightsail / EC2 Instance.
 
 ### Initial setup
 
-#### Configure an ec2 instance
+#### Configure a Lightsail instance
 
-- Log in to AWS and create a new ec2 instance
-- When creating the security policy, set up the following inbound rules:
-  - SSH | 22 | 0.0.0.0/0
-  - HTTP | 80 | 0.0.0.0/0
-  - HTTPS | 443 | 0.0.0.0/0
+- Log in to AWS and create a new Lightsail instance
+- Configure the IPv4 Firewall rules under networking:
+  - SSH | 22 | "Any IPv4 address"
+  - HTTP | 80 | "Any IPv4 address"
+  - HTTPS | 443 | "Any IPv4 address"
+
+> 📢 **NOTE** For stand-alone EC2:
+>
+> When creating the security policy, set up the inbound rules matching the above ports configured for the Lightsail firewall.
+> These should have an `Source` setting of `0.0.0.0/0`
+
 - Configure a Key pair and download the `.pem` file for ssh access
-- Setup an Elastic IP and allocate it to the ec2 instance
+- Setup a Static IP under networking and attach it to the instance.
   - This will be the public IP for ssh access as well as pointing a domain to.
 
-#### Install depenencies on ec2 instance
+> 📢 **NOTE** For stand-alone EC2:
+>
+> Setup an Elastic IP and allocate it to the ec2 instance
+
+#### Install depenencies on Lightsail / ec2 instance
 
 > Run `sh deploy/install-docker.sh` to run through the below commands.
 
@@ -51,7 +61,7 @@ This site is designed to be hosted via docker, while it should run on any server
 
 - SSH onto the server
   ```
-  ssh -i path/to/ec2-instance.pem ec2-user@elastic-ip
+  ssh -i path/to/aws-ssh-key.pem ec2-user@static-ip
   ```
 - Install Docker
   ```
@@ -91,7 +101,7 @@ This site is designed to be hosted via docker, while it should run on any server
   > 🚨 **IMPORTANT** Do _NOT_ select to restart the ec2 Docker instance at this point.
 - SSH onto the server and start only the nginx container
   ```
-  ssh -i path/to/ec2-instance.pem ec2-user@elastic-ip
+  ssh -i path/to/aws-ssh-key.pem ec2-user@static-ip
   cd path/to/app/on/ec2-instance
   docker compose up nginx -d
   ```
@@ -132,16 +142,17 @@ This site is designed to be hosted via docker, while it should run on any server
 
   ```
   # Service file:
-  sudo cat <<EOF > /etc/systemd/system/certbot-renew.service
+  sudo sh -c 'cat << EOF > /etc/systemd/system/TEST.service
   [Unit]
   Description=Renew certificates
 
   [Service]
   Type=oneshot
   ExecStart=cd /home/ec2-user/jpd-portfolio && docker compose run --rm certbot renew --standalone --pre-hook "docker compose stop nginx" --post-hook "docker compose start nginx" --quiet;
+  EOF'
 
   # Timer file:
-  sudo cat <<EOF > /etc/systemd/system/certbot-renew.timer
+  sudo sh -c 'cat << EOF > /etc/systemd/system/certbot-renew.timer
   [Unit]
   Description=Timer to renew certificates
 
@@ -151,6 +162,7 @@ This site is designed to be hosted via docker, while it should run on any server
 
   [Install]
   WantedBy=timers.target
+  EOF'
   ```
 
 - Next enable the service and timer, and verify they have been created correctly:
@@ -165,10 +177,10 @@ This site is designed to be hosted via docker, while it should run on any server
 
 #### Connecting to the remote mongo instance
 
-- When using a tool like Mongo Compass, first ssh onto the ec2 instance and find the internal ip address mongo is running on:
+- When using a tool like Mongo Compass, first ssh onto the instance and find the internal ip address mongo is running on:
   ```
-    docker network ls
-    docker network inspect {{network_id/name}}
+  docker network ls
+  docker network inspect {{network_id/name}}
   ```
 - Within this response, find the mongo block. The IPv4Address within will be used for constructing our connection string which will look like this:
 
