@@ -3,12 +3,12 @@ name: Generate and Sync Env Files
 on:
   push:
     branches:
-      - main
+      - feature/lightsail
 
 jobs:
   build_env_files:
     runs-on: ubuntu-latest
-    environment: production
+    environment: lightsail-production
 
     steps:
       - name: Checkout repository
