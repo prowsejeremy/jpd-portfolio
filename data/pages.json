@@ -29,6 +29,16 @@
     "displayTitle": "Work work work work work.",
     "workItems": [
       {
+        "title": "Vector Ltd",
+        "year": "2026",
+        "link": {
+          "url": "https://vector.co.nz",
+          "type": "external"
+        },
+        "roles": ["Tech Lead", "Full Stack Development"],
+        "tech": ["Next.js", "SASS modules", "Payload CMS", "GraphQl", "Redis"]
+      },
+      {
         "title": "Alcohol&Me",
         "year": "2024",
         "link": {
