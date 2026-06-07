@@ -142,15 +142,21 @@ This site is designed to be hosted via docker, while it should run on any server
 
   ```
   # Service file:
-  sudo sh -c 'cat << EOF > /etc/systemd/system/TEST.service
+  sudo sh -c 'cat << EOF > /etc/systemd/system/certbot-renew.service
   [Unit]
   Description=Renew certificates
+  After=docker.service
+  Requires=docker.service
 
   [Service]
   Type=oneshot
-  ExecStart=cd /home/ec2-user/jpd-portfolio && docker compose run --rm certbot renew --standalone --pre-hook "docker compose stop nginx" --post-hook "docker compose start nginx" --quiet;
+  WorkingDirectory=/home/ec2-user/jpd-portfolio
+  ExecStart=/usr/bin/docker compose run --rm certbot renew
+  ExecStart=/usr/bin/docker compose restart nginx
   EOF'
+  ```
 
+  ```
   # Timer file:
   sudo sh -c 'cat << EOF > /etc/systemd/system/certbot-renew.timer
   [Unit]

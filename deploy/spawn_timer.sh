@@ -21,10 +21,14 @@ ssh -i $EC2_KEY_PATH $EC2_USER@$EC2_HOST <<OUTER_EOF
     sudo cat <<INNER_EOF > /etc/systemd/system/certbot-renew.service
       [Unit]
       Description=Renew certificates
+      After=docker.service
+      Requires=docker.service
 
       [Service]
       Type=oneshot
-      ExecStart=cd /home/ec2-user/jpd-portfolio && docker compose run --rm certbot renew --standalone --pre-hook "docker compose stop nginx" --post-hook "docker compose start nginx" --quiet;
+      WorkingDirectory=/home/ec2-user/jpd-portfolio
+      ExecStart=/usr/bin/docker compose run --rm certbot renew
+      ExecStart=/usr/bin/docker compose restart nginx
     INNER_EOF
   fi
 
@@ -55,6 +59,15 @@ ssh -i $EC2_KEY_PATH $EC2_USER@$EC2_HOST <<OUTER_EOF
   echo ""
   sudo systemctl enable certbot-renew.timer
   sudo systemctl start certbot-renew.timer
+
+  echo ""
+  echo "============================================================"
+  echo "🔍 Verifying the timer and service configuration:"
+  echo "============================================================"
+  echo ""
+
+  sudo systemd-analyze verify /etc/systemd/system/certbot-renew.service
+  sudo systemd-analyze verify /etc/systemd/system/certbot-renew.timer
 
   echo ""
   echo "============================================================"
